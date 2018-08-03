@@ -19,7 +19,7 @@ import numpy as np
 np.random.seed(123)
 
 # Generate and print random float
-np.random.rand()
+print(np.random.rand())
 ```
 
 ## Output
