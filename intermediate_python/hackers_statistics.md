@@ -429,3 +429,6 @@ ends = np_aw_t[-1]
 plt.hist(ends)
 plt.show()
 ```
+
+### Comments
+Great job! Have a look at a histogram; what do you think your chances are?
