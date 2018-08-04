@@ -338,5 +338,5 @@ np_aw_t = np.transpose(np_aw)
 plt.plot(np_aw_t)
 plt.show()
 ```
-## Outputs
-![visualize_walks_transpose](https://user-images.githubusercontent.com/16355740/43675077-3d72d4dc-9808-11e8-947e-324d84b99530.png)
+### Comments
+Good job! You can clearly see how the different simulations of the random walk went. Transposing the 2D Numpy array was crucial; otherwise Python misunderstood.
