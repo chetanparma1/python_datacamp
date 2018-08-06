@@ -231,4 +231,4 @@ For this exercise, your goal is to recall how to load a dataset into a DataFrame
 * Import the pandas package with the alias pd.
 * Import the file 'tweets.csv' using the pandas function read_csv(). Assign the resulting DataFrame to df.
 * Complete the for loop by iterating over col, the 'lang' column in the DataFrame df.
-* Complete the bodies of the if-else statements in the for loop: if the key is in the dictionary langs_count, add 1 to its current value, else add the key to langs_count and set its value to 1. Use the loop variable entry in your code.
+* Complete the bodies of the if-else statements in the for loop: if the key is in the dictionary langs_count, add 1 to its current value, else add the key to langs_count and set its value to 1. Use the loop variable entry in your code
