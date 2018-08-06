@@ -492,3 +492,50 @@ Once again, for your convenience, pandas has been imported as pd and the 'tweets
 * Complete the for loop within the function definition so that the loop occurs over the tuple args.
 * Call count_entries() by passing the tweets_df DataFrame and the column name 'lang'. Assign the result to result1.
 * Call count_entries() by passing the tweets_df DataFrame and the column names 'lang' and 'source'. Assign the result to result2.
+```{python}
+# Define count_entries()
+def count_entries(df, *args):
+    """Return a dictionary with counts of
+    occurrences as value for each key."""
+    
+    #Initialize an empty dictionary: cols_count
+    cols_count = {}
+    
+    # Iterate over column names in args
+    for col_name in args:
+    
+        # Extract column from DataFrame: col
+        col = df[col_name]
+    
+        # Iterate over the column in DataFrame
+        for entry in col:
+    
+            # If entry is in cols_count, add 1
+            if entry in cols_count.keys():
+                cols_count[entry] += 1
+    
+            # Else add the entry to cols_count, set the value to 1
+            else:
+                cols_count[entry] = 1
+
+    # Return the cols_count dictionary
+    return cols_count
+
+# Call count_entries(): result1
+result1 = count_entries(tweets_df, 'lang')
+
+# Call count_entries(): result2
+result2 = count_entries(tweets_df, 'lang', 'source')
+
+# Print result1 and result2
+print(result1)
+print(result2)
+```
+### Output
+```
+<script.py> output:
+    {'et': 1, 'und': 2, 'en': 97}
+    {'<a href="http://rutracker.org/forum/viewforum.php?f=93" rel="nofollow">newzlasz</a>': 2, '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>': 33, 'et': 1, '<a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>': 26, '<a href="http://twitter.com/#!/download/ipad" rel="nofollow">Twitter for iPad</a>': 6, '<a href="http://www.facebook.com/twitter" rel="nofollow">Facebook</a>': 1, '<a href="http://linkis.com" rel="nofollow">Linkis.com</a>': 2, '<a href="http://twitter.com" rel="nofollow">Twitter Web Client</a>': 24, '<a href="http://ifttt.com" rel="nofollow">IFTTT</a>': 1, '<a href="http://www.twitter.com" rel="nofollow">Twitter for BlackBerry</a>': 2, '<a href="http://www.google.com/" rel="nofollow">Google</a>': 2, '<a href="http://www.myplume.com/" rel="nofollow">Plume\xa0for\xa0Android</a>': 1, 'und': 2, 'en': 97}
+```
+### Comments
+Great work!
