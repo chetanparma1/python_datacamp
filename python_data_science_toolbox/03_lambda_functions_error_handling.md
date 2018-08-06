@@ -51,5 +51,37 @@ print(result)
 ### Comments
 Great work!
 
+\# Recall from the video that map() applies a function over an object, such as a list. Here, you can use lambda functions to define the function that map() will use to process the object. For example:
+```
+nums = [2, 4, 6, 8, 10]
 
-    
+result = map(lambda a: a ** 2, nums)
+```
+You can see here that a lambda function, which raises a value a to the power of 2, is passed to map() alongside a list of numbers, nums. The map object that results from the call to map() is stored in result. You will now practice the use of lambda functions with map(). For this exercise, you will map the functionality of the add_bangs() function you defined in previous exercises over a list of strings.
+
+## Instructions
+* In the map() call, pass a lambda function that concatenates the string '!!!' to a string item; also pass the list of strings, spells. Assign the resulting map object to shout_spells.
+* Convert shout_spells to a list and print out the list.
+
+```{python}
+# Create a list of strings: spells
+spells = ["protego", "accio", "expecto patronum", "legilimens"]
+
+# Use map() to apply a lambda function over spells: shout_spells
+shout_spells = map(lambda a: a + '!!!', spells)
+
+# Convert shout_spells to a list: shout_spells_list
+shout_spells_list = list(shout_spells)
+
+# Convert shout_spells into a list and print it
+print(shout_spells_list)
+```
+
+### Output:
+```
+<script.py> output:
+    ['protego!!!', 'accio!!!', 'expecto patronum!!!', 'legilimens!!!']
+```
+
+### Comments
+Great work!
