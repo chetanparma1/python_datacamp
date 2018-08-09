@@ -270,9 +270,6 @@ Two tuples of strings, mutants and powers have been pre-loaded.
 # Create a zip object from mutants and powers: z1
 z1 = zip(mutants, powers)
 
-# see how z1 looks like
-print(z1)
-
 # Print the tuples in z1 by unpacking with *
 print(*z1)
 
@@ -286,3 +283,13 @@ result1, result2 = zip(*z1)
 print(result1 == mutants)
 print(result2 == powers)
 ```
+### Output:
+```
+<script.py> output:
+    <zip object at 0x7f3a61bee408>
+    ('charles xavier', 'telepathy') ('bobby drake', 'thermokinesis') ('kurt wagner', 'teleportation') ('max eisenhardt', 'magnetokinesis') ('kitty pryde', 'intangibility')
+    True
+    True
+ ```
+ ### Comments:
+ Great work!
