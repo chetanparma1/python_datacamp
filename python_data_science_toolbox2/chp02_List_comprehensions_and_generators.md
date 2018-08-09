@@ -222,3 +222,39 @@ print(new_fellowship)
 ```
 ### Comment:
 Great work!
+
+# List comprehensions vs generators
+You've seen from the videos that list comprehensions and generator expressions look very similar in their syntax, except for the use of parentheses () in generator expressions and brackets [] in list comprehensions.
+
+In this exercise, you will recall the difference between list comprehensions and generators. To help with that task, the following code has been pre-loaded in the environment:
+```{python}
+# List of strings
+fellowship = ['frodo', 'samwise', 'merry', 'aragorn', 'legolas', 'boromir', 'gimli']
+
+# List comprehension
+fellow1 = [member for member in fellowship if len(member) >= 7]
+
+# Generator expression
+fellow2 = (member for member in fellowship if len(member) >= 7)
+Try to play around with fellow1 and fellow2 by figuring out their types and printing out their values. Based on your observations and what you can recall from the video, select from the options below the best description for the difference between list comprehensions and generators.
+```
+
+## Instructions
+Possible Answers <br />
+* List comprehensions and generators are not different at all; they are just different ways of writing the same thing.
+** press 1
+* A list comprehension produces a list as output, a generator produces a generator object.
+** press 2
+* A list comprehension produces a list as output that can be iterated over, a generator produces a generator object that can't be iterated over.
+** press 3
+
+### Answer: 2
+
+### Output:
+```
+In [2]: fellow2
+Out[2]: <generator object <genexpr> at 0x7fe8f4818db0>
+
+In [3]: fellow1
+Out[3]: ['samwise', 'aragorn', 'legolas', 'boromir']
+```
