@@ -601,3 +601,24 @@ plot_pop(fn, 'ARB')
 ```
 #### Comments:
 Great work!
+
+# Exploring your working directory
+In order to import data into Python, you should first have an idea of what files are in your working directory.
+
+IPython, which is running on DataCamp's servers, has a bunch of cool commands, including its magic commands. For example, starting a line with ! gives you complete system shell access. This means that the IPython magic command ! ls will display the contents of your current directory. Your task is to use the IPython magic command ! ls to check out the contents of your current directory and answer the following question: which of the following files is in your working directory?
+
+## Instructions:
+Possible Answers <br />
+* huck_finn.txt
+** press 1
+* titanic.csv
+** press 2
+* moby_dick.txt
+** press 3
+
+```{python}
+In [2]: ! ls
+moby_dick.txt
+```
+### Comments:
+Correct!
