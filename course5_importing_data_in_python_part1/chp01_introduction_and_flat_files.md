@@ -409,3 +409,12 @@ plt.ylabel('percentage of larvae')
 plt.show()
 ```
 ![Alt text](./plot_data_float.svg)
+
+### Output:
+```
+<script.py> output:
+    ["b'Time'" "b'Percent'"]
+    [ 0.     0.357]
+```
+#### Comments:
+Nice!
