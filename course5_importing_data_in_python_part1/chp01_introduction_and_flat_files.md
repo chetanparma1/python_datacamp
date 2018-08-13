@@ -73,3 +73,297 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
+# Using NumPy to import flat files
+In this exercise, you're now going to load the MNIST digit recognition dataset using the numpy function loadtxt() and see just how easy it can be:
+
+The first argument will be the filename.
+The second will be the delimiter which, in this case, is a comma.
+You can find more information about the MNIST dataset here on the webpage of Yann LeCun, who is currently Director of AI Research at Facebook and Founding Director of the NYU Center for Data Science, among many other things.
+
+## Instructions:
+* Fill in the arguments of np.loadtxt() by passing file and a comma ',' for the delimiter.
+* Fill in the argument of print() to print the type of the object digits. Use the function type().
+* Execute the rest of the code to visualize one of the rows of the data.
+
+```{python}
+# Import package
+import numpy as np
+
+# Assign filename to variable: file
+file = 'digits.csv'
+
+# Load file as array: digits
+digits = np.loadtxt(file, delimiter=',')
+
+# Print datatype of digits
+print(type(digits))
+
+# Select and reshape a row
+im = digits[21, 1:]
+im_sq = np.reshape(im, (28, 28))
+
+# Plot reshaped data (matplotlib.pyplot already loaded as plt)
+plt.imshow(im_sq, cmap='Greys', interpolation='nearest')
+plt.show()
+```
+
+### Output:
+```
+In [1]: # Import package
+        import numpy as np
+        
+        # Assign filename to variable: file
+        file = 'digits.csv'
+
+In [2]: # Load file as array: digits
+        digits = np.loadtxt(file, delimiter=',')
+
+In [3]: # Print datatype of digits
+        print(type(digits))
+<class 'numpy.ndarray'>
+
+In [4]: ?loadtxt
+Object `loadtxt` not found.
+
+<script.py> output:
+    <class 'numpy.ndarray'>
+```
+
+#### Comments:
+Nice, that was a challenging one.
+
+# Customizing your NumPy import
+What if there are rows, such as a header, that you don't want to import? What if your file has a delimiter other than a comma? What if you only wish to import particular columns?
+
+There are a number of arguments that np.loadtxt() takes that you'll find useful: delimiter changes the delimiter that loadtxt() is expecting, for example, you can use ',' and '\t' for comma-delimited and tab-delimited respectively; skiprows allows you to specify how many rows (not indices) you wish to skip; usecols takes a list of the indices of the columns you wish to keep.
+
+The file that you'll be importing, digits_header.txt,
+
+* has a header
+* is tab-delimited.
+
+## Instructions
+* Complete the arguments of np.loadtxt(): the file you're importing is tab-delimited, you want to skip the first row and you only want to import the first and third columns.
+* Complete the argument of the print() call in order to print the entire array that you just imported.
+
+```{python}
+# Import numpy
+import numpy as np
+
+# Assign the filename: file
+file = 'digits_header.txt'
+
+# Load the data: data
+data = np.loadtxt(file, delimiter='\t', skiprows=1, usecols=[0,2])
+
+# Print data
+print(data)
+```
+### Output:
+```
+<script.py> output:
+    [[ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]]
+
+<script.py> output:
+    [[ 1.  0.]
+     [ 0.  0.]
+     [ 1.  0.]
+     [ 4.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 7.  0.]
+     [ 3.  0.]
+     [ 5.  0.]
+     [ 3.  0.]
+     [ 8.  0.]
+     [ 9.  0.]
+     [ 1.  0.]
+     [ 3.  0.]
+     [ 3.  0.]
+     [ 1.  0.]
+     [ 2.  0.]
+     [ 0.  0.]
+     [ 7.  0.]
+     [ 5.  0.]
+     [ 8.  0.]
+     [ 6.  0.]
+     [ 2.  0.]
+     [ 0.  0.]
+     [ 2.  0.]
+     [ 3.  0.]
+     [ 6.  0.]
+     [ 9.  0.]
+     [ 9.  0.]
+     [ 7.  0.]
+     [ 8.  0.]
+     [ 9.  0.]
+     [ 4.  0.]
+     [ 9.  0.]
+     [ 2.  0.]
+     [ 1.  0.]
+     [ 3.  0.]
+     [ 1.  0.]
+     [ 1.  0.]
+     [ 4.  0.]
+     [ 9.  0.]
+     [ 1.  0.]
+     [ 4.  0.]
+     [ 4.  0.]
+     [ 2.  0.]
+     [ 6.  0.]
+     [ 3.  0.]
+     [ 7.  0.]
+     [ 7.  0.]
+     [ 4.  0.]
+     [ 7.  0.]
+     [ 5.  0.]
+     [ 1.  0.]
+     [ 9.  0.]
+     [ 0.  0.]
+     [ 2.  0.]
+     [ 2.  0.]
+     [ 3.  0.]
+     [ 9.  0.]
+     [ 1.  0.]
+     [ 1.  0.]
+     [ 1.  0.]
+     [ 5.  0.]
+     [ 0.  0.]
+     [ 6.  0.]
+     [ 3.  0.]
+     [ 4.  0.]
+     [ 8.  0.]
+     [ 1.  0.]
+     [ 0.  0.]
+     [ 3.  0.]
+     [ 9.  0.]
+     [ 6.  0.]
+     [ 2.  0.]
+     [ 6.  0.]
+     [ 4.  0.]
+     [ 7.  0.]
+     [ 1.  0.]
+     [ 4.  0.]
+     [ 1.  0.]
+     [ 5.  0.]
+     [ 4.  0.]
+     [ 8.  0.]
+     [ 9.  0.]
+     [ 2.  0.]
+     [ 9.  0.]
+     [ 9.  0.]
+     [ 8.  0.]
+     [ 9.  0.]
+     [ 6.  0.]
+     [ 3.  0.]
+     [ 6.  0.]
+     [ 4.  0.]
+     [ 6.  0.]
+     [ 2.  0.]
+     [ 9.  0.]
+     [ 1.  0.]
+     [ 2.  0.]
+     [ 0.  0.]
+     [ 5.  0.]]
+```
+#### Comments:
+Good job!
