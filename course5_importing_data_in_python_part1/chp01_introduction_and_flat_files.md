@@ -562,3 +562,66 @@ print(df.head())
 ```
 #### Comments:
 Good job!
+
+# Using pandas to import flat files as DataFrames (2)
+In the last exercise, you were able to import flat files into a pandas DataFrame. As a bonus, it is then straightforward to retrieve the corresponding numpy array using the attribute values. You'll now have a chance to do this using the MNIST dataset, which is available as digits.csv.
+
+## Instructions:
+* Import the first 5 rows of the file into a DataFrame using the function pd.read_csv() and assign the result to data. You'll need to use the arguments nrows and header (there is no header in this file).
+* Build a numpy array from the resulting DataFrame in data and assign to data_array.
+* Execute print(type(data_array)) to print the datatype of data_array.
+
+```{python}
+# Assign the filename: file
+file = 'digits.csv'
+
+# Read the first 5 rows of the file into a DataFrame: data
+data = pd.read_csv(file, nrows=5, header=None)
+
+# Build a numpy array from the DataFrame: data_array
+data_array = data.values
+
+# Print the datatype of data_array to the shell
+print(type(data_array))
+```
+### Output:
+```
+<script.py> output:
+    <class 'numpy.ndarray'>
+
+In [2]: # Assign the filename: file
+        file = 'digits.csv'
+
+In [3]: # Read the first 5 rows of the file into a DataFrame: data
+        data = pd.read_csv(file, nrows=5, header=None)
+
+In [4]: data
+Out[4]: 
+   0    1    2    3    4    5    6    7    8    9   ...   775  776  777  778  \
+0  1.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0 ...   0.0  0.0  0.0  0.0   
+1  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0 ...   0.0  0.0  0.0  0.0   
+2  1.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0 ...   0.0  0.0  0.0  0.0   
+3  4.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0 ...   0.0  0.0  0.0  0.0   
+4  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0 ...   0.0  0.0  0.0  0.0   
+
+   779  780  781  782  783  784  
+0  0.0  0.0  0.0  0.0  0.0  0.0  
+1  0.0  0.0  0.0  0.0  0.0  0.0  
+2  0.0  0.0  0.0  0.0  0.0  0.0  
+3  0.0  0.0  0.0  0.0  0.0  0.0  
+4  0.0  0.0  0.0  0.0  0.0  0.0  
+
+[5 rows x 785 columns]
+
+In [5]: data_array = data.values
+
+In [6]: data_array
+Out[6]: 
+array([[ 1.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 1.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 4.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.]])
+```
+#### Comments:
+Good job!
