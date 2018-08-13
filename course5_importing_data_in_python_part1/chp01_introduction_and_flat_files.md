@@ -409,4 +409,3 @@ plt.ylabel('percentage of larvae')
 plt.show()
 ```
 ![Alt text](./plot_data_float.svg)
-<img src="./plot_data_float.svg">
