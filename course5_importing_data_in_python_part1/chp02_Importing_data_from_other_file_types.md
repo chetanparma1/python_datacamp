@@ -215,3 +215,51 @@ press 4
 
 #### Comments:
 Correct!
+
+## Importing SAS files
+In this exercise, you'll figure out how to import a SAS file as a DataFrame using SAS7BDAT and pandas. The file 'sales.sas7bdat' is already in your working directory and both pandas and matplotlib.pyplot have already been imported as follows:
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+The data are adapted from the website of the undergraduate text book Principles of Econometrics by Hill, Griffiths and Lim.
+
+### Instructions
+* Import the module SAS7BDAT from the library sas7bdat.
+* In the context of the file 'sales.sas7bdat', load its contents to a DataFrame df_sas, using the method to_data_frame() on the object file.
+* Print the head of the DataFrame df_sas.
+* Execute your entire script to produce a histogram plot!
+
+```{python}
+# Import sas7bdat package
+from sas7bdat import SAS7BDAT
+
+# Save file to a DataFrame: df_sas
+with SAS7BDAT('sales.sas7bdat') as file:
+    # converting sas object to dataframe
+    df_sas = file.to_data_frame()
+
+# Print head of DataFrame
+print(df_sas.head())
+
+# Plot histogram of DataFrame features (pandas and pyplot already imported)
+# selection using double bracket [['P']] returns a result in dataframe format. 
+# if we want a result in series format, use single bracket ['P']
+pd.DataFrame.hist(df_sas[['P']])
+plt.ylabel('count')
+plt.show()
+```
+#### Output:
+```
+<script.py> output:
+         YEAR     P           S
+    0  1950.0  12.9  181.899994
+    1  1951.0  11.9  245.000000
+    2  1952.0  10.7  250.199997
+    3  1953.0  11.3  265.899994
+    4  1954.0  11.2  248.500000
+```
+![Alt text](./hist_sas.svg)
+
+##### Comments:
+Awesome!
