@@ -198,3 +198,20 @@ print(df2.head())
 
 ##### Comments:
 Awesome!
+
+## How to import SAS7BDAT
+How do you correctly import the function SAS7BDAT() from the package sas7bdat?
+
+### Instructions:
+Possible Answers <br />
+* import SAS7BDAT from sas7bdat <br />
+press 1
+* from SAS7BDAT import sas7bdat <br />
+press 2
+* import sas7bdat from SAS7BDAT <br />
+press 3
+* from sas7bdat import SAS7BDAT <br />
+press 4
+
+#### Comments:
+Correct!
