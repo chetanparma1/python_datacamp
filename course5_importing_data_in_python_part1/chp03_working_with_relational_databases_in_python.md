@@ -9,3 +9,9 @@ Which of the following is not part of the relational model?
 * Every table contains a primary key column, which has a unique entry for each row. &emsp;&emsp;  press 3
 * A database consists of at least 3 tables.  &emsp;&emsp; press 4
 * There are relations between tables.   &emsp;&emsp;   press 5
+
+#### Answer:
+4
+
+##### Comment:
+Correct!
