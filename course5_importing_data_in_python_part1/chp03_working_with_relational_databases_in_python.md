@@ -459,3 +459,17 @@ print(df.head())
 ```
 ##### Comment:
 Good job!
+
+## Filtering your INNER JOIN
+Congrats on performing your first INNER JOIN! You're now going to finish this chapter with one final exercise in which you perform an INNER JOIN and filter the result using a WHERE clause.
+
+Recall that to INNER JOIN the Orders and Customers tables from the Northwind database, Hugo executed the following SQL query:
+```
+"SELECT OrderID, CompanyName FROM Orders INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID"
+```
+The following code has already been executed to import the necessary packages and to create the engine:
+```
+import pandas as pd
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///Chinook.sqlite')
+```
