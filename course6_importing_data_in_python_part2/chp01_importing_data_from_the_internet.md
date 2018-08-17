@@ -118,3 +118,8 @@ plt.show()
     3      9.8        6  
     4      9.4        5
 ```
+![Alt text](./winequality_hist.svg)
+
+##### Comment:
+Awesome!
+
