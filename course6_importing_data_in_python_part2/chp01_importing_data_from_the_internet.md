@@ -293,3 +293,107 @@ print(guido_text)
 ```
 ##### Comment:
 Awesome!
+
+## Turning a webpage into data using BeautifulSoup: getting the hyperlinks
+In this exercise, you'll figure out how to extract the URLs of the hyperlinks from the BDFL's webpage. In the process, you'll become close friends with the soup method find_all().
+
+### Instructions:
+* Use the method find_all() to find all hyperlinks in soup, remembering that hyperlinks are defined by the HTML tag <a>; store the result in the variable a_tags.
+* The variable a_tags is a results set: your job now is to enumerate over it, using a for loop and to print the actual URLs of the hyperlinks; to do this, for every element link in a_tags, you want to print() link.get('href').
+
+#### Script:
+```{python}
+# Import packages
+import requests
+from bs4 import BeautifulSoup
+
+# Specify url
+url = 'https://www.python.org/~guido/'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extracts the response as html: html_doc
+html_doc = r.text
+
+# create a BeautifulSoup object from the HTML: soup
+soup = BeautifulSoup(html_doc)
+
+# Print the title of Guido's webpage
+print(soup.title)
+
+# Find all 'a' tags (which define hyperlinks): a_tags
+a_tags = soup.find_all('a')
+
+# Print the URLs to the shell
+for link in a_tags:
+    print(link)
+    print(link.get('href'))
+
+```
+##### Output:
+```
+<script.py> output:
+    <title>Guido's Personal Home Page</title>
+    <a href="pics.html"><img border="0" src="images/IMG_2192.jpg"/></a>
+    pics.html
+    <a href="http://www.washingtonpost.com/wp-srv/business/longterm/microsoft/stories/1998/raymond120398.htm"><i>"Gawky and proud of it."</i></a>
+    http://www.washingtonpost.com/wp-srv/business/longterm/microsoft/stories/1998/raymond120398.htm
+    <a href="http://metalab.unc.edu/Dave/Dr-Fun/df200004/df20000406.jpg">Who
+    I Am</a>
+    http://metalab.unc.edu/Dave/Dr-Fun/df200004/df20000406.jpg
+    <a href="http://neopythonic.blogspot.com/2016/04/kings-day-speech.html">"King's
+    Day Speech"</a>
+    http://neopythonic.blogspot.com/2016/04/kings-day-speech.html
+    <a href="http://www.python.org">Python</a>
+    http://www.python.org
+    <a href="Resume.html">resume</a>
+    Resume.html
+    <a href="Publications.html">publications list</a>
+    Publications.html
+    <a href="bio.html">brief bio</a>
+    bio.html
+    <a href="http://legacy.python.org/doc/essays/">writings</a>
+    http://legacy.python.org/doc/essays/
+    <a href="http://legacy.python.org/doc/essays/ppt/">presentations</a>
+    http://legacy.python.org/doc/essays/ppt/
+    <a href="interviews.html">interviews</a>
+    interviews.html
+    <a href="pics.html">pictures of me</a>
+    pics.html
+    <a href="http://neopythonic.blogspot.com">my new blog</a>
+    http://neopythonic.blogspot.com
+    <a href="http://www.artima.com/weblogs/index.jsp?blogger=12088">old
+    blog</a>
+    http://www.artima.com/weblogs/index.jsp?blogger=12088
+    <a href="https://twitter.com/gvanrossum">@gvanrossum</a>
+    https://twitter.com/gvanrossum
+    <a href="https://plus.google.com/u/0/115212051037621986145/posts">G+
+    profile</a>
+    https://plus.google.com/u/0/115212051037621986145/posts
+    <a href="http://www.dropbox.com">Dropbox</a>
+    http://www.dropbox.com
+    <a href="Resume.html">resume</a>
+    Resume.html
+    <a href="http://groups.google.com/groups?q=comp.lang.python">comp.lang.python</a>
+    http://groups.google.com/groups?q=comp.lang.python
+    <a href="http://stackoverflow.com">StackOverflow</a>
+    http://stackoverflow.com
+    <a href="guido.au">sound clip</a>
+    guido.au
+    <a href="http://legacy.python.org/doc/essays/">essays</a>
+    http://legacy.python.org/doc/essays/
+    <a href="images/license.jpg"><img align="center" border="0" height="75" src="images/license_thumb.jpg" width="100">
+    Python license.</img></a>
+    images/license.jpg
+    <a href="http://www.cnpbagwell.com/audio-faq">http://www.cnpbagwell.com/audio-faq</a>
+    http://www.cnpbagwell.com/audio-faq
+    <a href="http://sox.sourceforge.net/">SOX</a>
+    http://sox.sourceforge.net/
+    <a href="images/internetdog.gif">"On the Internet, nobody knows you're
+    a dog."</a>
+    images/internetdog.gif
+ ```
+ 
+ ##### Comment:
+ Awesome!
