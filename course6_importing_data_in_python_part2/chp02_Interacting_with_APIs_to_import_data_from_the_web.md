@@ -103,3 +103,36 @@ Which of the following statements about APIs is NOT true?
 
 #### Answer:
 4
+
+## API requests
+Now it's your turn to pull some movie data down from the Open Movie Database (OMDB) using their API. The movie you'll query the API about is The Social Network. Recall that, in the video, to query the API about the movie Hackers, Hugo's query string was 'http://www.omdbapi.com/?t=hackers' and had a single argument t=hackers.
+
+Note: recently, OMDB has changed their API: you now also have to specify an API key. This means you'll have to add another argument to the URL: apikey=ff21610b.
+
+### Instructions:
+* Import the requests package.
+* Assign to the variable url the URL of interest in order to query 'http://www.omdbapi.com' for the data corresponding to the movie The Social Network. The query string should have two arguments: apikey=ff21610b and t=the+social+network. You can combine them as follows: apikey=ff21610b&t=the+social+network.
+* Print the text of the reponse object r by using its text attribute and passing the result to the print() function.
+
+#### Script:
+```
+# Import requests package
+import requests
+
+# Assign URL to variable: url
+url = 'http://www.omdbapi.com/?apikey=ff21610b&t=the+social+network'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Print the text of the response
+print(r.text)
+```
+
+#### Output:
+```
+<script.py> output:
+    {"Title":"The Social Network","Year":"2010","Rated":"PG-13","Released":"01 Oct 2010","Runtime":"120 min","Genre":"Biography, Drama","Director":"David Fincher","Writer":"Aaron Sorkin (screenplay), Ben Mezrich (book)","Actors":"Jesse Eisenberg, Rooney Mara, Bryan Barter, Dustin Fitzsimons","Plot":"Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, but is later sued by two brothers who claimed he stole their idea, and the co-founder who was later squeezed out of the business.","Language":"English, French","Country":"USA","Awards":"Won 3 Oscars. Another 165 wins & 168 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMTM2ODk0NDAwMF5BMl5BanBnXkFtZTcwNTM1MDc2Mw@@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.7/10"},{"Source":"Rotten Tomatoes","Value":"96%"},{"Source":"Metacritic","Value":"95/100"}],"Metascore":"95","imdbRating":"7.7","imdbVotes":"546,709","imdbID":"tt1285016","Type":"movie","DVD":"11 Jan 2011","BoxOffice":"$96,400,000","Production":"Columbia Pictures","Website":"http://www.thesocialnetwork-movie.com/","Response":"True"}
+```
+##### Comment:
+Awesome!
