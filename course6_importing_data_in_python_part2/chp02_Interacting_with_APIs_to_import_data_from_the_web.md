@@ -90,3 +90,16 @@ Title = The Social Network and Year = 2010
 
 ##### Comment:
 Correct
+
+## Pop quiz: What's an API?
+Which of the following statements about APIs is NOT true?
+
+### Possible Answers
+* An API is a set of protocols and routines for building and interacting with software applications. &emsp;&emsp; press 1
+* API is an acronym and is short for Application Program interface. &emsp;&emsp press 2
+* It is common to pull data from APIs in the JSON file format. &emsp;&emsp press 3
+* All APIs transmit data only in the JSON file format. &emsp;&emsp  press 4
+* An API is a bunch of code that allows two software programs to communicate with each other.  &emsp;&emsp  press 5
+
+#### Answer:
+4
