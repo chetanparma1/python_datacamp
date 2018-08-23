@@ -159,6 +159,6 @@ for index, row in df.iterrows():
     cruz += word_in_text('cruz', row['text'])
 ```
 
-####s Comment:
+#### Comment:
 Awesome. 
 
