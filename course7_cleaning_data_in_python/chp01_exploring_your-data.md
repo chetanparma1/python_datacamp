@@ -1042,3 +1042,34 @@ print(df['Site Fill'].value_counts(dropna=False))
 ```
 ##### Comment:
 Fantastic work! Notice how not all values in the 'State' column are NY. This is an interesting find, as this data is supposed to consist of applications filed in NYC. Curiously, all the 'Borough' values are correct. A good start as to why this may be the case would be to find and look at the codebook for this dataset. Also, for the 'Site Fill' column, you may or may not need to recode the NOT APPLICABLE values to NaN in your final analysis.
+
+## 4. Visualizing single variables with histograms
+Up until now, you've been looking at descriptive statistics of your data. One of the best ways to confirm what the numbers are telling you is to plot and visualize the data.
+
+You'll start by visualizing single variables using a histogram for numeric values. The column you will work on in this exercise is 'Existing Zoning Sqft'.
+
+The .plot() method allows you to create a plot of each column of a DataFrame. The kind parameter allows you to specify the type of plot to use - kind='hist', for example, plots a histogram.
+
+In the IPython Shell, begin by computing summary statistics for the 'Existing Zoning Sqft' column using the .describe() method. You'll notice that there are extremely large differences between the min and max values, and the plot will need to be adjusted accordingly. In such cases, it's good to look at the plot on a log scale. The keyword arguments logx=True or logy=True can be passed in to .plot() depending on which axis you want to rescale.
+
+Finally, note that Python will render a plot such that the axis will hold all the information. That is, if you end up with large amounts of whitespace in your plot, it indicates counts or values too small to render.
+
+### Instructions:
+* Import matplotlib.pyplot as plt.
+* Create a histogram of the 'Existing Zoning Sqft' column. Rotate the axis labels by 70 degrees and use a log scale for both axes.
+* Display the histogram using plt.show().
+
+#### Script:
+```
+# Import matplotlib.pyplot
+import matplotlib.pyplot as plt
+
+# Plot the histogram
+df['Existing Zoning Sqft'].plot(kind='hist', rot=70, logx=True, logy=True)
+
+# Display the histogram
+plt.show()
+```
+
+##### Output:
+![Alt text](./hist_zoning_sqft.svg)
