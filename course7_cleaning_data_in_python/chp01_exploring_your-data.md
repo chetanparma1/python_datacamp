@@ -1073,3 +1073,6 @@ plt.show()
 
 ##### Output:
 ![Alt text](./hist_zoning_sqft.svg)
+
+##### Comment:
+Excellent work! While visualizing your data is a great way to understand it, keep in mind that no one technique is better than another. As you saw here, you still needed to look at the summary statistics to help understand your data better. You expected a large amount of counts on the left side of the plot because the 25th, 50th, and 75th percentiles have a value of 0. The plot shows us that there are barely any counts near the max value, signifying an outlier.
