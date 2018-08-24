@@ -1076,3 +1076,32 @@ plt.show()
 
 ##### Comment:
 Excellent work! While visualizing your data is a great way to understand it, keep in mind that no one technique is better than another. As you saw here, you still needed to look at the summary statistics to help understand your data better. You expected a large amount of counts on the left side of the plot because the 25th, 50th, and 75th percentiles have a value of 0. The plot shows us that there are barely any counts near the max value, signifying an outlier.
+
+## 5. Visualizing multiple variables with boxplots
+Histograms are great ways of visualizing single variables. To visualize multiple variables, boxplots are useful, especially when one of the variables is categorical.
+
+In this exercise, your job is to use a boxplot to compare the 'initial_cost' across the different values of the 'Borough' column. The pandas .boxplot() method is a quick way to do this, in which you have to specify the column and by parameters. Here, you want to visualize how 'initial_cost' varies by 'Borough'.
+
+pandas and matplotlib.pyplot have been imported for you as pd and plt, respectively, and the DataFrame has been pre-loaded as df.
+
+### Instructions:
+* Using the .boxplot() method of df, create a boxplot of 'initial_cost' across the different values of 'Borough'.
+* Display the plot.
+
+#### Script:
+```
+# Import necessary modules
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create the boxplot
+df.boxplot(column='initial_cost', by='Borough', rot=90)
+
+# Display the plot
+plt.show()
+```
+#### Output:
+![Alt text](./boxplot_initial_cost.svg)
+
+##### Comment:
+Great work! You can see the 2 extreme outliers are in the borough of Manhattan. An initial guess could be that since land in Manhattan is extremely expensive, these outliers may be valid data points. Again, further investigation is needed to determine whether or not you can drop or keep those points in your data.
