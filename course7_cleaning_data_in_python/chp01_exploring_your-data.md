@@ -948,3 +948,24 @@ print(df_subset.info())
 ```
 ##### Comment:
 Excellent! Notice that the columns 'Initial Cost' and 'Total Est. Fee' are of type object. The currency sign in the beginning of each value in these columns needs to be removed, and the columns need to be converted to numeric. In the full DataFrame, note that there are a lot of missing values. You saw in the previous exercise that there are also a lot of 0 values. Given the amount of data that is missing in the full dataset, it's highly likely that these 0 values represent missing data.
+
+## 2. Calculating summary statistics
+You'll now use the .describe() method to calculate summary statistics of your data.
+
+In this exercise, the columns 'Initial Cost' and 'Total Est. Fee' have been cleaned up for you. That is, the dollar sign has been removed and they have been converted into two new numeric columns: initial_cost and total_est_fee. You'll learn how to do this yourself in later chapters. It's also worth noting that some columns such as Job # are encoded as numeric columns, but it does not make sense to compute summary statistics for such columns.
+
+This cleaned DataFrame has been pre-loaded as df. Your job is to use the .describe() method on it in the IPython Shell and select the statement below that is False.
+
+### Instructions:
+Possible Answers
+* The mean of 'Proposed No. of Stories' is 8.144325.  &emsp;&emsp; press 1
+* The standard deviation of 'Existing Height' is 146.917360.  &emsp;&emsp;  press 2
+* There are 12846 entries in the DataFrame.  &emsp;&emsp;  press 3
+* The standard deviation of 'Street Frontage' is 11.874080.  &emsp;&emsp;  press 4
+* The maximum of 'Proposed Height' is 4200.  &emsp;&emsp;   press 5
+
+#### Answer:
+4
+
+##### Comment:
+Well Done
