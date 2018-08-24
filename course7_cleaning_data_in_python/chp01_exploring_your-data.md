@@ -1105,3 +1105,60 @@ plt.show()
 
 ##### Comment:
 Great work! You can see the 2 extreme outliers are in the borough of Manhattan. An initial guess could be that since land in Manhattan is extremely expensive, these outliers may be valid data points. Again, further investigation is needed to determine whether or not you can drop or keep those points in your data.
+
+## 6. Visualizing multiple variables with scatter plots
+Boxplots are great when you have a numeric column that you want to compare across different categories. When you want to visualize two numeric columns, scatter plots are ideal.
+
+In this exercise, your job is to make a scatter plot with 'initial_cost' on the x-axis and the 'total_est_fee' on the y-axis. You can do this by using the DataFrame .plot() method with kind='scatter'. You'll notice right away that there are 2 major outliers shown in the plots.
+
+Since these outliers dominate the plot, an additional DataFrame, df_subset, has been provided, in which some of the extreme values have been removed. After making a scatter plot using this, you'll find some interesting patterns here that would not have been seen by looking at summary statistics or 1 variable plots.
+
+When you're done, you can cycle between the two plots by clicking the 'Previous Plot' and 'Next Plot' buttons below the plot.
+
+### Instructions:
+* Using df, create a scatter plot (kind='scatter') with 'initial_cost' on the x-axis and the 'total_est_fee' on the y-axis. Rotate the x-axis labels by 70 degrees.
+* Create another scatter plot exactly as above, substituting df_subset in place of df.
+
+#### Script:
+```
+# Import necessary modules
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create and display the first scatter plot
+df.plot(kind='scatter', x='initial_cost', y='total_est_fee', rot=70)
+plt.show()
+
+# Create and display the second scatter plot
+df_subset.plot(kind='scatter', x='initial_cost', y='total_est_fee', rot=70)
+plt.show()
+```
+#### Output
+![Alt text](./scatter_initial_cost.svg)
+
+##### Comment:
+Excellent work! In general, from the second plot it seems like there is a strong correlation between 'initial_cost' and 'total_est_fee'. In addition, take note of the large number of points that have an 'initial_cost' of 0. It is difficult to infer any trends from the first plot because it is dominated by the outliers.
+
+## 7. Recognizing tidy data
+For data to be tidy, it must have:
+
+Each variable as a separate column.
+Each row as a separate observation.
+As a data scientist, you'll encounter data that is represented in a variety of different ways, so it is important to be able to recognize tidy (or untidy) data when you see it.
+
+In this exercise, two example datasets have been pre-loaded into the DataFrames df1 and df2. Only one of them is tidy. Your job is to explore these further in the IPython Shell and identify the one that is not tidy, and why it is not tidy.
+
+In the rest of this course, you will frequently be asked to explore the structure of DataFrames in the IPython Shell prior to performing different operations on them. Doing this will not only strengthen your comprehension of the data cleaning concepts covered in this course, but will also help you realize and take advantage of the relationship between working in the Shell and in the script.
+
+### Instructions:
+Possible Answers
+* df2; the rows are not all separate observations.  &emsp;&emsp; press 1
+* df1; each variable is not a separate column.  &emsp;&emsp;  press 2
+* df2; each variable is not a separate column.  &emsp;&emsp;  press 3
+* df1; the rows are not all separate observations.  &emsp;&emsp;  press 4
+
+#### Answer:
+3
+
+##### Comment:
+Exactly! Notice that the variable column of df2 contains the values Solar.R, Ozone, Temp, and Wind. For it to be tidy, these should all be in separate columns, as in df1.
