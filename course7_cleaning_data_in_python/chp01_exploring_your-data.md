@@ -1138,27 +1138,3 @@ plt.show()
 
 ##### Comment:
 Excellent work! In general, from the second plot it seems like there is a strong correlation between 'initial_cost' and 'total_est_fee'. In addition, take note of the large number of points that have an 'initial_cost' of 0. It is difficult to infer any trends from the first plot because it is dominated by the outliers.
-
-## 7. Recognizing tidy data
-For data to be tidy, it must have:
-
-Each variable as a separate column.
-Each row as a separate observation.
-As a data scientist, you'll encounter data that is represented in a variety of different ways, so it is important to be able to recognize tidy (or untidy) data when you see it.
-
-In this exercise, two example datasets have been pre-loaded into the DataFrames df1 and df2. Only one of them is tidy. Your job is to explore these further in the IPython Shell and identify the one that is not tidy, and why it is not tidy.
-
-In the rest of this course, you will frequently be asked to explore the structure of DataFrames in the IPython Shell prior to performing different operations on them. Doing this will not only strengthen your comprehension of the data cleaning concepts covered in this course, but will also help you realize and take advantage of the relationship between working in the Shell and in the script.
-
-### Instructions:
-Possible Answers
-* df2; the rows are not all separate observations.  &emsp;&emsp; press 1
-* df1; each variable is not a separate column.  &emsp;&emsp;  press 2
-* df2; each variable is not a separate column.  &emsp;&emsp;  press 3
-* df1; the rows are not all separate observations.  &emsp;&emsp;  press 4
-
-#### Answer:
-3
-
-##### Comment:
-Exactly! Notice that the variable column of df2 contains the values Solar.R, Ozone, Temp, and Wind. For it to be tidy, these should all be in separate columns, as in df1.
