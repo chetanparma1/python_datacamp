@@ -1,0 +1,69 @@
+# Chapter 02: Tidying Data for Analysis
+
+## 01. Recognizing tidy data
+For data to be tidy, it must have:
+
+Each variable as a separate column.
+Each row as a separate observation.
+As a data scientist, you'll encounter data that is represented in a variety of different ways, so it is important to be able to recognize tidy (or untidy) data when you see it.
+
+In this exercise, two example datasets have been pre-loaded into the DataFrames df1 and df2. Only one of them is tidy. Your job is to explore these further in the IPython Shell and identify the one that is not tidy, and why it is not tidy.
+
+In the rest of this course, you will frequently be asked to explore the structure of DataFrames in the IPython Shell prior to performing different operations on them. Doing this will not only strengthen your comprehension of the data cleaning concepts covered in this course, but will also help you realize and take advantage of the relationship between working in the Shell and in the script.
+
+### Instructions:
+Possible Answers
+* df2; the rows are not all separate observations.  &emsp;&emsp; press 1
+* df1; each variable is not a separate column.  &emsp;&emsp;  press 2
+* df2; each variable is not a separate column.  &emsp;&emsp;  press 3
+* df1; the rows are not all separate observations.  &emsp;&emsp;  press 4
+
+#### Answer:
+3
+
+##### Comment:
+Exactly! Notice that the variable column of df2 contains the values Solar.R, Ozone, Temp, and Wind. For it to be tidy, these should all be in separate columns, as in df1.
+
+## 02. Reshaping your data using melt
+Melting data is the process of turning columns of your data into rows of data. Consider the DataFrames from the previous exercise. In the tidy DataFrame, the variables Ozone, Solar.R, Wind, and Temp each had their own column. If, however, you wanted these variables to be in rows instead, you could melt the DataFrame. In doing so, however, you would make the data untidy! This is important to keep in mind: Depending on how your data is represented, you will have to reshape it differently.
+
+In this exercise, you will practice melting a DataFrame using pd.melt(). There are two parameters you should be aware of: id_vars and value_vars. The id_vars represent the columns of the data you do not want to melt (i.e., keep it in its current shape), while the value_vars represent the columns you do wish to melt into rows. By default, if no value_vars are provided, all columns not set in the id_vars will be melted. This could save a bit of typing, depending on the number of columns that need to be melted.
+
+The (tidy) DataFrame airquality has been pre-loaded. Your job is to melt its Ozone, Solar.R, Wind, and Temp columns into rows. Later in this chapter, you'll learn how to bring this melted DataFrame back into a tidy form.
+
+### Instructions:
+* Print the head of airquality.
+* Use pd.melt() to melt the Ozone, Solar.R, Wind, and Temp columns of airquality into rows. Do this by using id_vars to specify the columns you do not wish to melt: 'Month' and 'Day'.
+* Print the head of airquality_melt.
+
+#### Script:
+```
+# Print the head of airquality
+print(airquality.head())
+
+# Melt airquality: airquality_melt
+airquality_melt = pd.melt(airquality, id_vars=["Month", "Day"])
+
+# Print the head of airquality_melt
+print(airquality_melt.head())
+```
+
+##### Output:
+```
+<script.py> output:
+       Ozone  Solar.R  Wind  Temp  Month  Day
+    0   41.0    190.0   7.4    67      5    1
+    1   36.0    118.0   8.0    72      5    2
+    2   12.0    149.0  12.6    74      5    3
+    3   18.0    313.0  11.5    62      5    4
+    4    NaN      NaN  14.3    56      5    5
+       Month  Day variable  value
+    0      5    1    Ozone   41.0
+    1      5    2    Ozone   36.0
+    2      5    3    Ozone   12.0
+    3      5    4    Ozone   18.0
+    4      5    5    Ozone    NaN
+```
+
+##### Comment:
+Well done! This exercise demonstrates that melting a DataFrame is not always appropriate if you want to make it tidy. You may have to perform other transformations depending on how your data is represented.
