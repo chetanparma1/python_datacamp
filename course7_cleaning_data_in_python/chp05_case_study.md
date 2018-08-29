@@ -136,3 +136,53 @@ assert g1800s['Life expectancy'].value_counts()[0] == 1
 
 ##### Comment:
 Fantastic! Getting into the habit of testing your code like this is an important skill..
+
+## 04. Assembling your data
+Here, three DataFrames have been pre-loaded: g1800s, g1900s, and g2000s. These contain the Gapminder life expectancy data for, respectively, the 19th century, the 20th century, and the 21st century.
+
+Your task in this exercise is to concatenate them into a single DataFrame called gapminder. This is a row-wise concatenation, similar to how you concatenated the monthly Uber datasets in Chapter 3.
+
+### Instructions
+* Use `pd.concat()` to concatenate g1800s, g1900s, and g2000s into one DataFrame called gapminder. Make sure you pass DataFrames to pd.concat() in the form of a list.
+* Print the shape and the head of the concatenated DataFrame.
+
+#### Script
+```
+# Concatenate the DataFrames row-wise
+gapminder = pd.concat([g1800s, g1900s, g2000s])
+
+# Print the shape of gapminder
+print(gapminder.shape)
+
+# Print the head of gapminder
+print(gapminder.head())
+```
+##### Output
+```
+<script.py> output:
+    (780, 218)
+        1800   1801   1802   1803   1804   1805   1806   1807   1808   1809  \
+    0    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN   
+    1  28.21  28.20  28.19  28.18  28.17  28.16  28.15  28.14  28.13  28.12   
+    2    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN   
+    3  35.40  35.40  35.40  35.40  35.40  35.40  35.40  35.40  35.40  35.40   
+    4  28.82  28.82  28.82  28.82  28.82  28.82  28.82  28.82  28.82  28.82   
+    
+               ...            2008  2009  2010  2011  2012  2013  2014  2015  \
+    0          ...             NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+    1          ...             NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+    2          ...             NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+    3          ...             NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+    4          ...             NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+    
+       2016        Life expectancy  
+    0   NaN               Abkhazia  
+    1   NaN            Afghanistan  
+    2   NaN  Akrotiri and Dhekelia  
+    3   NaN                Albania  
+    4   NaN                Algeria  
+    
+    [5 rows x 218 columns]
+```
+##### Comment
+Great work! All the Gapminder data, from 1800 to 2016, is now contained in one DataFrame.
