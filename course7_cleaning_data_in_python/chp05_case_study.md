@@ -135,4 +135,4 @@ assert g1800s['Life expectancy'].value_counts()[0] == 1
 <no output since the 'assert' function does not throw any error>
 
 ##### Comment:
-Fantastic! Getting into the habit of testing your code like this is an important skill.
+Fantastic! Getting into the habit of testing your code like this is an important skill..
