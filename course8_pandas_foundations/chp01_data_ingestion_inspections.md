@@ -37,3 +37,32 @@ Name: Year, dtype: int64
 
 ##### Comment:
 Great work! It's essential to inspect your data like this after you read it in.
+
+## 02. DataFrame data types
+Pandas is aware of the data types in the columns of your DataFrame. It is also aware of null and NaN ('Not-a-Number') types which often indicate missing data. In this exercise, we have imported pandas as pd and read in the world population data which contains some NaN values, a value often used as a place-holder for missing or otherwise invalid data entries. Your job is to use df.info() to determine information about the total count of non-null entries and infer the total count of 'null' entries, which likely indicates missing data. Select the best description of this data set from the following:
+
+### Instructions
+* The data is all of type float64 and none of it is missing.  &emsp;&emsp;  press 1
+* The data is of mixed type, and 9914 of it is missing.   &emsp;&emsp;   press 2
+* The data is of mixed type, and 3460 float64s are missing.   &emsp;&emsp;   press 3
+* The data is all of type float64, and 3460 float64s are missing.   &emsp;&emsp;   press 4
+
+#### Script & Output
+```
+In [2]: df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 13374 entries, 0 to 13373
+Data columns (total 5 columns):
+CountryName                      13374 non-null object
+CountryCode                      13374 non-null object
+Year                             13374 non-null int64
+Total Population                 9914 non-null float64
+Urban population (% of total)    13374 non-null float64
+dtypes: float64(2), int64(1), object(2)
+memory usage: 522.5+ KB
+```
+##### Answer:
+3
+
+##### Comment:
+Well done! You'll learn how to deal with missing values later on in this course.
