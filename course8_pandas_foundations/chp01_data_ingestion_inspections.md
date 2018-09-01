@@ -66,3 +66,83 @@ memory usage: 522.5+ KB
 
 ##### Comment:
 Well done! You'll learn how to deal with missing values later on in this course..
+
+## 03. NumPy and pandas working together
+Pandas depends upon and interoperates with NumPy, the Python library for fast numeric array computations. For example, you can use the DataFrame attribute .values to represent a DataFrame df as a NumPy array. You can also pass pandas data structures to NumPy methods. In this exercise, we have imported pandas as pd and loaded world population data every 10 years since 1960 into the DataFrame df. This dataset was derived from the one used in the previous exercise.
+
+Your job is to extract the values and store them in an array using the attribute .values. You'll then use those values as input into the NumPy np.log10() method to compute the base 10 logarithm of the population values. Finally, you will pass the entire pandas DataFrame into the same NumPy np.log10() method and compare the results.
+
+### Instructions:
+* Import numpy using the standard alias np.
+* Assign the numerical values in the DataFrame df to an array np_vals using the attribute values.
+* Pass np_vals into the NumPy method log10() and store the results in np_vals_log10.
+* Pass the entire df DataFrame into the NumPy method log10() and store the results in df_log10.
+* Inspect the output of the print() code to see the type() of the variables that you created.
+
+#### Script
+```
+# Import numpy
+import numpy as np
+
+# Create array of DataFrame values: np_vals
+np_vals = df.values
+
+# Create new array of base 10 logarithm values: np_vals_log10
+np_vals_log10 = np.log10(np_vals)
+
+# Create array of new DataFrame by passing df to np.log10(): df_log10
+df_log10 = np.log10(df)
+
+# Print original and new data containers
+[print(x, 'has type', type(eval(x))) for x in ['np_vals', 'np_vals_log10', 'df', 'df_log10']]
+```
+
+##### Output
+```
+<script.py> output:
+    np_vals has type <class 'numpy.ndarray'>
+    np_vals_log10 has type <class 'numpy.ndarray'>
+    df has type <class 'pandas.core.frame.DataFrame'>
+    df_log10 has type <class 'pandas.core.frame.DataFrame'>
+```
+
+##### Comment
+Wonderful work! As a data scientist, you'll frequently interact with NumPy arrays, pandas Series, and pandas DataFrames, and you'll leverage a variety of NumPy and pandas methods to perform your desired computations. Understanding how NumPy and pandas work together will prove to be very useful.
+
+## 04. Zip lists to build a DataFrame
+In this exercise, you're going to make a pandas DataFrame of the top three countries to win gold medals since 1896 by first building a dictionary. list_keys contains the column names 'Country' and 'Total'. list_values contains the full names of each country and the number of gold medals awarded. The values have been taken from Wikipedia.
+
+Your job is to use these lists to construct a list of tuples, use the list of tuples to construct a dictionary, and then use that dictionary to construct a DataFrame. In doing so, you'll make use of the list(), zip(), dict() and pd.DataFrame() functions. Pandas has already been imported as pd.
+
+Note: The zip() function in Python 3 and above returns a special zip object, which is essentially a generator. To convert this zip object into a list, you'll need to use list(). You can learn more about the zip() function as well as generators in Python Data Science Toolbox (Part 2).
+
+### Instructions
+* Zip the 2 lists list_keys and list_values together into one list of (key, value) tuples. Be sure to convert the zip object into a list, and store the result in zipped.
+* Inspect the contents of zipped using print(). This has been done for you.
+* Construct a dictionary using zipped. Store the result as data.
+* Construct a DataFrame using the dictionary. Store the result as df.
+
+#### Script
+```
+# Zip the 2 lists together into one list of (key,value) tuples: zipped
+zipped = list(zip(list_keys, list_values))
+
+# Inspect the list using print()
+print(zipped)
+
+# Build a dictionary with the zipped list: data
+data = dict(zipped)
+
+# Build and inspect a DataFrame from the dictionary: df
+df = pd.DataFrame(data)
+print(df)
+```
+##### Output:
+```
+Zip the 2 lists list_keys and list_values together into one list of (key, value) tuples. Be sure to convert the zip object into a list, and store the result in zipped.
+Inspect the contents of zipped using print(). This has been done for you.
+Construct a dictionary using zipped. Store the result as data.
+Construct a DataFrame using the dictionary. Store the result as df.
+```
+##### Comment:
+Fantastic! Being able to build DataFrames from scratch is an important skill.
