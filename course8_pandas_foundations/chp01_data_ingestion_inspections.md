@@ -245,3 +245,24 @@ df2 = pd.read_csv(data_file, header=0, names=new_labels)
 print(df1)
 print(df2)
 ```
+##### Output
+```
+<script.py> output:
+       Year  Total Population
+    0  1960      3.034971e+09
+    1  1970      3.684823e+09
+    2  1980      4.436590e+09
+    3  1990      5.282716e+09
+    4  2000      6.115974e+09
+    5  2010      6.924283e+09
+       year    population
+    0  1960  3.034971e+09
+    1  1970  3.684823e+09
+    2  1980  4.436590e+09
+    3  1990  5.282716e+09
+    4  2000  6.115974e+09
+    5  2010  6.924283e+09
+
+```
+##### Comment:
+Well done! Knowing how to read in flat files using pandas is a vital skill..
