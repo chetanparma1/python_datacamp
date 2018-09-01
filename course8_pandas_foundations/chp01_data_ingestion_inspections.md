@@ -166,3 +166,51 @@ df.columns = list_labels
 ```
 ##### Comment:
 Great work! You'll often need to rename column names like this to be more informative.
+
+## 06. Building DataFrames with broadcasting
+You can implicitly use 'broadcasting', a feature of NumPy, when creating pandas DataFrames. In this exercise, you're going to create a DataFrame of cities in Pennsylvania that contains the city name in one column and the state name in the second. We have imported the names of 15 cities as the list cities.
+
+Your job is to construct a DataFrame from the list of cities and the string 'PA'.
+
+### Instructions:
+* Make a string object with the value 'PA' and assign it to state.
+* Construct a dictionary with 2 key:value pairs: 'state':state and 'city':cities.
+* Construct a pandas DataFrame from the dictionary you created and assign it to df.
+
+#### Script:
+```
+# Make a string with the value 'PA': state
+state = 'PA'
+
+# Construct a dictionary: data
+data = {'state':state, 'city':cities}
+
+# Construct a DataFrame from dictionary data: df
+df = pd.DataFrame(data)
+
+# Print the DataFrame
+print(df)
+```
+
+##### Output:
+```
+<script.py> output:
+                   city state
+    0           Manheim    PA
+    1      Preston park    PA
+    2       Biglerville    PA
+    3           Indiana    PA
+    4      Curwensville    PA
+    5             Crown    PA
+    6      Harveys lake    PA
+    7   Mineral springs    PA
+    8         Cassville    PA
+    9        Hannastown    PA
+    10        Saltsburg    PA
+    11      Tunkhannock    PA
+    12       Pittsburgh    PA
+    13        Lemasters    PA
+    14       Great bend    PA
+```
+##### Comment:
+Excellent job! Broadcasting is a powerful technique.
