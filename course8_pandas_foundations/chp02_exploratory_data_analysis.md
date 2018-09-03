@@ -100,4 +100,4 @@ plt.show()
 ![Alt text](./weight_mpg.svg)
 
 ##### Comment:
-Excellent job! Box plots are a great way to visualize important summary statistics.
+Excellent job! Box plots are a great way to visualize important summary statistics..
