@@ -408,4 +408,4 @@ plt.show()
 ![Alt text](./df_dew_point_temperature.svg)
 
 ##### Comment
-Great work! Be sure to click on the 'Next Plot' and 'Previous Plot' buttons to cycle through all 4 plots.
+Great work! Be sure to click on the 'Next Plot' and 'Previous Plot' buttons to cycle through all 4 plots..
