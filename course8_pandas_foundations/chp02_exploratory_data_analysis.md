@@ -200,3 +200,43 @@ plt.show()
 ```
 ##### Comment:
 Well done! It looks like there has generally been an upward trend since 1970.
+
+## 07. Median vs mean
+In many data sets, there can be large differences in the mean and median value due to the presence of outliers.
+
+In this exercise, you'll investigate the mean, median, and max fare prices paid by passengers on the Titanic and generate a box plot of the fare prices. This data set was obtained from <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.html">Vanderbilt University </a>.
+ 
+All necessary modules have been imported and the DataFrame is available in the workspace as df. 
+
+### Instructions
+* Print summary statistics of the 'fare' column of df with .describe() and print(). Note: df.fare and df['fare'] are equivalent.
+* Generate a box plot of the 'fare' column.
+
+#### Script
+```
+# Print summary statistics of the fare column with .describe()
+print(df.fare.describe())
+
+# Generate a box plot of the fare column
+df.fare.plot(kind='box')
+
+# Show the plot
+plt.show()
+```
+##### Output:
+![Alt text](./fare_boxplot.svg)
+
+```
+<script.py> output:
+    count    1308.000000
+    mean       33.295479
+    std        51.758668
+    min         0.000000
+    25%         7.895800
+    50%        14.454200
+    75%        31.275000
+    max       512.329200
+    Name: fare, dtype: float64
+```
+##### Comment:
+Excellent job! Here you can see why the median is a more informative statistic in the presence of outliers.
