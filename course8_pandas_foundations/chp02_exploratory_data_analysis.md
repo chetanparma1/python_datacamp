@@ -133,7 +133,7 @@ df.fraction.plot(ax=axes[1], kind='hist', bins=30, normed=True, cumulative=True,
 plt.show()
 ```
 ##### Output:
-![Alt text](./hist_pdf_cdf.png)
+![Alt text](./hist_pdf_cdf.svg)
 
 ##### Comment:
 Well done!
