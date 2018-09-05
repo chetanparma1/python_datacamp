@@ -1,4 +1,4 @@
-Chapter 02: Exploratory Data Analysis
+# Chapter 02: Exploratory Data Analysis
 
 ## 01. pandas line plots
 In the previous chapter, you saw that the .plot() method will place the Index values on the x-axis by default. In this exercise, you'll practice making line plots with specific columns on the x and y axes.
@@ -137,3 +137,24 @@ plt.show()
 
 ##### Comment:
 Well done!
+
+## 05. Fuel efficiency
+From the automobiles data set, which value corresponds to the median value of the 'mpg' column? Your job is to select the 'mpg' column and call the .median() method on it. The automobile DataFrame has been provided as df.
+
+### Possible Answers
+* 29.0  &emsp;&emsp  press 1
+* 23.45 &emsp;&emsp  press 2
+* 22.75 &emsp;&emsp  press 3
+* 32    &emsp;&emsp  press 4
+
+#### Script:
+```
+In [1]: df.mpg.median()
+Out[1]: 22.75
+```
+
+##### Answer:
+3
+
+##### Comment:
+Exactly - great work! The median is a very useful statistic, especially in the presence of outliers, when it is more robust than the mean.
