@@ -365,3 +365,14 @@ print(us_std - global_std)
 ```
 ##### Comment:
 Well done! Interestingly, it looks like US automobiles weigh more than the global mean.
+
+## 11. Separate and plot
+Population filtering can be used alongside plotting to quickly determine differences in distributions between the sub-populations. You'll work with the Titanic dataset.
+
+There were three passenger classes on the Titanic, and passengers in each class paid a different fare price. In this exercise, you'll investigate the differences in these fare prices.
+
+Your job is to use Boolean filtering and generate box plots of the fare prices for each of the three passenger classes. The fare prices are contained in the 'fare' column and passenger class information is contained in the 'pclass' column.
+
+When you're done, notice the portions of the box plots that differ and those that are similar.
+
+The DataFrame has been pre-loaded for you as titanic.
