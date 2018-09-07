@@ -285,3 +285,30 @@ Fantastic work! It looks like overall, life expectancy has steadily increased si
 How many automobiles were manufactured in Asia in the automobile dataset? The DataFrame has been provided for you as df. Use filtering and the .count() member method to determine the number of rows where the 'origin' column has the value 'Asia'.
 
 As an example, you can extract the rows that contain 'US' as the country of origin using df[df['origin'] == 'US'].
+
+### Possible Answers
+* 68   &emsp;&emsp;  press 1
+* 79   &emsp;&emsp;  press 2
+* 245  &emsp;&emsp;  press 3
+* 392  &emsp;&emsp;  press 4
+
+#### Script:
+```
+In [3]: df[df['origin'] == 'Asia'].count()
+Out[3]: 
+mpg       79
+cyl       79
+displ     79
+hp        79
+weight    79
+accel     79
+yr        79
+origin    79
+name      79
+dtype: int64
+```
+##### Answer:
+2
+
+##### Comment:
+Correct! In this dataset, 79 automobiles were manufactured in Asia.
