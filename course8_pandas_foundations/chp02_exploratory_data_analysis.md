@@ -406,3 +406,95 @@ plt.show()
 
 ##### Comment:
 Great work! Unsurprisingly, passengers in the first class had the highest fare.
+
+## 12. Reading and slicing times
+For this exercise, we have read in the same data file using three different approaches:
+
+* ```df1 = pd.read_csv(filename)```
+
+* ```df2 = pd.read_csv(filename, parse_dates=['Date'])```
+
+* ```df3 = pd.read_csv(filename, index_col='Date', parse_dates=True)```
+
+Use the .head() and .info() methods in the IPython Shell to inspect the DataFrames. Then, try to index each DataFrame with a datetime string. Which of the resulting DataFrames allows you to easily index and slice data by dates using, for example, df1.loc['2010-Aug-01']?
+
+### Possible Answers
+* df1.   &emsp;&emsp;  press 1
+* df1 and df2.  &emsp;&emsp;   press 2
+* df2.   &emsp;&emsp;   press 3
+* df2 and df3.   &emsp;&emsp;   press 4
+* df3.   &emsp;&emsp;  press 5
+
+#### Output:
+```
+In [1]: df1.head()
+Out[1]: 
+   Temperature       ...                  Date
+0         46.2       ...        20100101 00:00
+1         44.6       ...        20100101 01:00
+2         44.1       ...        20100101 02:00
+3         43.8       ...        20100101 03:00
+4         43.5       ...        20100101 04:00
+
+[5 rows x 4 columns]
+
+In [2]: df1.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8759 entries, 0 to 8758
+Data columns (total 4 columns):
+Temperature    8759 non-null float64
+DewPoint       8759 non-null float64
+Pressure       8759 non-null float64
+Date           8759 non-null object
+dtypes: float64(3), object(1)
+memory usage: 273.8+ KB
+
+In [3]: df2.head()
+Out[3]: 
+   Temperature         ...                        Date
+0         46.2         ...         2010-01-01 00:00:00
+1         44.6         ...         2010-01-01 01:00:00
+2         44.1         ...         2010-01-01 02:00:00
+3         43.8         ...         2010-01-01 03:00:00
+4         43.5         ...         2010-01-01 04:00:00
+
+[5 rows x 4 columns]
+
+In [4]: df2.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8759 entries, 0 to 8758
+Data columns (total 4 columns):
+Temperature    8759 non-null float64
+DewPoint       8759 non-null float64
+Pressure       8759 non-null float64
+Date           8759 non-null datetime64[ns]
+dtypes: datetime64[ns](1), float64(3)
+memory usage: 273.8 KB
+
+In [5]: df3.head()
+Out[5]: 
+                     Temperature    ...     Pressure
+Date                                ...             
+2010-01-01 00:00:00         46.2    ...          1.0
+2010-01-01 01:00:00         44.6    ...          1.0
+2010-01-01 02:00:00         44.1    ...          1.0
+2010-01-01 03:00:00         43.8    ...          1.0
+2010-01-01 04:00:00         43.5    ...          1.0
+
+[5 rows x 3 columns]
+
+In [6]: df3.info()
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 8759 entries, 2010-01-01 00:00:00 to 2010-12-31 23:00:00
+Data columns (total 3 columns):
+Temperature    8759 non-null float64
+DewPoint       8759 non-null float64
+Pressure       8759 non-null float64
+dtypes: float64(3)
+memory usage: 593.7 KB
+```
+##### Answer:
+5
+
+##### Comment:
+Correct! This is why it is important to read in your data properly, especially when working with time series data.
