@@ -326,3 +326,47 @@ print(daily_highs_smoothed)
 ```
 ##### Comment:
 Fantastic!
+
+## 09. Method chaining and filtering
+We've seen that pandas supports method chaining. This technique can be very powerful when cleaning and filtering data.
+
+In this exercise, a DataFrame containing flight departure data for a single airline and a single airport for the month of July 2015 has been pre-loaded. Your job is to use `.str()` filtering and method chaining to generate summary statistics on flight delays each day to Dallas.
+
+### Instructions
+* Use `.str.strip()` to strip extra whitespace from df.columns. Assign the result back to df.columns.
+* In the 'Destination Airport' column, extract all entries where Dallas ('DAL') is the destination airport. Use .str.contains('DAL') for this and store the result in dallas.
+* Resample dallas such that you get the total number of departures each day. Store the result in daily_departures.
+* Generate summary statistics for daily Dallas departures using .describe(). Store the result in stats.
+
+#### Script
+```
+# Strip extra whitespace from the column names: df.columns
+df.columns = df.columns.str.strip()
+
+# Extract data for which the destination airport is Dallas: dallas
+dallas = df['Destination Airport'].str.contains('DAL')
+
+# Compute the total number of Dallas departures each day: daily_departures
+# why do we use sum() instead of count() because we are only interested on the row where DAL = True. 
+# using count() will sum all rows, including the 'False' one. 
+daily_departures = dallas.resample('D').sum()
+
+# Generate the summary statistics for daily Dallas departures: stats
+stats = daily_departures.describe()
+print(stats)
+```
+##### Output:
+```
+<script.py> output:
+    count    31.000000
+    mean      9.322581
+    std       1.989759
+    min       3.000000
+    25%       9.500000
+    50%      10.000000
+    75%      10.000000
+    max      11.000000
+    dtype: float64
+```
+##### Comment
+Great work! You'll return to this dataset later in this chapter.
