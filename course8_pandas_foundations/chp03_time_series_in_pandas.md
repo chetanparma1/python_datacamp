@@ -233,7 +233,8 @@ In this exercise, some hourly weather data is pre-loaded for you. You will conti
 
 Rolling means (or moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends. You can read more about them here.
 
-To use the .rolling() method, you must always use method chaining, first calling .rolling() and then chaining an aggregation method after it. For example, with a Series hourly_data, hourly_data.rolling(window=24).mean() would compute new values for each hourly point, based on a 24-hour window stretching out behind each point. The frequency of the output data is the same: it is still hourly. Such an operation is useful for smoothing time series data.
+To use the .rolling() method, you must always use method chaining, first calling .rolling() and then chaining an aggregation method after it. For example, with a Series hourly_data, hourly_data.rolling(window=24).mean() would compute new values for each hourly point, based on a 24-hour window stretching out behind each point. The frequency of the output data is the same: it is still hourly. Such an operation is useful for smoothing time series data. See the illustration below:
+![Alt text](./moving_average.jpg)
 
 Your job is to resample the data using the combination of `.rolling()` and .mean(). You will work with the same DataFrame df from the previous exercise.
 
@@ -263,3 +264,65 @@ plt.show()
 
 ##### Comment:
 Well done!
+
+## 08. Resample and roll with it
+As of pandas version 0.18.0, the interface for applying rolling transformations to time series has become more consistent and flexible, and feels somewhat like a groupby (If you do not know what a groupby is, don't worry, you will learn about it in the next course!).
+
+You can now flexibly chain together resampling and rolling operations. In this exercise, the same weather data from the previous exercises has been pre-loaded for you. Your job is to extract one month of data, resample to find the daily high temperatures, and then use a rolling and aggregation operation to smooth the data.
+
+### Instructions
+* Use partial string indexing to extract August 2010 temperature data, and assign to august.
+* Resample to daily frequency, saving the maximum daily temperatures, and assign the result to daily_highs.
+* As part of one long method chain, repeat the above resampling (or you can re-use daily_highs) and then combine it with `.rolling()` to apply a 7 day .mean() (with window=7 inside .rolling()) so as to smooth the daily highs. Assign the result to daily_highs_smoothed and print the result.
+
+#### Script:
+```
+# Extract the August 2010 data: august
+august = df['Temperature']['2010-08']
+
+# Resample to daily data, aggregating by max: daily_highs
+daily_highs = august.resample('D').max()
+
+# Use a rolling 7-day window with method chaining to smooth the daily high temperatures in August
+daily_highs_smoothed = daily_highs.rolling(window=7).mean()
+print(daily_highs_smoothed)
+```
+##### Output
+```
+<script.py> output:
+    Date
+    2010-08-01          NaN
+    2010-08-02          NaN
+    2010-08-03          NaN
+    2010-08-04          NaN
+    2010-08-05          NaN
+    2010-08-06          NaN
+    2010-08-07    95.114286
+    2010-08-08    95.142857
+    2010-08-09    95.171429
+    2010-08-10    95.171429
+    2010-08-11    95.157143
+    2010-08-12    95.128571
+    2010-08-13    95.100000
+    2010-08-14    95.042857
+    2010-08-15    94.971429
+    2010-08-16    94.900000
+    2010-08-17    94.857143
+    2010-08-18    94.828571
+    2010-08-19    94.814286
+    2010-08-20    94.785714
+    2010-08-21    94.757143
+    2010-08-22    94.742857
+    2010-08-23    94.714286
+    2010-08-24    94.642857
+    2010-08-25    94.542857
+    2010-08-26    94.428571
+    2010-08-27    94.271429
+    2010-08-28    94.100000
+    2010-08-29    93.914286
+    2010-08-30    93.742857
+    2010-08-31    93.571429
+    Freq: D, Name: Temperature, dtype: float64
+```
+##### Comment:
+Fantastic!
