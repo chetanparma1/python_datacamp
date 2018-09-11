@@ -163,3 +163,16 @@ print(df_clean.head())
 ```
 ##### Comment:
 Well done! All that's left now is to clean the numeric columns.
+
+## 05. Cleaning the numeric columns
+The numeric columns contain missing values labeled as 'M'. In this exercise, your job is to transform these columns such that they contain only numeric values and interpret missing data as NaN.
+
+The pandas function pd.to_numeric() is ideal for this purpose: It converts a Series of values to floating-point values. Furthermore, by specifying the keyword argument errors='coerce', you can force strings like 'M' to be interpreted as NaN.
+
+A DataFrame df_clean is provided for you at the start of the exercise, and as usual, pandas has been imported as pd.
+
+### Instructions
+* Print the 'dry_bulb_faren' temperature between 8 AM and 9 AM on June 20, 2011.
+* Convert the 'dry_bulb_faren' column to numeric values with pd.to_numeric(). Specify errors='coerce'.
+* Print the transformed dry_bulb_faren temperature between 8 AM and 9 AM on June 20, 2011.
+* Convert the 'wind_speed' and 'dew_point_faren' columns to numeric values with pd.to_numeric(). Again, specify errors='coerce'.
