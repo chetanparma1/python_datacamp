@@ -419,3 +419,71 @@ plt.show()
 
 ##### Comment:
 Wonderful work!
+
+## 11. Heat or humidity
+Dew point is a measure of relative humidity based on pressure and temperature. A dew point above 65 is considered uncomfortable while a temperature above 90 is also considered uncomfortable.
+
+In this exercise, you will explore the maximum temperature and dew point of each month. The columns of interest are 'dew_point_faren' and 'dry_bulb_faren'. After resampling them appropriately to get the maximum temperature and dew point in each month, generate a histogram of these values as subplots. Uncomfortably, you will notice that the maximum dew point is above 65 every month!
+
+df_clean has been pre-loaded for you.
+
+### Instructions:
+* Select the 'dew_point_faren' and 'dry_bulb_faren' columns (in that order). Resample by month and aggregate the maximum monthly temperatures. Assign the result to monthly_max.
+* Plot a histogram of the resampled data with bins=8, alpha=0.5, and subplots=True.
+
+#### Script:
+```
+# Resample dew_point_faren and dry_bulb_faren by Month, aggregating the maximum values: monthly_max
+monthly_max = df_clean[['dew_point_faren', 'dry_bulb_faren']].resample('M').max()
+
+# Generate a histogram with bins=8, alpha=0.5, subplots=True
+monthly_max.plot(kind='hist', bins=8, alpha=0.5, subplots=True)
+
+# Show the plot
+plt.show()
+```
+
+##### Output:
+![Alt text](./heat_humidity.svg)
+
+##### Comment:
+Excellent job!
+
+## 12. Probability of high temperatures
+We already know that 2011 was hotter than the climate normals for the previous thirty years. In this final exercise, you will compare the maximum temperature in August 2011 against that of the August 2010 climate normals. More specifically, you will use a CDF plot to determine the probability of the 2011 daily maximum temperature in August being above the 2010 climate normal value. To do this, you will leverage the data manipulation, filtering, resampling, and visualization skills you have acquired throughout this course.
+
+The two DataFrames df_clean and df_climate are available in the workspace. Your job is to select the maximum temperature in August in df_climate, and then maximum daily temperatures in August 2011. You will then filter out the days in August 2011 that were above the August 2010 maximum, and use this to construct a CDF plot.
+
+Once you've generated the CDF, notice how it shows that there was a 50% probability of the 2011 daily maximum temperature in August being 5 degrees above the 2010 climate normal value!
+
+### Instructions:
+* From df_climate, extract the maximum temperature observed in August 2010. The relevant column here is 'Temperature'. You can select the rows corresponding to August 2010 in multiple ways. For example, df_climate.loc['2011-Feb'] selects all rows corresponding to February 2011, while df_climate.loc['2009-09', 'Pressure'] selects the rows corresponding to September 2009 from the 'Pressure' column.
+* From df_clean, select the August 2011 temperature data from the 'dry_bulb_faren'. Resample this data by day and aggregate the maximum value. Store the result in august_2011.
+* Filter rows of august_2011 to keep days where the value exceeded august_max. Store the result in august_2011_high.
+* Construct a CDF of august_2011_high using 25 bins. Remember to specify the kind, normed, and cumulative parameters in addition to bins.
+
+#### Script:
+```
+# Extract the maximum temperature in August 2010 from df_climate: august_max
+august_max = df_climate.loc['2010-08', 'Temperature'].max()
+print(august_max)
+
+# Resample August 2011 temps in df_clean by day & aggregate the max value: august_2011
+august_2011 = df_clean.loc['2011-08', 'dry_bulb_faren'].resample('D').max()
+
+
+# Filter for days in august_2011 where the value exceeds august_max: august_2011_high
+august_2011_high = august_2011[august_2011 > august_max]
+
+# Construct a CDF of august_2011_high
+august_2011_high.plot(kind='hist', bins=25, normed=True, cumulative=True)
+
+# Display the plot
+plt.show()
+```
+
+##### Output:
+![Alt text](./august_high.svg)
+
+##### Comment:
+Fantastic work - you've reached the end of the course!
