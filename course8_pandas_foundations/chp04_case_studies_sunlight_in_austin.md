@@ -245,3 +245,12 @@ print(df_clean.loc['2011-04':'2011-06', 'dry_bulb_faren'].median())
 # Print the median of the dry_bulb_faren column for the month of January
 print(df_clean.loc['2011-01', 'dry_bulb_faren'].median())
 ```
+##### Output:
+```
+<script.py> output:
+    72.0
+    78.0
+    48.0
+```
+##### Comment:
+Great work!
