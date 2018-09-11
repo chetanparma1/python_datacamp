@@ -372,3 +372,11 @@ plt.show()
 ```
 ##### Output:
 ![Alt text](./visibility.svg)
+```
+<script.py> output:
+                    visibility  dry_bulb_faren
+    visibility        1.000000        0.490328
+    dry_bulb_faren    0.490328        1.000000
+```
+##### Comment:
+Great work!
