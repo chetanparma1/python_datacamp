@@ -194,3 +194,30 @@ df_clean['dew_point_faren'] = pd.to_numeric(df_clean['dew_point_faren'], errors=
 ```
 
 ##### Output:
+```
+<script.py> output:
+    2011-06-20 08:27:00     M
+    2011-06-20 08:28:00     M
+    2011-06-20 08:29:00     M
+    2011-06-20 08:30:00     M
+    2011-06-20 08:31:00     M
+    2011-06-20 08:32:00     M
+    2011-06-20 08:33:00     M
+    2011-06-20 08:34:00     M
+    2011-06-20 08:35:00     M
+    2011-06-20 08:53:00    83
+    Name: dry_bulb_faren, dtype: object
+    2011-06-20 08:27:00     NaN
+    2011-06-20 08:28:00     NaN
+    2011-06-20 08:29:00     NaN
+    2011-06-20 08:30:00     NaN
+    2011-06-20 08:31:00     NaN
+    2011-06-20 08:32:00     NaN
+    2011-06-20 08:33:00     NaN
+    2011-06-20 08:34:00     NaN
+    2011-06-20 08:35:00     NaN
+    2011-06-20 08:53:00    83.0
+    Name: dry_bulb_faren, dtype: float64
+```
+##### Comment:
+Excellent job! Now that your data are clean, you can begin with your exploratory analysis.
