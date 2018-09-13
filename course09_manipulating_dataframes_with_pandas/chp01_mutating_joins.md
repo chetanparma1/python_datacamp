@@ -105,3 +105,46 @@ memory usage: 6.2+ KB
 
 ##### Comment:
 Well done!
+
+## 02. Positional and labeled indexing
+Given a pair of label-based indices, sometimes it's necessary to find the corresponding positions. In this exercise, you will use the Pennsylvania election results again. The DataFrame is provided for you as election.
+
+Find x and y such that election.iloc[x, y] == election.loc['Bedford', 'winner']. That is, what is the row position of 'Bedford', and the column position of 'winner'? Remember that the first position in Python is 0, not 1!
+
+To answer this question, first explore the DataFrame using election.head() in the IPython Shell and inspect it with your eyes.
+
+### Instructions:
+* Explore the DataFrame in the IPython Shell using election.head().
+* Assign the row position of election.loc['Bedford'] to x.
+* Assign the column position of election['winner'] to y.
+* Hit 'Submit Answer' to print the boolean equivalence of the .loc and .iloc selections.
+
+#### Script
+```
+# Assign the row position of election.loc['Bedford']: x
+x = 4
+
+# Assign the column position of election['winner']: y
+y = 4
+
+# Print the boolean equivalence
+print(election.iloc[x, y] == election.loc['Bedford', 'winner'])
+```
+
+##### Output:
+```
+In [1]: election.head()
+Out[1]: 
+          state   total      Obama     Romney  winner  voters
+county                                                       
+Adams        PA   41973  35.482334  63.112001  Romney   61156
+Allegheny    PA  614671  56.640219  42.185820   Obama  924351
+Armstrong    PA   28322  30.696985  67.901278  Romney   42147
+Beaver       PA   80015  46.032619  52.637630  Romney  115157
+Bedford      PA   21444  22.057452  76.986570  Romney   32189
+
+<script.py> output:
+    True
+```
+##### Comment:
+Great work! Depending on the situation, you may wish to use .iloc[] over .loc[], and vice versa. The important thing to realize is you can achieve the exact same results using either approach.
