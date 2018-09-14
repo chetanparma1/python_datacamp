@@ -271,3 +271,40 @@ print(three_counties)
 ```
 ##### Comment:
 Excellent work! If you know exactly which rows and columns are of interest to you, this is a useful approach for subselecting DataFrames.
+
+## 06. Thresholding data
+In this exercise, we have provided the Pennsylvania election results and included a column called 'turnout' that contains the percentage of voter turnout per county. Your job is to prepare a boolean array to select all of the rows and columns where voter turnout exceeded 70%.
+
+As before, the DataFrame is available to you as election with the index set to 'county'.
+
+### Instructions
+* Create a boolean array of the condition where the 'turnout' column is greater than 70 and assign it to high_turnout.
+* Filter the election DataFrame with the high_turnout array and assign it to high_turnout_df.
+* Print the filtered DataFrame. This has been done for you, so hit 'Submit Answer' to see it!
+
+#### Script
+```
+# Create the boolean array: high_turnout
+high_turnout = election.turnout > 70
+
+# Filter the election DataFrame with the high_turnout array: high_turnout_df
+high_turnout_df = election[high_turnout]
+
+# Print the high_turnout_results DataFrame
+print(high_turnout_df)
+```
+##### Output:
+```
+<script.py> output:
+                 state   total      Obama     Romney  winner  voters    turnout     margin
+    county                                                                                
+    Bucks           PA  319407  49.966970  48.801686   Obama  435606  73.324748   1.165284
+    Butler          PA   88924  31.920516  66.816607  Romney  122762  72.436096  34.896091
+    Chester         PA  248295  49.228539  49.650617  Romney  337822  73.498766   0.422079
+    Forest          PA    2308  38.734835  59.835355  Romney    3232  71.410891  21.100520
+    Franklin        PA   62802  30.110506  68.583803  Romney   87406  71.850903  38.473297
+    Montgomery      PA  401787  56.637223  42.286834   Obama  551105  72.905708  14.350390
+    Westmoreland    PA  168709  37.567646  61.306154  Romney  238006  70.884347  23.738508
+```
+##### COmment:
+Well done!
