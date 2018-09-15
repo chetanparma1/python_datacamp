@@ -227,3 +227,13 @@ print(sales['CA':'TX'])
 ```
 ##### Comment:
 Well done! Notice how New York is excluded by the first operation, and included in the second one.
+
+## 06. Setting & sorting a MultiIndex
+In the previous exercise, the MultiIndex was created and sorted for you. Now, you're going to do this yourself! With a MultiIndex, you should always ensure the index is sorted. You can skip this only if you know the data is already sorted on the index fields.
+
+To get started, print the pre-loaded sales DataFrame in the IPython Shell to verify that there is no MultiIndex.
+
+### Instructions:
+* Create a MultiIndex by setting the index to be the columns ['state', 'month'].
+* Sort the MultiIndex using the .sort_index() method.
+* Print the sales DataFrame. This has been done for you, so hit 'Submit Answer' to verify that indeed you have an index with the fields state and month!
