@@ -237,3 +237,29 @@ To get started, print the pre-loaded sales DataFrame in the IPython Shell to ver
 * Create a MultiIndex by setting the index to be the columns ['state', 'month'].
 * Sort the MultiIndex using the .sort_index() method.
 * Print the sales DataFrame. This has been done for you, so hit 'Submit Answer' to verify that indeed you have an index with the fields state and month!
+
+#### Script:
+```
+# Set the index to be the columns ['state', 'month']: sales
+sales = sales.set_index(['state', 'month'])
+
+# Sort the MultiIndex: sales
+sales = sales.sort_index()
+
+# Print the sales DataFrame
+print(sales)
+```
+##### Output:
+```
+<script.py> output:
+                 eggs  salt  spam
+    state month                  
+    CA    1        47  12.0    17
+          2       110  50.0    31
+    NY    1       221  89.0    72
+          2        77  87.0    20
+    TX    1       132   NaN    52
+          2       205  60.0    55
+```
+##### Comment:
+Great work! Take a look at the sorted MultiIndex!
