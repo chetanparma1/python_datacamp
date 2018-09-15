@@ -151,3 +151,39 @@ print(sales)
 ```
 ##### Comment:
 Wonderful work! Notice how in the first DataFrame, the index has a label, and in the second DataFrame, both the index as well as the columns have labels.
+
+## 04. Building an index, then a DataFrame
+You can also build the DataFrame and index independently, and then put them together. If you take this route, be careful, as any mistakes in generating the DataFrame or the index can cause the data and the index to be aligned incorrectly.
+
+In this exercise, the sales DataFrame has been provided for you without the month index. Your job is to build this index separately and then assign it to the sales DataFrame. Before getting started, print the sales DataFrame in the IPython Shell and note that it's missing the month information.
+
+### Instructions:
+* Generate a list months with the data `['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']`. This has been done for you.
+* Assign months to sales.index.
+* Print the modified sales dataframe and verify that you now have month information in the index.
+
+#### Script
+```
+# Generate the list of months: months
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+
+# Assign months to sales.index
+sales.index = months
+
+# Print the modified sales DataFrame
+print(sales)
+```
+##### Output:
+```
+<script.py> output:
+         eggs  salt  spam
+    Jan    47  12.0    17
+    Feb   110  50.0    31
+    Mar   221  89.0    72
+    Apr    77  87.0    20
+    May   132   NaN    52
+    Jun   205  60.0    55
+```
+
+##### Comment:
+Excellent work! You're getting the hang of working with indexes. You'll now move onto learning about hierarchical indexes!
