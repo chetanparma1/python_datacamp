@@ -318,3 +318,42 @@ Pay particular attention to the tuple (slice(None), slice('2016-10-03', '2016-10
 * Look up data for the New York column ('NY') in month 1.
 * Look up data for the California and Texas columns ('CA', 'TX') in month 2.
 * Look up data for all states in month 2. Use (slice(None), 2) to extract all rows in month 2.
+
+#### Script:
+```
+# Look up data for NY in month 1: NY_month1
+NY_month1 = sales.loc[('NY', 1),:]
+
+# Look up data for CA and TX in month 2: CA_TX_month2
+CA_TX_month2 = sales.loc[(['CA', 'TX'], 2), :]
+
+# Look up data for all states in month 2: all_month2
+all_month2 = sales.loc[(slice(None), 2), :]
+```
+##### Output:
+```
+In [3]: NY_month1
+Out[3]: 
+eggs    221.0
+salt     89.0
+spam     72.0
+Name: (NY, 1), dtype: float64
+
+In [4]: CA_TX_month2
+Out[4]: 
+             eggs  salt  spam
+state month                  
+CA    2       110  50.0    31
+TX    2       205  60.0    55
+
+In [5]: all_month2
+Out[5]: 
+             eggs  salt  spam
+state month                  
+CA    2       110  50.0    31
+NY    2        77  87.0    20
+TX    2       205  60.0    55
+```
+
+##### Comment:
+Well done! Now that you've mastered how to work with indexes, you're ready to begin learning about rearranging and reshaping your data. See you in Chapter 3!
