@@ -95,3 +95,53 @@ You will explore this for yourself now in this exercise.
 ```
 ##### Comment:
 Great work! Notice how in the second DataFrame, both 'signups' and 'visitors' were pivoted by default since you didn't provide an argument for the values parameter.
+
+## 04. Stacking & unstacking I
+You are now going to practice stacking and unstacking DataFrames. The users DataFrame you have been working with in this chapter has been pre-loaded for you, this time with a MultiIndex. Explore it in the IPython Shell to see the data layout. Pay attention to the index, and notice that the index levels are ['city', 'weekday']. So 'weekday' - the second entry - has position 1. This position is what corresponds to the level parameter in .stack() and .unstack() calls. Alternatively, you can specify 'weekday' as the level instead of its position.
+
+Your job in this exercise is to unstack users by 'weekday'. You will then use .stack() on the unstacked DataFrame to see if you get back the original layout of users.
+
+### Instructions:
+* Define a DataFrame byweekday with the 'weekday' level of users unstacked.
+* Print the byweekday DataFrame to see the new data layout. This has been done for you.
+* Stack byweekday by 'weekday' and print it to check if you get the same layout as the original users DataFrame.
+
+#### Script:
+```
+# unstack = move the index column as a subcolumn in each existing column. 
+# Unstack users by 'weekday': byweekday
+byweekday = users.unstack(level='weekday')
+
+# Print the byweekday DataFrame
+print(byweekday)
+
+# Stack byweekday by 'weekday' and print it
+print(byweekday.stack(level='weekday'))
+```
+
+##### Output:
+```
+In [1]: users
+Out[1]: 
+                visitors  signups
+city   weekday                   
+Austin Mon           326        3
+       Sun           139        7
+Dallas Mon           456        5
+       Sun           237       12
+
+<script.py> output:
+            visitors      signups    
+    weekday      Mon  Sun     Mon Sun
+    city                             
+    Austin       326  139       3   7
+    Dallas       456  237       5  12
+                    visitors  signups
+    city   weekday                   
+    Austin Mon           326        3
+           Sun           139        7
+    Dallas Mon           456        5
+           Sun           237       12
+```
+##### Comment:
+Great work! By stacking and then unstacking users, you ended up with the same layout as the original DataFrame.
