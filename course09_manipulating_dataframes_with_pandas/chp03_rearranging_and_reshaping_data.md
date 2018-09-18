@@ -68,3 +68,30 @@ Out[1]:
 
 ##### Comment:
 Well done! Notice how in the pivoted DataFrame, the index is labeled 'weekday', the columns are labeled 'city', and the values are populated by the number of visitors.
+
+## 03. Pivoting all variables
+If you do not select any particular variables, all of them will be pivoted. In this case - with the users DataFrame - both 'visitors' and 'signups' will be pivoted, creating hierarchical column labels.
+
+You will explore this for yourself now in this exercise.
+
+### Instructions
+* Pivot the users DataFrame with the 'signups' indexed by 'weekday' in the rows and 'city' in the columns.
+* Print the new DataFrame. This has been done for you.
+* Pivot the users DataFrame with both 'signups' and 'visitors' pivoted - that is, all the variables. This will happen automatically if you do not specify an argument for the values parameter of .pivot().
+* Print the pivoted DataFrame. This has been done for you, so hit 'Submit Answer' to see the result.
+
+#### Script:
+```
+<script.py> output:
+    city     Austin  Dallas
+    weekday                
+    Mon           3       5
+    Sun           7      12
+            visitors        signups       
+    city      Austin Dallas  Austin Dallas
+    weekday                               
+    Mon          326    456       3      5
+    Sun          139    237       7     12
+```
+##### Comment:
+Great work! Notice how in the second DataFrame, both 'signups' and 'visitors' were pivoted by default since you didn't provide an argument for the values parameter.
