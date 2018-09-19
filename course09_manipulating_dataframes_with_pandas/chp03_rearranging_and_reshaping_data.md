@@ -289,3 +289,36 @@ print(visitors)
 ```
 ##### Comment:
 Well done! Notice how your melted DataFrame now has a 'city' column with Austin and Dallas as its values. In the original DataFrame, they were columns themselves. Also note how specifying the value_name parameter has renamed the 'value' column to 'visitors'.
+
+## 08. Going from wide to long
+You can move multiple columns into a single column (making the data long and skinny) by "melting" multiple columns. In this exercise, you will practice doing this.
+
+The users DataFrame has been pre-loaded for you. As always, explore it in the IPython Shell and note the index.
+
+### Instructions:
+* Define a DataFrame skinny where you melt the 'visitors' and 'signups' columns of users into a single column.
+* Print skinny to verify the results. Note the value column that had the cell values in users.
+
+#### Script:
+```
+# Melt users: skinny
+skinny = pd.melt(users, id_vars=['weekday', 'city'], value_vars=['visitors', 'signups'])
+
+# Print skinny
+print(skinny)
+```
+##### Output:
+```
+<script.py> output:
+      weekday    city  variable  value
+    0     Sun  Austin  visitors    139
+    1     Sun  Dallas  visitors    237
+    2     Mon  Austin  visitors    326
+    3     Mon  Dallas  visitors    456
+    4     Sun  Austin   signups      7
+    5     Sun  Dallas   signups     12
+    6     Mon  Austin   signups      3
+    7     Mon  Dallas   signups      5
+```
+##### Comment:
+Well done! Here, because you didn't specify the var_name or value_name parameters, the melted DataFrame has the default variable and value column names.
