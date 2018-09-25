@@ -482,3 +482,22 @@ print(signups_and_visitors_total)
 ```
 #### Comment:
 Fantastic! Take a look at how specifying margins=True resulted in the totals in each column being computed.
+
+## 13. Advantages of categorical data types
+What are the main advantages of storing data explicitly as categorical types instead of object types?
+
+### Possible Answers
+* Computations are faster.
+press 1
+* Categorical data require less space in memory.
+press 2
+* All of the above.
+press 3
+* None of the above.
+press 4
+
+#### Answer:
+3
+
+#### Comment:
+Correct! Computations are faster and categorical data require less space in memory.
