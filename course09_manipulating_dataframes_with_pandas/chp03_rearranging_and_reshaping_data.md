@@ -501,3 +501,63 @@ press 4
 
 #### Comment:
 Correct! Computations are faster and categorical data require less space in memory.
+
+## 14. Grouping by multiple columns
+In this exercise, you will return to working with the Titanic dataset from Chapter 1 and use .groupby() to analyze the distribution of passengers who boarded the Titanic.
+
+The 'pclass' column identifies which class of ticket was purchased by the passenger and the 'embarked' column indicates at which of the three ports the passenger boarded the Titanic. 'S' stands for Southampton, England, 'C' for Cherbourg, France and 'Q' for Queenstown, Ireland.
+
+Your job is to first group by the 'pclass' column and count the number of rows in each class using the 'survived' column. You will then group by the 'embarked' and 'pclass' columns and count the number of passengers.
+
+The DataFrame has been pre-loaded as titanic.
+
+### Instructions:
+* Group by the 'pclass' column and save the result as by_class.
+* Aggregate the 'survived' column of by_class using .count(). Save the result as count_by_class.
+* Print count_by_class. This has been done for you.
+* Group titanic by the 'embarked' and 'pclass' columns. Save the result as by_mult.
+* Aggregate the 'survived' column of by_mult using .count(). Save the result as count_mult.
+* Print count_mult. This has been done for you, so hit 'Submit Answer' to view the result.
+
+#### Script:
+```
+# Group titanic by 'pclass'
+by_class = titanic.groupby('pclass')
+
+# Aggregate 'survived' column of by_class by count
+count_by_class = by_class['survived'].count()
+
+# Print count_by_class
+print(count_by_class)
+
+# Group titanic by 'embarked' and 'pclass'
+by_mult = titanic.groupby(['embarked', 'pclass'])
+
+# Aggregate 'survived' column of by_mult by count
+count_mult = by_mult['survived'].count()
+
+# Print count_mult
+print(count_mult)
+```
+#### Output:
+```
+<script.py> output:
+    pclass
+    1    323
+    2    277
+    3    709
+    Name: survived, dtype: int64
+    embarked  pclass
+    C         1         141
+              2          28
+              3         101
+    Q         1           3
+              2           7
+              3         113
+    S         1         177
+              2         242
+              3         495
+    Name: survived, dtype: int64
+```
+#### Comment:
+Well done! Grouping your data by certain columns like this and aggregating them by another column - in this case, 'survived' - allows you to carefully examine your data for interesting insights.
