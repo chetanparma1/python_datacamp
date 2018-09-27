@@ -584,8 +584,24 @@ life = pd.read_csv(life_fname, index_col='Country')
 regions = pd.read_csv(regions_fname, index_col='Country')
 
 # Group life by regions['region']: life_by_region
-life_by_region = life.group_by(regions$region)
+life_by_region = life.groupby(regions['region'])
 
 # Print the mean over the '2010' column of life_by_region
-print(life_by_region.mean())
+print(life_by_region['2010'].mean())
 ```
+
+#### Output:
+```
+<script.py> output:
+    region
+    America                       74.037350
+    East Asia & Pacific           73.405750
+    Europe & Central Asia         75.656387
+    Middle East & North Africa    72.805333
+    South Asia                    68.189750
+    Sub-Saharan Africa            57.575080
+    Name: 2010, dtype: float64
+```
+
+#### Comment:
+Great work! It looks like the average life expectancy (in years) at birth in 2010 was highest in Europe & Central Asia and lowest in Sub-Saharan Africa.
