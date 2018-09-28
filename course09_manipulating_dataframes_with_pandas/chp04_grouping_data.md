@@ -473,3 +473,109 @@ Out[8]:
 
 #### Comment:
 Well done! Imputing missing values intelligently is always preferrable to dropping them entirely!
+
+## 09. Other transformations with .apply
+The .apply() method when used on a groupby object performs an arbitrary function on each of the groups. These functions can be aggregations, transformations or more complex workflows. The .apply() method will then combine the results in an intelligent way.
+
+In this exercise, you're going to analyze economic disparity within regions of the world using the Gapminder data set for 2010. To do this you'll define a function to compute the aggregate spread of per capita GDP in each region and the individual country's z-score of the regional per capita GDP. You'll then select three countries - United States, Great Britain and China - to see a summary of the regional GDP and that country's z-score against the regional mean.
+
+The 2010 Gapminder DataFrame is provided for you as gapminder_2010. Pandas has been imported as pd.
+
+The following function has been defined for your use:
+```
+def disparity(gr):
+    # Compute the spread of gr['gdp']: s
+    s = gr['gdp'].max() - gr['gdp'].min()
+    # Compute the z-score of gr['gdp'] as (gr['gdp']-gr['gdp'].mean())/gr['gdp'].std(): z
+    z = (gr['gdp'] - gr['gdp'].mean())/gr['gdp'].std()
+    # Return a DataFrame with the inputs {'z(gdp)':z, 'regional spread(gdp)':s}
+    return pd.DataFrame({'z(gdp)':z , 'regional spread(gdp)':s})
+```
+### Instructions:
+* Group gapminder_2010 by 'region'. Save the result as regional.
+* Apply the provided disparity function on regional, and save the result as reg_disp.
+* Use .loc[] to select ['United States','United Kingdom','China'] from reg_disp and print the results.
+
+#### Script:
+```
+# Group gapminder_2010 by 'region': regional
+regional = gapminder_2010.groupby('region')
+
+# Apply the disparity function on regional: reg_disp
+reg_disp = regional.apply(disparity)
+
+# Print the disparity of 'United States', 'United Kingdom', and 'China'
+print(reg_disp.loc[['United States','United Kingdom','China'], :])
+```
+#### Output:
+```
+In [8]: gapminder_2010.head()
+Out[8]: 
+                     fertility    life  population  child_mortality      gdp                      region
+Country                                                                                                 
+Afghanistan              5.659  59.612  31411743.0            105.0   1637.0                  South Asia
+Albania                  1.741  76.780   3204284.0             16.6   9374.0       Europe & Central Asia
+Algeria                  2.817  70.615  35468208.0             27.4  12494.0  Middle East & North Africa
+Angola                   6.218  50.689  19081912.0            182.5   7047.0          Sub-Saharan Africa
+Antigua and Barbuda      2.130  75.437     88710.0              9.9  20567.0                     America
+
+
+In [9]: regional.head()
+Out[9]: 
+                     fertility    life    population  child_mortality      gdp                      region
+Country                                                                                                   
+Afghanistan              5.659  59.612  3.141174e+07           105.00   1637.0                  South Asia
+Albania                  1.741  76.780  3.204284e+06            16.60   9374.0       Europe & Central Asia
+Algeria                  2.817  70.615  3.546821e+07            27.40  12494.0  Middle East & North Africa
+Angola                   6.218  50.689  1.908191e+07           182.50   7047.0          Sub-Saharan Africa
+Antigua and Barbuda      2.130  75.437  8.871000e+04             9.90  20567.0                     America
+Argentina                2.215  75.772  4.041238e+07            14.60  15765.0                     America
+Armenia                  1.550  74.291  3.092072e+06            18.00   6508.0       Europe & Central Asia
+Aruba                    1.701  75.059  1.074880e+05            17.84  33288.0                     America
+Australia                1.886  82.091  2.226838e+07             4.80  41330.0         East Asia & Pacific
+Austria                  1.438  80.595  8.393644e+06             4.40  42861.0       Europe & Central Asia
+Azerbaijan               1.970  70.518  9.187783e+06            39.00  15950.0       Europe & Central Asia
+Bahamas                  1.901  74.757  3.428770e+05            13.90  22915.0                     America
+Bahrain                  2.142  76.203  1.261835e+06             8.30  40553.0  Middle East & North Africa
+Bangladesh               2.277  69.449  1.486921e+08            49.60   2459.0                  South Asia
+Barbados                 1.839  74.875  2.733310e+05            14.70  15297.0                     America
+Belarus                  1.460  69.613  9.595421e+06             6.10  15703.0       Europe & Central Asia
+Benin                    5.095  58.797  8.849892e+06           111.60   1637.0          Sub-Saharan Africa
+Bhutan                   2.375  67.015  7.259400e+05            42.30   6516.0                  South Asia
+Botswana                 2.761  46.588  2.006945e+06            60.30  13642.0          Sub-Saharan Africa
+Brunei                   2.051  77.956  3.989200e+05             9.30  70636.0         East Asia & Pacific
+Burkina Faso             5.869  55.081  1.646871e+07           113.50   1431.0          Sub-Saharan Africa
+Burundi                  6.304  52.638  8.382849e+06            98.80    725.0          Sub-Saharan Africa
+Cambodia                 2.966  70.811  1.413826e+07            43.10   2513.0         East Asia & Pacific
+China                    1.650  74.868  1.341335e+09            15.70   9430.0         East Asia & Pacific
+Djibouti                 3.604  60.307  8.887160e+05            76.10   2665.0  Middle East & North Africa
+Egypt                    2.883  70.478  8.112108e+07            29.00  10615.0  Middle East & North Africa
+Fiji                     2.670  69.258  8.606230e+05            23.90   7098.0         East Asia & Pacific
+India                    2.563  65.650  1.224614e+09            59.90   4547.0                  South Asia
+Iran                     1.904  73.094  7.397363e+07            19.20  16980.0  Middle East & North Africa
+Maldives                 2.339  76.779  3.158850e+05            13.00  11674.0                  South Asia
+
+
+In [10]: reg_disp.head()
+Out[10]: 
+                     regional spread(gdp)    z(gdp)
+Country                                            
+Afghanistan                       10037.0 -1.011602
+Albania                           89037.0 -0.986190
+Algeria                          125319.0 -0.550537
+Angola                            33817.0  0.398221
+Antigua and Barbuda               47855.0  0.431274
+
+
+In [11]: reg_disp.loc[['United States','United Kingdom','China'], :]
+Out[11]: 
+                regional spread(gdp)    z(gdp)
+Country                                       
+United States                47855.0  3.013374
+United Kingdom               89037.0  0.572873
+China                        96993.0 -0.432756
+
+```
+
+#### Comment:
+Great work!
