@@ -279,3 +279,104 @@ Date
 ```
 #### Comment:
 Well done! It looks like Monday, Wednesday, and Thursday were the most popular days for customers!
+
+## 07. Detecting outliers with Z-Scores
+As Dhavide demonstrated in the video using the zscore function, you can apply a .transform() method after grouping to apply a function to groups of data independently. The z-score is also useful to find outliers: a z-score value of +/- 3 is generally considered to be an outlier.
+
+In this example, you're going to normalize the Gapminder data in 2010 for life expectancy and fertility by the z-score per region. Using boolean indexing, you will filter out countries that have high fertility rates and low life expectancy for their region.
+
+The Gapminder DataFrame for 2010 indexed by 'Country' is provided for you as gapminder_2010.
+
+### Instructions:
+* Import zscore from scipy.stats.
+* Group gapminder_2010 by 'region' and transform the ['life','fertility'] columns by zscore.
+* Construct a boolean Series of the bitwise or between standardized['life'] < -3 and standardized['fertility'] > 3.
+* Filter gapminder_2010 using .loc[] and the outliers Boolean Series. Save the result as gm_outliers.
+* Print gm_outliers. This has been done for you, so hit 'Submit Answer' to see the results.
+
+#### Script:
+```
+# Import zscore
+from scipy.stats import zscore
+
+# Group gapminder_2010: standardized
+standardized = gapminder_2010.groupby('region')['life', 'fertility'].transform(zscore)
+
+# Construct a Boolean Series to identify outliers: outliers
+outliers = (standardized['life'] < -3) | (standardized['fertility'] > 3)
+
+# Filter gapminder_2010 by the outliers: gm_outliers
+gm_outliers = gapminder_2010.loc[outliers]
+
+# Print gm_outliers
+print(gm_outliers)
+```
+
+#### Output:
+```
+In [13]: gapminder_2010.groupby('region')['life', 'fertility'].head()
+Out[13]: 
+                       life  fertility
+Country                               
+Afghanistan          59.612      5.659
+Albania              76.780      1.741
+Algeria              70.615      2.817
+Angola               50.689      6.218
+Antigua and Barbuda  75.437      2.130
+Argentina            75.772      2.215
+Armenia              74.291      1.550
+Aruba                75.059      1.701
+Australia            82.091      1.886
+Austria              80.595      1.438
+Azerbaijan           70.518      1.970
+Bahamas              74.757      1.901
+Bahrain              76.203      2.142
+Bangladesh           69.449      2.277
+Barbados             74.875      1.839
+Belarus              69.613      1.460
+Benin                58.797      5.095
+Bhutan               67.015      2.375
+Botswana             46.588      2.761
+Brunei               77.956      2.051
+Burkina Faso         55.081      5.869
+Burundi              52.638      6.304
+Cambodia             70.811      2.966
+China                74.868      1.650
+Djibouti             60.307      3.604
+Egypt                70.478      2.883
+Fiji                 69.258      2.670
+India                65.650      2.563
+Iran                 73.094      1.904
+Maldives             76.779      2.339
+
+In [14]: standardized.head()
+Out[14]: 
+                         life  fertility
+Country                                 
+Afghanistan         -1.743601   2.504732
+Albania              0.226367   0.010964
+Algeria             -0.440196  -0.003972
+Angola              -0.882537   1.095653
+Antigua and Barbuda  0.240607  -0.363761
+
+In [16]: outliers.head()
+Out[16]: 
+Country
+Afghanistan            False
+Albania                False
+Algeria                False
+Angola                 False
+Antigua and Barbuda    False
+dtype: bool
+
+In [19]: gm_outliers.head()
+Out[19]: 
+             fertility    life  population  child_mortality     gdp                 region
+Country                                                                                   
+Guatemala        3.974  71.100  14388929.0             34.5  6849.0                America
+Haiti            3.350  45.000   9993247.0            208.8  1518.0                America
+Tajikistan       3.780  66.830   6878637.0             52.6  2110.0  Europe & Central Asia
+Timor-Leste      6.237  65.952   1124355.0             63.8  1777.0    East Asia & Pacific
+```
+#### Comment:
+Wonderful work! Using z-scores like this is a great way to identify outliers in your data.
