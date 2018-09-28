@@ -380,3 +380,96 @@ Timor-Leste      6.237  65.952   1124355.0             63.8  1777.0    East Asia
 ```
 #### Comment:
 Wonderful work! Using z-scores like this is a great way to identify outliers in your data.
+
+## 08. Filling missing data (imputation) by group
+Many statistical and machine learning packages cannot determine the best action to take when missing data entries are encountered. Dealing with missing data is natural in pandas (both in using the default behavior and in defining a custom behavior). In Chapter 1, you practiced using the .dropna() method to drop missing values. Now, you will practice imputing missing values. You can use .groupby() and .transform() to fill missing data appropriately for each group.
+
+Your job is to fill in missing 'age' values for passengers on the Titanic with the median age from their 'gender' and 'pclass'. To do this, you'll group by the 'sex' and 'pclass' columns and transform each group with a custom function to call .fillna() and impute the median value.
+
+The DataFrame has been pre-loaded as titanic. Explore it in the IPython Shell by printing the output of titanic.tail(10). Notice in particular the NaNs in the 'age' column.
+
+### Instructions:
+* Group titanic by 'sex' and 'pclass'. Save the result as by_sex_class.
+* Write a function called impute_median() that fills missing values with the median of a series. This has been done for you.
+* Call .transform() with impute_median on the 'age' column of by_sex_class.
+* Print the output of titanic.tail(10). This has been done for you - hit 'Submit Answer' to see how the missing values have now been imputed.
+
+#### Script:
+```
+# Create a groupby object: by_sex_class
+by_sex_class = titanic.groupby(['sex', 'pclass'])
+
+# Write a function that imputes median
+def impute_median(series):
+    return series.fillna(series.median())
+
+# Impute age and assign to titanic['age']
+titanic.age = by_sex_class['age'].transform(impute_median)
+
+# Print the output of titanic.tail(10)
+print(titanic.tail(10))
+```
+#### Output:
+```
+In [3]: by_sex_class.head()
+Out[3]: 
+     pclass  survived                                               name     sex    age  sibsp  parch            ticket      fare    cabin embarked boat   body                                 home.dest
+0         1         1                      Allen, Miss. Elisabeth Walton  female  29.00      0      0             24160  211.3375       B5        S    2    NaN                              St Louis, MO
+1         1         1                     Allison, Master. Hudson Trevor    male   0.92      1      2            113781  151.5500  C22 C26        S   11    NaN           Montreal, PQ / Chesterville, ON
+2         1         0                       Allison, Miss. Helen Loraine  female   2.00      1      2            113781  151.5500  C22 C26        S  NaN    NaN           Montreal, PQ / Chesterville, ON
+3         1         0               Allison, Mr. Hudson Joshua Creighton    male  30.00      1      2            113781  151.5500  C22 C26        S  NaN  135.0           Montreal, PQ / Chesterville, ON
+4         1         0    Allison, Mrs. Hudson J C (Bessie Waldo Daniels)  female  25.00      1      2            113781  151.5500  C22 C26        S  NaN    NaN           Montreal, PQ / Chesterville, ON
+5         1         1                                Anderson, Mr. Harry    male  48.00      0      0             19952   26.5500      E12        S    3    NaN                              New York, NY
+6         1         1                  Andrews, Miss. Kornelia Theodosia  female  63.00      1      0             13502   77.9583       D7        S   10    NaN                                Hudson, NY
+7         1         0                             Andrews, Mr. Thomas Jr    male  39.00      0      0            112050    0.0000      A36        S  NaN    NaN                               Belfast, NI
+8         1         1      Appleton, Mrs. Edward Dale (Charlotte Lamson)  female  53.00      2      0             11769   51.4792     C101        S    D    NaN                       Bayside, Queens, NY
+9         1         0                            Artagaveytia, Mr. Ramon    male  71.00      0      0          PC 17609   49.5042      NaN        C  NaN   22.0                       Montevideo, Uruguay
+323       2         0                                Abelson, Mr. Samuel    male  30.00      1      0         P/PP 3381   24.0000      NaN        C  NaN    NaN                       Russia New York, NY
+324       2         1              Abelson, Mrs. Samuel (Hannah Wizosky)  female  28.00      1      0         P/PP 3381   24.0000      NaN        C   10    NaN                       Russia New York, NY
+325       2         0                     Aldworth, Mr. Charles Augustus    male  30.00      0      0            248744   13.0000      NaN        S  NaN    NaN                        Bryn Mawr, PA, USA
+326       2         0                         Andrew, Mr. Edgardo Samuel    male  18.00      0      0            231945   11.5000      NaN        S  NaN    NaN  Buenos Aires, Argentina / New Jersey, NJ
+327       2         0                           Andrew, Mr. Frank Thomas    male  25.00      0      0        C.A. 34050   10.5000      NaN        S  NaN    NaN            Cornwall, England Houghton, MI
+328       2         0                               Angle, Mr. William A    male  34.00      1      0            226875   26.0000      NaN        S  NaN    NaN                          Warwick, England
+329       2         1  Angle, Mrs. William A (Florence "Mary" Agnes H...  female  36.00      1      0            226875   26.0000      NaN        S   11    NaN                          Warwick, England
+333       2         1                            Ball, Mrs. (Ada E Hall)  female  36.00      0      0             28551   13.0000        D        S   10    NaN          Bristol, Avon / Jacksonville, FL
+337       2         1                  Beane, Mrs. Edward (Ethel Clarke)  female  19.00      1      0              2908   26.0000      NaN        S   13    NaN                    Norwich / New York, NY
+340       2         1                        Becker, Miss. Marion Louise  female   4.00      2      1            230136   39.0000       F4        S   11    NaN        Guntur, India / Benton Harbour, MI
+600       3         0                                Abbing, Mr. Anthony    male  42.00      0      0         C.A. 5547    7.5500      NaN        S  NaN    NaN                                       NaN
+601       3         0                      Abbott, Master. Eugene Joseph    male  13.00      0      2         C.A. 2673   20.2500      NaN        S  NaN    NaN                       East Providence, RI
+602       3         0                        Abbott, Mr. Rossmore Edward    male  16.00      1      1         C.A. 2673   20.2500      NaN        S  NaN  190.0                       East Providence, RI
+603       3         1                   Abbott, Mrs. Stanton (Rosa Hunt)  female  35.00      1      1         C.A. 2673   20.2500      NaN        S    A    NaN                       East Providence, RI
+604       3         1                        Abelseth, Miss. Karen Marie  female  16.00      0      0            348125    7.6500      NaN        S   16    NaN                    Norway Los Angeles, CA
+605       3         1                      Abelseth, Mr. Olaus Jorgensen    male  25.00      0      0            348122    7.6500    F G63        S    A    NaN                        Perkins County, SD
+606       3         1           Abrahamsson, Mr. Abraham August Johannes    male  20.00      0      0  SOTON/O2 3101284    7.9250      NaN        S   15    NaN         Taalintehdas, Finland Hoboken, NJ
+607       3         1          Abrahim, Mrs. Joseph (Sophie Halaut Easu)  female  18.00      0      0              2657    7.2292      NaN        C    C    NaN                            Greensburg, PA
+610       3         0     Ahlin, Mrs. Johan (Johanna Persdotter Larsson)  female  40.00      1      0              7546    9.4750      NaN        S  NaN    NaN                         Sweden Akeley, MN
+612       3         1                         Aks, Mrs. Sam (Leah Rosen)  female  18.00      0      1            392091    9.3500      NaN        S   13    NaN               London, England Norfolk, VA
+
+
+In [7]: titanic.age.head()
+Out[7]: 
+0    29.00
+1     0.92
+2     2.00
+3    30.00
+4    25.00
+Name: age, dtype: float64
+
+
+In [8]: titanic.tail(10)
+Out[8]: 
+      pclass  survived                                     name     sex   age  sibsp  parch  ticket     fare cabin embarked boat   body home.dest
+1299       3         0                      Yasbeck, Mr. Antoni    male  27.0      1      0    2659  14.4542   NaN        C    C    NaN       NaN
+1300       3         1  Yasbeck, Mrs. Antoni (Selini Alexander)  female  15.0      1      0    2659  14.4542   NaN        C  NaN    NaN       NaN
+1301       3         0                     Youseff, Mr. Gerious    male  45.5      0      0    2628   7.2250   NaN        C  NaN  312.0       NaN
+1302       3         0                        Yousif, Mr. Wazli    male  25.0      0      0    2647   7.2250   NaN        C  NaN    NaN       NaN
+1303       3         0                    Yousseff, Mr. Gerious    male  25.0      0      0    2627  14.4583   NaN        C  NaN    NaN       NaN
+1304       3         0                     Zabour, Miss. Hileni  female  14.5      1      0    2665  14.4542   NaN        C  NaN  328.0       NaN
+1305       3         0                    Zabour, Miss. Thamine  female  22.0      1      0    2665  14.4542   NaN        C  NaN    NaN       NaN
+1306       3         0                Zakarian, Mr. Mapriededer    male  26.5      0      0    2656   7.2250   NaN        C  NaN  304.0       NaN
+1307       3         0                      Zakarian, Mr. Ortin    male  27.0      0      0    2670   7.2250   NaN        C  NaN    NaN       NaN
+1308       3         0                       Zimmerman, Mr. Leo    male  29.0      0      0  315082   7.8750   NaN        S  NaN    NaN       NaN
+```
+
+#### Comment:
+Well done! Imputing missing values intelligently is always preferrable to dropping them entirely!
