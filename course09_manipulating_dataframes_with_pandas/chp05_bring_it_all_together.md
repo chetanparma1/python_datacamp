@@ -161,6 +161,55 @@ print(counted.head(15))
 ```
 #### Output:
 ```
+# counted before adding column 'totals'
+In [7]: counted
+Out[7]: 
+Medal  Bronze    Gold  Silver
+NOC                          
+AFG       1.0     NaN     NaN
+AHO       NaN     NaN     1.0
+ALG       8.0     4.0     2.0
+ANZ       5.0    20.0     4.0
+ARG      88.0    68.0    83.0
+ARM       7.0     1.0     1.0
+AUS     413.0   293.0   369.0
+AUT      44.0    21.0    81.0
+AZE       9.0     4.0     3.0
+BAH       5.0     9.0     9.0
+BAR       1.0     NaN     NaN
+BDI       NaN     1.0     NaN
+BEL     150.0    91.0   167.0
+BER       1.0     NaN     NaN
+BLR      53.0    14.0    25.0
+BOH       6.0     NaN     1.0
+BRA     174.0    59.0   139.0
+BUL     136.0    53.0   142.0
+BWI       5.0     NaN     NaN
+CAN     227.0   154.0   211.0
+CHI      21.0     3.0     9.0
+CHN     193.0   234.0   252.0
+CIV       NaN     NaN     1.0
+CMR       1.0    20.0     1.0
+COL       7.0     1.0     3.0
+CRC       2.0     1.0     1.0
+CRO      18.0    31.0    30.0
+
+# counted after adding column 'totals'
+In [14]: counted.head(10)
+Out[14]: 
+Medal  Bronze    Gold  Silver  totals
+NOC                                  
+USA    1052.0  2088.0  1195.0  4335.0
+URS     584.0   838.0   627.0  2049.0
+GBR     505.0   498.0   591.0  1594.0
+FRA     475.0   378.0   461.0  1314.0
+ITA     374.0   460.0   394.0  1228.0
+GER     454.0   407.0   350.0  1211.0
+AUS     413.0   293.0   369.0  1075.0
+HUN     345.0   400.0   308.0  1053.0
+SWE     325.0   347.0   349.0  1021.0
+GDR     225.0   329.0   271.0   825.0
+
 <script.py> output:
     Medal  Bronze    Gold  Silver  totals
     NOC                                  
