@@ -266,3 +266,70 @@ print(ev_gen_uniques)
 ```
 #### Comment:
 Well done! You'll continue this exploration in the next two exercises.
+
+## 05. Finding possible errors with .groupby()
+You will now use .groupby() to continue your exploration. Your job is to group by 'Event_gender' and 'Gender' and count the rows.
+
+You will see that there is only one suspicious row: This is likely a data error.
+
+The DataFrame is available to you as medals.
+
+### Instructions:
+* Group medals by 'Event_gender' and 'Gender'.
+* Create a medal_count_by_gender DataFrame with a group count using the .count() method.
+* Print medal_count_by_gender. This has been done for you, so hit 'Submit Answer' to view the result.
+
+#### Script:
+```
+# Group medals by the two columns: medals_by_gender
+medals_by_gender = medals.groupby(['Event_gender', 'Gender'])
+
+# Create a DataFrame with a group count: medal_count_by_gender
+medal_count_by_gender = medals_by_gender.count()
+
+# Print medal_count_by_gender
+print(medal_count_by_gender)
+```
+#### Output:
+```
+<script.py> output:
+                          City  Edition  Sport  Discipline  Athlete    NOC  Event  Medal
+    Event_gender Gender                                                                 
+    M            Men     20067    20067  20067       20067    20067  20067  20067  20067
+    W            Men         1        1      1           1        1      1      1      1
+                 Women    7277     7277   7277        7277     7277   7277   7277   7277
+    X            Men      1653     1653   1653        1653     1653   1653   1653   1653
+                 Women     218      218    218         218      218    218    218    218
+```
+#### Comment:
+Great work! You're close to identifying the suspicious data point
+
+## 06. Locating suspicious data
+You will now inspect the suspect record by locating the offending row.
+
+You will see that, according to the data, Joyce Chepchumba was a man that won a medal in a women's event. That is a data error as you can confirm with a web search.
+
+### Instructions:
+* Create a Boolean Series with a condition that captures the only row that has medals.Event_gender == 'W' and medals.Gender == 'Men'. Be sure to use the & operator.
+* Use the Boolean Series to create a DataFrame called suspect with the suspicious row.
+* Print suspect. This has been done for you, so hit 'Submit Answer' to see the result.
+
+#### Script:
+```
+# Create the Boolean Series: sus
+sus = (medals.Event_gender == 'W') & (medals.Gender == 'Men')
+
+# Create a DataFrame with the suspicious row: suspect
+suspect = medals[sus]
+
+# Print suspect
+print(suspect)
+```
+#### Output:
+```
+<script.py> output:
+             City  Edition      Sport Discipline            Athlete  NOC Gender     Event Event_gender   Medal
+    23675  Sydney     2000  Athletics  Athletics  CHEPCHUMBA, Joyce  KEN    Men  marathon            W  Bronze
+```
+#### Comment:
+Fantastic! You have to always watch out for errors like this in your data.
