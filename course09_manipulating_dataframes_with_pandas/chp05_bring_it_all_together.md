@@ -564,3 +564,33 @@ dtype: int64
 ```
 #### Comment:
 Well done! Here, once again, the USSR comes out on top.
+
+## 10. Visualizing USA Medal Counts by Edition: Line Plot
+Your job in this exercise is to visualize the medal counts by 'Edition' for the USA. The DataFrame has been pre-loaded for you as medals.
+
+### Instructions:
+* Create a DataFrame usa with data only for the USA.
+* Group usa such that ['Edition', 'Medal'] is the index. Aggregate the count over 'Athlete'.
+* Use .unstack() with level='Medal' to reshape the DataFrame usa_medals_by_year.
+* Construct a line plot from the final DataFrame usa_medals_by_year. This has been done for you, so hit 'Submit Answer' to see the plot!
+
+#### Script:
+```
+# Create the DataFrame: usa
+usa = medals[medals['NOC'] == 'USA']
+
+# Group usa by ['Edition', 'Medal'] and aggregate over 'Athlete'
+usa_medals_by_year = usa.groupby(['Edition', 'Medal'])['Athlete'].count()
+
+# Reshape usa_medals_by_year by unstacking
+usa_medals_by_year = usa_medals_by_year.unstack(level='Medal')
+
+# Plot the DataFrame usa_medals_by_year
+usa_medals_by_year.plot()
+plt.show()
+``` 
+#### Output:
+![Alt text](./medals.svg)
+
+#### Comment:
+Great work! It's difficult to gain too much insight from this visualization, however. An area plot, which you'll construct in the next exercise, may be more helpful.
