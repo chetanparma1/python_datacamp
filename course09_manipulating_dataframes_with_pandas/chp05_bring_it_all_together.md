@@ -476,3 +476,91 @@ Out[14]:
 ```
 #### Comment:
 Great work! As you can see, the USSR is actually higher than the US when you look only at the Olympic competitions between 1952 and 1988!
+
+## 09. Counting USA vs. USSR Cold War Olympic Medals
+For this exercise, you want to see which country, the USA or the USSR, won the most medals consistently over the Cold War period.
+
+There are several steps involved in carrying out this computation.
+
+You'll need a pivot table with years ('Edition') on the index and countries ('NOC') on the columns. The entries will be the total number of medals each country won that year. If the country won no medals in a given edition, expect a NaN in that entry of the pivot table.
+You'll need to slice the Cold War period and subset the 'USA' and 'URS' columns.
+You'll need to make a Series from this slice of the pivot table that tells which country won the most medals in that edition using .idxmax(axis='columns'). If .max() returns the maximum value of Series or 1D array, .idxmax() returns the index of the maximizing element. The argument axis=columns or axis=1 is required because, by default, this aggregation would be done along columns for a DataFrame.
+The final Series contains either 'USA' or 'URS' according to which country won the most medals in each Olympic edition. You can use .value_counts() to count the number of occurrences of each.
+
+### Instructions:
+* Construct medals_won_by_country using medals.pivot_table().
+* The index should be the years ('Edition') & the columns should be country ('NOC')
+* The values should be 'Athlete' (which captures every medal regardless of kind) & the aggregation method should be 'count' (which captures the total number of medals won).
+* Create cold_war_usa_urs_medals by slicing the pivot table medals_won_by_country. Your slice should contain the editions from years 1952:1988 and only the columns 'USA' & 'URS' from the pivot table.
+* Create the Series most_medals by applying the .idxmax() method to cold_war_usa_urs_medals. Be sure to use axis='columns'.
+* Print the result of applying .value_counts() to most_medals. The result reported gives the number of times each of the USA or the USSR won more Olympic medals in total than the other between 1952 and 1988.
+
+#### Script:
+```
+# Create the pivot table: medals_won_by_country
+medals_won_by_country = medals.pivot_table(index='Edition', columns='NOC', values='Athlete', aggfunc='count')
+# print(medals_won_by_country.head())
+
+# Slice medals_won_by_country: cold_war_usa_urs_medals
+cold_war_usa_urs_medals = medals_won_by_country.loc[1952:1988, ['USA','URS']]
+# print(cold_war_usa_urs_medals)
+
+# Create most_medals --> find the country with most medals between 'USA', 'URS' in each year
+# we compare columns for each row  --> axis = 1 (columns)
+most_medals = cold_war_usa_urs_medals.idxmax(axis='columns')
+
+# Print most_medals.value_counts()
+print(most_medals.value_counts())
+```
+
+#### Output:
+```
+print(medals_won_by_country.head())
+NOC      AFG  AHO  ALG   ANZ  ARG  ARM  AUS   AUT  AZE  BAH  BAR  BDI   BEL  BER  BLR  BOH  BRA  BUL  BWI   CAN  CHI  CHN  CIV  CMR  COL  CRC  CRO  CUB  CZE   DEN  DJI  DOM  ECU  EGY  ERI  ESP  EST  ETH  EUA  EUN   FIN    FRA  FRG    GBR  GDR  GEO   GER  GHA   GRE  GUY  HAI  HKG   HUN  INA  IND  IOP  IRI  IRL  IRQ  ISL  ISR  ISV   ITA  JAM  JPN  KAZ  KEN  KGZ  KOR  KSA  KUW  LAT  LIB  LTU  LUX  MAR  MAS  MDA  MEX  MGL  MKD  MOZ  MRI  NAM   NED  NGR  NIG   NOR  NZL  PAK  PAN  PAR  PER  PHI  POL  POR  PRK  PUR  QAT  ROU  RSA   RU1  RUS  SCG  SEN  SIN  SLO  SRB  SRI  SUD   SUI  SUR  SVK    SWE  SYR  TAN  TCH  TGA  THA  TJK  TOG  TPE  TRI  TUN  TUR  UAE  UGA  UKR  URS  URU    USA  UZB  VEN  VIE  YUG  ZAM  ZIM   ZZX
+Edition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+1896     NaN  NaN  NaN   NaN  NaN  NaN  2.0   5.0  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   6.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN   11.0  NaN    7.0  NaN  NaN  33.0  NaN  52.0  NaN  NaN  NaN   6.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   3.0  NaN  NaN    NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   20.0  NaN  NaN  NaN  NaN  NaN  NaN   6.0
+1900     NaN  NaN  NaN   NaN  NaN  NaN  5.0   6.0  NaN  NaN  NaN  NaN  39.0  NaN  NaN  2.0  NaN  NaN  NaN   2.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  2.0  NaN   6.0  NaN  NaN  NaN  NaN  NaN  2.0  NaN  NaN  NaN  NaN   NaN  185.0  NaN   78.0  NaN  NaN  40.0  NaN   NaN  NaN  NaN  NaN   5.0  NaN  2.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN   4.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  20.0  NaN  NaN   9.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  15.0  NaN  NaN    1.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   55.0  NaN  NaN  NaN  NaN  NaN  NaN  34.0
+1904     NaN  NaN  NaN   NaN  NaN  NaN  NaN   1.0  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  35.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  9.0  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN    NaN  NaN    2.0  NaN  NaN  13.0  NaN   2.0  NaN  NaN  NaN   4.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   2.0  NaN  NaN    NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  394.0  NaN  NaN  NaN  NaN  NaN  NaN   8.0
+1908     NaN  NaN  NaN  19.0  NaN  NaN  NaN   1.0  NaN  NaN  NaN  NaN  31.0  NaN  NaN  5.0  NaN  NaN  NaN  51.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  15.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  29.0   35.0  NaN  347.0  NaN  NaN  22.0  NaN   3.0  NaN  NaN  NaN  18.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   7.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  11.0  NaN  NaN  44.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  2.0   3.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN   98.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   63.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN
+1912     NaN  NaN  NaN  10.0  NaN  NaN  NaN  14.0  NaN  NaN  NaN  NaN  19.0  NaN  NaN  NaN  NaN  NaN  NaN   8.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  84.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  67.0   25.0  NaN  160.0  NaN  NaN  52.0  NaN   2.0  NaN  NaN  NaN  30.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  21.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  22.0  NaN  NaN  76.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  7.0  14.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN  NaN  173.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  101.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN
+
+
+print(cold_war_usa_urs_medals)
+NOC        USA    URS
+Edition              
+1952     130.0  117.0
+1956     118.0  169.0
+1960     112.0  169.0
+1964     150.0  174.0
+1968     149.0  188.0
+1972     155.0  211.0
+1976     155.0  285.0
+1980       NaN  442.0
+1984     333.0    NaN
+1988     193.0  294.0
+
+
+In [26]: most_medals
+Out[26]: 
+Edition
+1952    USA
+1956    URS
+1960    URS
+1964    URS
+1968    URS
+1972    URS
+1976    URS
+1980    URS
+1984    USA
+1988    URS
+dtype: object
+
+
+In [27]: print(most_medals.value_counts())
+URS    8
+USA    2
+dtype: int64
+
+```
+#### Comment:
+Well done! Here, once again, the USSR comes out on top.
