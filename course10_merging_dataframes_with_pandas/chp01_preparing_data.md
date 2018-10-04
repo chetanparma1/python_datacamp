@@ -320,3 +320,57 @@ print(common_names.shape)
 #### Comment:
 Excellent work! It looks like 348 names fell out of fashion between 1881 and 1981!
 
+## 07. Adding unaligned DataFrames
+The DataFrames january and february, which have been printed in the IPython Shell, represent the sales a company made in the corresponding months.
+
+The Indexes in both DataFrames are called Company, identifying which company bought that quantity of units. The column Units is the number of units sold.
+
+If you were to add these two DataFrames by executing the command total = january + february, how many rows would the resulting DataFrame have? Try this in the IPython Shell and find out for yourself.
+
+### Possible Answers
+* 3 rows.
+press 1
+* 4 rows.
+press 2
+* 5 rows.
+press 3
+* 6 rows.
+press 4
+
+#### Script & Output:
+```
+january
+                  Units
+Company                
+Acme Corporation     19
+Hooli                17
+Initech              20
+Mediacore            10
+Streeplex            13
+
+february
+                  Units
+Company                
+Acme Corporation     15
+Hooli                 3
+Mediacore            13
+Vandelay Inc         25
+
+In [1]: total = january + february
+
+In [2]: total
+Out[2]: 
+                  Units
+Company                
+Acme Corporation   34.0
+Hooli              20.0
+Initech             NaN
+Mediacore          23.0
+Streeplex           NaN
+Vandelay Inc        NaN
+```
+#### Answer:
+4
+
+#### Comment:
+Correct! january and february both consist of the sales of the Companies Acme Corporation, Hooli, and Mediacore. january has the additional two companies Initech and Streeplex, while february has the additional company Vandelay Inc. Together, they consist of the sales of 6 unique companies, and so total would have 6 rows.
