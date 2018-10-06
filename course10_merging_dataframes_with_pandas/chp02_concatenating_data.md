@@ -119,3 +119,188 @@ print(quarter1.sum())
 ```
 #### Comment:
 Well done! As you can see, appending pandas Series is very straightforward!
+
+## 03. Concatenating pandas Series along row axis
+Having learned how to append Series, you'll now learn how to achieve the same result by concatenating Series instead. You'll continue to work with the sales data you've seen previously. This time, the DataFrames jan, feb, and mar have been pre-loaded.
+
+Your job is to use pd.concat() with a list of Series to achieve the same result that you would get by chaining calls to .append().
+
+You may be wondering about the difference between pd.concat() and pandas' .append() method. One way to think of the difference is that .append() is a specific case of a concatenation, while pd.concat() gives you more flexibility, as you'll see in later exercises.
+
+### Instructions:
+* Create an empty list called units. This has been done for you.
+* Use a for loop to iterate over [jan, feb, mar]:
+* In each iteration of the loop, append the 'Units' column of each DataFrame to units.
+* Concatenate the Series contained in the list units into a longer Series called quarter1 using pd.concat().
+* Specify the keyword argument axis='rows' to stack the Series vertically.
+* Verify that quarter1 has the individual Series stacked vertically by printing slices. This has been done for you, so hit 'Submit Answer' to see the result!
+
+#### Script:
+```
+# Initialize empty list: units
+units = []
+
+# Build the list of Series
+# this will create a list of lists
+for month in [jan, feb, mar]:
+    units.append(month['Units'])
+
+# Concatenate the list: quarter1
+quarter1 = pd.concat(units, axis='rows')
+
+# Print slices from quarter1
+print(quarter1.loc['jan 27, 2015':'feb 2, 2015'])
+print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
+```
+#### Output:
+```
+In [4]: units
+Out[4]: 
+[Date
+ 2015-01-21 19:13:21    11
+ 2015-01-09 05:23:51     8
+ 2015-01-06 17:19:34    17
+ 2015-01-02 09:51:06    16
+ 2015-01-11 14:51:02    11
+ 2015-01-01 07:31:20    18
+ 2015-01-24 08:01:16     1
+ 2015-01-25 15:40:07     6
+ 2015-01-13 05:36:12     7
+ 2015-01-03 18:00:19    19
+ 2015-01-16 00:33:47    17
+ 2015-01-16 07:21:12    13
+ 2015-01-20 19:49:24    12
+ 2015-01-26 01:50:25    14
+ 2015-01-15 02:38:25    16
+ 2015-01-06 13:47:37    16
+ 2015-01-15 15:33:40     7
+ 2015-01-27 07:11:55    18
+ 2015-01-20 11:28:02    13
+ 2015-01-16 19:20:46     8
+ Name: Units, dtype: int64, Date
+ 2015-02-26 08:57:45     4
+ 2015-02-16 12:09:19    10
+ 2015-02-03 14:14:18    13
+ 2015-02-02 08:33:01     3
+ 2015-02-25 00:29:00    10
+ 2015-02-05 01:53:06    19
+ 2015-02-09 08:57:30    19
+ 2015-02-11 20:03:08     7
+ 2015-02-04 21:52:45    14
+ 2015-02-09 13:09:55     7
+ 2015-02-07 22:58:10     1
+ 2015-02-11 22:50:44     4
+ 2015-02-26 08:58:51     1
+ 2015-02-05 22:05:03    10
+ 2015-02-04 15:36:29    13
+ 2015-02-19 16:02:58    10
+ 2015-02-19 10:59:33    16
+ 2015-02-02 20:54:49     9
+ 2015-02-21 05:01:26     3
+ 2015-02-21 20:41:47     3
+ Name: Units, dtype: int64, Date
+ 2015-03-22 14:42:25     6
+ 2015-03-12 18:33:06    19
+ 2015-03-22 03:58:28     8
+ 2015-03-15 00:53:12    19
+ 2015-03-17 19:25:37    10
+ 2015-03-16 05:54:06     3
+ 2015-03-25 10:18:10     9
+ 2015-03-25 16:42:42    12
+ 2015-03-26 05:20:04     3
+ 2015-03-06 10:11:45    17
+ 2015-03-22 21:14:39    11
+ 2015-03-17 19:38:12     8
+ 2015-03-28 19:20:38     5
+ 2015-03-13 04:41:32     8
+ 2015-03-06 02:03:56    17
+ 2015-03-13 11:40:16    11
+ 2015-03-27 08:29:45     6
+ 2015-03-21 06:42:41    19
+ 2015-03-15 08:50:45    18
+ 2015-03-13 16:25:24     9
+ Name: Units, dtype: int64]
+ 
+ 
+ In [8]: quarter1
+Out[8]: 
+Date
+2015-01-21 19:13:21    11
+2015-01-09 05:23:51     8
+2015-01-06 17:19:34    17
+2015-01-02 09:51:06    16
+2015-01-11 14:51:02    11
+2015-01-01 07:31:20    18
+2015-01-24 08:01:16     1
+2015-01-25 15:40:07     6
+2015-01-13 05:36:12     7
+2015-01-03 18:00:19    19
+2015-01-16 00:33:47    17
+2015-01-16 07:21:12    13
+2015-01-20 19:49:24    12
+2015-01-26 01:50:25    14
+2015-01-15 02:38:25    16
+2015-01-06 13:47:37    16
+2015-01-15 15:33:40     7
+2015-01-27 07:11:55    18
+2015-01-20 11:28:02    13
+2015-01-16 19:20:46     8
+2015-02-26 08:57:45     4
+2015-02-16 12:09:19    10
+2015-02-03 14:14:18    13
+2015-02-02 08:33:01     3
+2015-02-25 00:29:00    10
+2015-02-05 01:53:06    19
+2015-02-09 08:57:30    19
+2015-02-11 20:03:08     7
+2015-02-04 21:52:45    14
+2015-02-09 13:09:55     7
+2015-02-07 22:58:10     1
+2015-02-11 22:50:44     4
+2015-02-26 08:58:51     1
+2015-02-05 22:05:03    10
+2015-02-04 15:36:29    13
+2015-02-19 16:02:58    10
+2015-02-19 10:59:33    16
+2015-02-02 20:54:49     9
+2015-02-21 05:01:26     3
+2015-02-21 20:41:47     3
+2015-03-22 14:42:25     6
+2015-03-12 18:33:06    19
+2015-03-22 03:58:28     8
+2015-03-15 00:53:12    19
+2015-03-17 19:25:37    10
+2015-03-16 05:54:06     3
+2015-03-25 10:18:10     9
+2015-03-25 16:42:42    12
+2015-03-26 05:20:04     3
+2015-03-06 10:11:45    17
+2015-03-22 21:14:39    11
+2015-03-17 19:38:12     8
+2015-03-28 19:20:38     5
+2015-03-13 04:41:32     8
+2015-03-06 02:03:56    17
+2015-03-13 11:40:16    11
+2015-03-27 08:29:45     6
+2015-03-21 06:42:41    19
+2015-03-15 08:50:45    18
+2015-03-13 16:25:24     9
+Name: Units, dtype: int64
+
+
+<script.py> output:
+    Date
+    2015-01-27 07:11:55    18
+    2015-02-02 08:33:01     3
+    2015-02-02 20:54:49     9
+    Name: Units, dtype: int64
+    Date
+    2015-02-26 08:57:45     4
+    2015-02-26 08:58:51     1
+    2015-03-06 10:11:45    17
+    2015-03-06 02:03:56    17
+    Name: Units, dtype: int64
+    
+```
+#### Comment:
+Great work! As in this exercise, you can achieve the same results as appending by concatenating along the row axis.
