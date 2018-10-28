@@ -347,3 +347,71 @@ print(combined_names.loc[combined_names['name'] == 'Morgan'])
 ```
 #### Comment:
 Great work!
+
+## 05. Concatenating pandas DataFrames along column axis
+The function pd.concat() can concatenate DataFrames horizontally as well as vertically (vertical is the default). To make the DataFrames stack horizontally, you have to specify the keyword argument axis=1 or axis='columns'.
+
+In this exercise, you'll use weather data with maximum and mean daily temperatures sampled at different rates (quarterly versus monthly). You'll concatenate the rows of both and see that, where rows are missing in the coarser DataFrame, null values are inserted in the concatenated DataFrame. This corresponds to an outer join (which you will explore in more detail in later exercises).
+
+The files 'quarterly_max_temp.csv' and 'monthly_mean_temp.csv' have been pre-loaded into the DataFrames weather_max and weather_mean respectively, and pandas has been imported as pd.
+
+### Instructions:
+* Create a new DataFrame called weather by concatenating the DataFrames weather_max and weather_mean horizontally.
+* Pass the DataFrames to pd.concat() as a list and specify the keyword argument axis=1 to stack them horizontally.
+* Print the new DataFrame weather.
+
+#### Script:
+```
+# Concatenate weather_max and weather_mean horizontally: weather
+weather = pd.concatenate([weather_max, weather_mean])
+
+# Print weather
+print(weather)
+```
+
+#### Output:
+```
+In [1]: weather_max
+Out[1]: 
+       Max TemperatureF
+Month                  
+Jan                  68
+Apr                  89
+Jul                  91
+Oct                  84
+
+In [2]: weather_mean
+Out[2]: 
+       Mean TemperatureF
+Month                   
+Apr            53.100000
+Aug            70.000000
+Dec            34.935484
+Feb            28.714286
+Jan            32.354839
+Jul            72.870968
+Jun            70.133333
+Mar            35.000000
+May            62.612903
+Nov            39.800000
+Oct            55.451613
+Sep            63.766667
+
+<script.py> output:
+         Max TemperatureF  Mean TemperatureF
+    Apr              89.0          53.100000
+    Aug               NaN          70.000000
+    Dec               NaN          34.935484
+    Feb               NaN          28.714286
+    Jan              68.0          32.354839
+    Jul              91.0          72.870968
+    Jun               NaN          70.133333
+    Mar               NaN          35.000000
+    May               NaN          62.612903
+    Nov               NaN          39.800000
+    Oct              84.0          55.451613
+    Sep               NaN          63.766667
+```
+#### Comment:
+Well done! This is where you start to see the advantages of concatenating over appending.
+
