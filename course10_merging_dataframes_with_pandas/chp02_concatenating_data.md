@@ -1037,3 +1037,99 @@ print(medals)
 ```
 #### Comment:
 Well done! France, Italy, and Germany got dropped as part of the join since they are not present in each of bronze, silver, and gold. Therefore, the final DataFrame has only the United States, Soviet Union, and United Kingdom.
+
+## 13. Resampling & concatenating DataFrames with inner join
+In this exercise, you'll compare the historical 10-year GDP (Gross Domestic Product) growth in the US and in China. The data for the US starts in 1947 and is recorded quarterly; by contrast, the data for China starts in 1961 and is recorded annually.
+
+You'll need to use a combination of resampling and an inner join to align the index labels. You'll need an appropriate offset alias for resampling, and the method .resample() must be chained with some kind of aggregation method (.pct_change() and .last() in this case).
+
+pandas has been imported as pd, and the DataFrames china and us have been pre-loaded, with the output of china.head() and us.head() printed in the IPython Shell.
+
+### Instructions:
+* Make a new DataFrame china_annual by resampling the DataFrame china with .resample('A') (i.e., with annual frequency) and chaining two method calls:
+* Chain .pct_change(10) as an aggregation method to compute the percentage change with an offset of ten years.
+* Chain .dropna() to eliminate rows containing null values.
+* Make a new DataFrame us_annual by resampling the DataFrame us exactly as you resampled china.
+* Concatenate china_annual and us_annual to construct a DataFrame called gdp. Use join='inner' to perform an inner join and use axis=1 to concatenate horizontally.
+* Print the result of resampling gdp every decade (i.e., using .resample('10A')) and aggregating with the method .last(). This has been done for you, so hit 'Submit Answer' to see the result!
+
+#### Script:
+```
+# Resample and tidy china: china_annual
+china_annual = china.resample('A').pct_change(10).dropna()
+
+# Resample and tidy us: us_annual
+us_annual = us.resample('A').pct_change(10).dropna()
+
+# Concatenate china_annual and us_annual: gdp
+gdp = pd.concat([china_annual, us_annual], join = 'inner', axis = 1)
+
+# Resample gdp and print
+print(gdp.resample('10A').last())
+```
+
+#### Output:
+```
+In [4]: china.head()
+Out[4]: 
+                China
+Year                 
+1961-01-01  49.557050
+1962-01-01  46.685179
+1963-01-01  50.097303
+1964-01-01  59.062255
+1965-01-01  69.709153
+
+In [5]: us.head()
+Out[5]: 
+               US
+Year             
+1947-04-01  246.3
+1947-07-01  250.1
+1947-10-01  260.3
+1948-01-01  266.2
+1948-04-01  272.9
+
+In [11]: china_annual.head()
+Out[11]: 
+               China
+Year                
+1971-12-31  0.988860
+1972-12-31  1.402472
+1973-12-31  1.730085
+1974-12-31  1.408556
+1975-12-31  1.311927
+
+In [12]: us_annual.head()
+Out[12]: 
+                  US
+Year                
+1957-12-31  0.882582
+1958-12-31  0.754116
+1959-12-31  0.914788
+1960-12-31  0.809861
+1961-12-31  0.621752
+
+In [17]: gdp.head()
+Out[17]: 
+               China        US
+Year                          
+1971-12-31  0.988860  1.073188
+1972-12-31  1.402472  1.119273
+1973-12-31  1.730085  1.237090
+1974-12-31  1.408556  1.258503
+1975-12-31  1.311927  1.270900
+```
+```
+<script.py> output:
+                   China        US
+    Year                          
+    1971-12-31  0.988860  1.073188
+    1981-12-31  0.972048  1.749631
+    1991-12-31  0.962528  0.922811
+    2001-12-31  2.492511  0.720398
+    2011-12-31  4.623958  0.460947
+    2021-12-31  3.789936  0.377506
+```
+#### Comment:
+Great work! It looks like the 10 year GDP growth of China has been higher than the US since the 1990s.
