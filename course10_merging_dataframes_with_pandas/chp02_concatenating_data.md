@@ -577,3 +577,149 @@ print(medals_sorted.loc[(idx[:, 'United Kingdom']), :])
 ```
 #### Comment:
 Great work! It looks like only the United States and the Soviet Union have won more Silver medals than the United Kingdom.
+
+## 09. Concatenating horizontally to get MultiIndexed columns
+It is also possible to construct a DataFrame with hierarchically indexed columns. For this exercise, you'll start with pandas imported and a list of three DataFrames called dataframes. All three DataFrames contain 'Company', 'Product', and 'Units' columns with a 'Date' column as the index pertaining to sales transactions during the month of February, 2015. The first DataFrame describes Hardware transactions, the second describes Software transactions, and the third, Service transactions.
+
+Your task is to concatenate the DataFrames horizontally and to create a MultiIndex on the columns. From there, you can summarize the resulting DataFrame and slice some information from it.
+
+### Instructions:
+* Construct a new DataFrame february with MultiIndexed columns by concatenating the list dataframes.
+* Use axis=1 to stack the DataFrames horizontally and the keyword argument keys=['Hardware', 'Software', 'Service'] to construct a hierarchical Index from each DataFrame.
+* Print summary information from the new DataFrame february using the .info() method. This has been done for you.
+* Create an alias called idx for pd.IndexSlice.
+* Extract a slice called slice_2_8 from february (using .loc[] & idx) that comprises rows between Feb. 2, 2015 to Feb. 8, 2015 from columns under 'Company'.
+* Print the slice_2_8. This has been done for you, so hit 'Submit Answer' to see the sliced data!
+
+#### Script:
+```
+# Concatenate dataframes: february
+february = pd.concat(dataframes, axis = 1, keys = ['Hardware', 'Software', 'Service'])
+
+# Print february.info()
+print(february.info())
+
+# Assign pd.IndexSlice: idx
+idx = pd.IndexSlice
+
+# Create the slice: slice_2_8
+slice_2_8 = february.loc['2015-02-02':'2015-02-08', idx[:, 'Company']]
+
+# Print slice_2_8
+print(slice_2_8)
+```
+
+#### Output:
+```
+In [15]: dataframes
+Out[15]: 
+[                             Company   Product  Units
+ Date                                                 
+ 2015-02-04 21:52:45  Acme Coporation  Hardware     14
+ 2015-02-07 22:58:10  Acme Coporation  Hardware      1
+ 2015-02-19 10:59:33        Mediacore  Hardware     16
+ 2015-02-02 20:54:49        Mediacore  Hardware      9
+ 2015-02-21 20:41:47            Hooli  Hardware      3,
+                              Company   Product  Units
+ Date                                                 
+ 2015-02-16 12:09:19            Hooli  Software     10
+ 2015-02-03 14:14:18          Initech  Software     13
+ 2015-02-02 08:33:01            Hooli  Software      3
+ 2015-02-05 01:53:06  Acme Coporation  Software     19
+ 2015-02-11 20:03:08          Initech  Software      7
+ 2015-02-09 13:09:55        Mediacore  Software      7
+ 2015-02-11 22:50:44            Hooli  Software      4
+ 2015-02-04 15:36:29        Streeplex  Software     13
+ 2015-02-21 05:01:26        Mediacore  Software      3,
+                        Company  Product  Units
+ Date                                          
+ 2015-02-26 08:57:45  Streeplex  Service      4
+ 2015-02-25 00:29:00    Initech  Service     10
+ 2015-02-09 08:57:30  Streeplex  Service     19
+ 2015-02-26 08:58:51  Streeplex  Service      1
+ 2015-02-05 22:05:03      Hooli  Service     10
+ 2015-02-19 16:02:58  Mediacore  Service     10]
+```
+```
+In [11]: february
+Out[11]: 
+                            Hardware                         Software  \
+                             Company   Product Units          Company   
+Date                                                                    
+2015-02-02 08:33:01              NaN       NaN   NaN            Hooli   
+2015-02-02 20:54:49        Mediacore  Hardware   9.0              NaN   
+2015-02-03 14:14:18              NaN       NaN   NaN          Initech   
+2015-02-04 15:36:29              NaN       NaN   NaN        Streeplex   
+2015-02-04 21:52:45  Acme Coporation  Hardware  14.0              NaN   
+2015-02-05 01:53:06              NaN       NaN   NaN  Acme Coporation   
+2015-02-05 22:05:03              NaN       NaN   NaN              NaN   
+2015-02-07 22:58:10  Acme Coporation  Hardware   1.0              NaN   
+2015-02-09 08:57:30              NaN       NaN   NaN              NaN   
+2015-02-09 13:09:55              NaN       NaN   NaN        Mediacore   
+2015-02-11 20:03:08              NaN       NaN   NaN          Initech   
+2015-02-11 22:50:44              NaN       NaN   NaN            Hooli   
+2015-02-16 12:09:19              NaN       NaN   NaN            Hooli   
+2015-02-19 10:59:33        Mediacore  Hardware  16.0              NaN   
+2015-02-19 16:02:58              NaN       NaN   NaN              NaN   
+2015-02-21 05:01:26              NaN       NaN   NaN        Mediacore   
+2015-02-21 20:41:47            Hooli  Hardware   3.0              NaN   
+2015-02-25 00:29:00              NaN       NaN   NaN              NaN   
+2015-02-26 08:57:45              NaN       NaN   NaN              NaN   
+2015-02-26 08:58:51              NaN       NaN   NaN              NaN   
+
+                                       Service                 
+                      Product Units    Company  Product Units  
+Date                                                           
+2015-02-02 08:33:01  Software   3.0        NaN      NaN   NaN  
+2015-02-02 20:54:49       NaN   NaN        NaN      NaN   NaN  
+2015-02-03 14:14:18  Software  13.0        NaN      NaN   NaN  
+2015-02-04 15:36:29  Software  13.0        NaN      NaN   NaN  
+2015-02-04 21:52:45       NaN   NaN        NaN      NaN   NaN  
+2015-02-05 01:53:06  Software  19.0        NaN      NaN   NaN  
+2015-02-05 22:05:03       NaN   NaN      Hooli  Service  10.0  
+2015-02-07 22:58:10       NaN   NaN        NaN      NaN   NaN  
+2015-02-09 08:57:30       NaN   NaN  Streeplex  Service  19.0  
+2015-02-09 13:09:55  Software   7.0        NaN      NaN   NaN  
+2015-02-11 20:03:08  Software   7.0        NaN      NaN   NaN  
+2015-02-11 22:50:44  Software   4.0        NaN      NaN   NaN  
+2015-02-16 12:09:19  Software  10.0        NaN      NaN   NaN  
+2015-02-19 10:59:33       NaN   NaN        NaN      NaN   NaN  
+2015-02-19 16:02:58       NaN   NaN  Mediacore  Service  10.0  
+2015-02-21 05:01:26  Software   3.0        NaN      NaN   NaN  
+2015-02-21 20:41:47       NaN   NaN        NaN      NaN   NaN  
+2015-02-25 00:29:00       NaN   NaN    Initech  Service  10.0  
+2015-02-26 08:57:45       NaN   NaN  Streeplex  Service   4.0  
+2015-02-26 08:58:51       NaN   NaN  Streeplex  Service   1.0
+```
+```
+<script.py> output:
+    <class 'pandas.core.frame.DataFrame'>
+    DatetimeIndex: 20 entries, 2015-02-02 08:33:01 to 2015-02-26 08:58:51
+    Data columns (total 9 columns):
+    (Hardware, Company)    5 non-null object
+    (Hardware, Product)    5 non-null object
+    (Hardware, Units)      5 non-null float64
+    (Software, Company)    9 non-null object
+    (Software, Product)    9 non-null object
+    (Software, Units)      9 non-null float64
+    (Service, Company)     6 non-null object
+    (Service, Product)     6 non-null object
+    (Service, Units)       6 non-null float64
+    dtypes: float64(3), object(6)
+    memory usage: 1.6+ KB
+    None
+                                Hardware         Software Service
+                                 Company          Company Company
+    Date                                                         
+    2015-02-02 08:33:01              NaN            Hooli     NaN
+    2015-02-02 20:54:49        Mediacore              NaN     NaN
+    2015-02-03 14:14:18              NaN          Initech     NaN
+    2015-02-04 15:36:29              NaN        Streeplex     NaN
+    2015-02-04 21:52:45  Acme Coporation              NaN     NaN
+    2015-02-05 01:53:06              NaN  Acme Coporation     NaN
+    2015-02-05 22:05:03              NaN              NaN   Hooli
+    2015-02-07 22:58:10  Acme Coporation              NaN     NaN
+```
+
+#### Comment:
+Excellent work! Working with MultiIndexes and MultiIndexed columns can seem tricky at first, but with practice, it will become second nature.
