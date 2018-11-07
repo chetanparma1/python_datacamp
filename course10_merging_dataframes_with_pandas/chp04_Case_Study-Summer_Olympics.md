@@ -298,4 +298,59 @@ Fantastic! You're now ready to begin analyzing the medal data.
 ## 04. Counting medals by country/edition in a pivot table
 Here, you'll start with the concatenated DataFrame medals from the previous exercise.
 
-You can construct a pivot table to see the number of medals each country won in each year. The result is a new DataFrame with the Olympic edition on the Index and with 138 country NOC codes as columns. If you want a refresher on pivot tables, it may be useful to refer back to the relevant exercises in Manipulating DataFrames with pandas.
+You can construct a pivot table to see the number of medals each country won in each year. The result is a new DataFrame with the Olympic edition on the Index and with 138 country NOC codes as columns. If you want a refresher on pivot tables, it may be useful to refer back to the relevant exercises in <a href="https://campus.datacamp.com/courses/manipulating-dataframes-with-pandas/rearranging-and-reshaping-data?ex=14">Manipulating DataFrames with pandas</a>.
+
+### Instructions:
+* Construct a pivot table from the DataFrame medals, aggregating by count (by specifying the aggfunc parameter). Use 'Edition' as the index, 'Athlete' for the values, and 'NOC' for the columns.
+* Print the first & last 5 rows of medal_counts. This has been done for you, so hit 'Submit Answer' to see the results!
+
+#### Script:
+```
+# Construct the pivot_table: medal_counts
+medal_counts = medals.pivot_table(index = 'Edition', values = 'Athlete', columns = 'NOC', aggfunc = 'count')
+
+# Print the first & last 5 rows of medal_counts
+print(medal_counts.head())
+print(medal_counts.tail())
+```
+
+#### Output:
+```
+<script.py> output:
+    NOC      AFG  AHO  ALG   ANZ  ARG  ARM  AUS   AUT  AZE  BAH  ...   URS  URU  \
+    Edition                                                      ...              
+    1896     NaN  NaN  NaN   NaN  NaN  NaN  2.0   5.0  NaN  NaN  ...   NaN  NaN   
+    1900     NaN  NaN  NaN   NaN  NaN  NaN  5.0   6.0  NaN  NaN  ...   NaN  NaN   
+    1904     NaN  NaN  NaN   NaN  NaN  NaN  NaN   1.0  NaN  NaN  ...   NaN  NaN   
+    1908     NaN  NaN  NaN  19.0  NaN  NaN  NaN   1.0  NaN  NaN  ...   NaN  NaN   
+    1912     NaN  NaN  NaN  10.0  NaN  NaN  NaN  14.0  NaN  NaN  ...   NaN  NaN   
+    
+    NOC        USA  UZB  VEN  VIE  YUG  ZAM  ZIM   ZZX  
+    Edition                                             
+    1896      20.0  NaN  NaN  NaN  NaN  NaN  NaN   6.0  
+    1900      55.0  NaN  NaN  NaN  NaN  NaN  NaN  34.0  
+    1904     394.0  NaN  NaN  NaN  NaN  NaN  NaN   8.0  
+    1908      63.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN  
+    1912     101.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN  
+    
+    [5 rows x 138 columns]
+    NOC      AFG  AHO  ALG  ANZ   ARG  ARM    AUS  AUT  AZE  BAH ...   URS  URU  \
+    Edition                                                      ...              
+    1992     NaN  NaN  2.0  NaN   2.0  NaN   57.0  6.0  NaN  1.0 ...   NaN  NaN   
+    1996     NaN  NaN  3.0  NaN  20.0  2.0  132.0  3.0  1.0  5.0 ...   NaN  NaN   
+    2000     NaN  NaN  5.0  NaN  20.0  1.0  183.0  4.0  3.0  6.0 ...   NaN  1.0   
+    2004     NaN  NaN  NaN  NaN  47.0  NaN  157.0  8.0  5.0  2.0 ...   NaN  NaN   
+    2008     1.0  NaN  2.0  NaN  51.0  6.0  149.0  3.0  7.0  5.0 ...   NaN  NaN   
+    
+    NOC        USA  UZB  VEN  VIE   YUG  ZAM  ZIM  ZZX  
+    Edition                                             
+    1992     224.0  NaN  NaN  NaN   NaN  NaN  NaN  NaN  
+    1996     260.0  2.0  NaN  NaN  26.0  1.0  NaN  NaN  
+    2000     248.0  4.0  NaN  1.0  26.0  NaN  NaN  NaN  
+    2004     264.0  5.0  2.0  NaN   NaN  NaN  3.0  NaN  
+    2008     315.0  6.0  1.0  1.0   NaN  NaN  4.0  NaN  
+    
+    [5 rows x 138 columns]
+```
+#### Comment:
+Great work! As you can see, the pivot table DataFrame has mostly NaN entries (because most countries do not win any medals in a given Olympic edition).
