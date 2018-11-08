@@ -434,3 +434,99 @@ print(fractions.tail())
 ```
 #### Comment:
 Well done!
+
+## 06. Computing percentage change in fraction of medals won
+Here, you'll start with the DataFrames editions, medals, medal_counts, & fractions from prior exercises.
+
+To see if there is a host country advantage, you first want to see how the fraction of medals won changes from edition to edition.
+
+The expanding mean provides a way to see this down each column. It is the value of the mean with all the data available up to that point in time. If you are interested in learning more about pandas' expanding transformations, this section of the <a href="http://pandas.pydata.org/pandas-docs/stable/computation.html#expanding-windows">pandas documentation</a> has additional information.
+
+### Instructions:
+* Create mean_fractions by chaining the methods .expanding().mean() to fractions.
+* Compute the percentage change in mean_fractions down each column by applying .pct_change() and multiplying by 100. Assign the result to fractions_change.
+* Reset the index of fractions_change using the .reset_index() method. This will make 'Edition' an ordinary column.
+* Print the first and last 5 rows of the DataFrame fractions_change. This has been done for you, so hit 'Submit Answer' to see the results!
+
+#### Script:
+```
+# Apply the expanding mean: mean_fractions
+mean_fractions = fractions.expanding().mean()
+
+# Compute the percentage change: fractions_change
+fractions_change = mean_fractions.pct_change()*100
+
+# Reset the index of fractions_change: fractions_change
+fractions_change = fractions_change.reset_index()
+
+# Print first & last 5 rows of fractions_change
+print(fractions_change.head())
+print(fractions_change.tail())
+
+
+# import pandas as pd
+# asdf = pd.DataFrame({0:[1, 2, 3, 4], 1:[5, 6, 7, 8], 2: [9, 10, 11, 12]})
+
+```
+
+#### Output:
+```
+In [1]: editions.head()
+Out[1]: 
+   Edition  Grand Total       City         Country
+0     1896          151     Athens          Greece
+1     1900          512      Paris          France
+2     1904          470  St. Louis   United States
+3     1908          804     London  United Kingdom
+4     1912          885  Stockholm          Sweden
+
+In [2]: medals.head()
+Out[2]: 
+              Athlete  NOC   Medal  Edition
+0       HAJOS, Alfred  HUN    Gold     1896
+1    HERSCHMANN, Otto  AUT  Silver     1896
+2   DRIVAS, Dimitrios  GRE  Bronze     1896
+3  MALOKINIS, Ioannis  GRE    Gold     1896
+4  CHASAPIS, Spiridon  GRE  Silver     1896
+
+In [3]: medal_counts.head()
+Out[3]: 
+NOC      AFG  AHO  ALG   ANZ  ARG  ARM  AUS   AUT  AZE  BAH  ...   URS  URU  \
+Edition                                                      ...              
+1896     NaN  NaN  NaN   NaN  NaN  NaN  2.0   5.0  NaN  NaN  ...   NaN  NaN   
+1900     NaN  NaN  NaN   NaN  NaN  NaN  5.0   6.0  NaN  NaN  ...   NaN  NaN   
+1904     NaN  NaN  NaN   NaN  NaN  NaN  NaN   1.0  NaN  NaN  ...   NaN  NaN   
+1908     NaN  NaN  NaN  19.0  NaN  NaN  NaN   1.0  NaN  NaN  ...   NaN  NaN   
+1912     NaN  NaN  NaN  10.0  NaN  NaN  NaN  14.0  NaN  NaN  ...   NaN  NaN   
+
+NOC        USA  UZB  VEN  VIE  YUG  ZAM  ZIM   ZZX  
+Edition                                             
+1896      20.0  NaN  NaN  NaN  NaN  NaN  NaN   6.0  
+1900      55.0  NaN  NaN  NaN  NaN  NaN  NaN  34.0  
+1904     394.0  NaN  NaN  NaN  NaN  NaN  NaN   8.0  
+1908      63.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN  
+1912     101.0  NaN  NaN  NaN  NaN  NaN  NaN   NaN  
+
+[5 rows x 138 columns]
+
+In [4]: fractions.head()
+Out[4]: 
+NOC      AFG  AHO  ALG       ANZ  ARG  ARM       AUS       AUT  AZE  BAH  \
+Edition                                                                    
+1896     NaN  NaN  NaN       NaN  NaN  NaN  0.013245  0.033113  NaN  NaN   
+1900     NaN  NaN  NaN       NaN  NaN  NaN  0.009766  0.011719  NaN  NaN   
+1904     NaN  NaN  NaN       NaN  NaN  NaN       NaN  0.002128  NaN  NaN   
+1908     NaN  NaN  NaN  0.023632  NaN  NaN       NaN  0.001244  NaN  NaN   
+1912     NaN  NaN  NaN  0.011299  NaN  NaN       NaN  0.015819  NaN  NaN   
+
+NOC        ...     URS  URU       USA  UZB  VEN  VIE  YUG  ZAM  ZIM       ZZX  
+Edition    ...                                                                 
+1896       ...     NaN  NaN  0.132450  NaN  NaN  NaN  NaN  NaN  NaN  0.039735  
+1900       ...     NaN  NaN  0.107422  NaN  NaN  NaN  NaN  NaN  NaN  0.066406  
+1904       ...     NaN  NaN  0.838298  NaN  NaN  NaN  NaN  NaN  NaN  0.017021  
+1908       ...     NaN  NaN  0.078358  NaN  NaN  NaN  NaN  NaN  NaN       NaN  
+1912       ...     NaN  NaN  0.114124  NaN  NaN  NaN  NaN  NaN  NaN       NaN  
+
+[5 rows x 138 columns]
+
+```
