@@ -843,3 +843,6 @@ Out[3]:
 4     1912          885  Stockholm          Sweden
 ```
 ![Alt text](./influence_bars.svg)
+
+#### Comment:
+Fantastic work! If you want to view a larger version of the figure, click the 'pop-out' next to 'Plots' to load it in a separate window. What do you think - is there a host country advantage?
