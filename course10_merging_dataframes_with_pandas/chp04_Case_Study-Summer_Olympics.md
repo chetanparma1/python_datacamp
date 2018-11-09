@@ -671,3 +671,70 @@ Out[4]:
 ```
 #### Comment:
 Good job! You now have a DataFrame consisting of all the hosts.
+
+## 08. Reshaping for analysis
+This exercise starts off with fractions_change and hosts already loaded.
+
+Your task here is to reshape the fractions_change DataFrame for later analysis.
+
+Initially, fractions_change is a wide DataFrame of 26 rows (one for each Olympic edition) and 139 columns (one for the edition and 138 for the competing countries).
+
+On reshaping with pd.melt(), as you will see, the result is a tall DataFrame with 3588 rows and 3 columns that summarizes the fractional change in the expanding mean of the percentage of medals won for each country in blocks.
+
+### Instructions:
+* Create a DataFrame reshaped by reshaping the DataFrame fractions_change with pd.melt().
+* You'll need to use the keyword argument id_vars='Edition' to set the identifier variable.
+* You'll also need to use the keyword argument value_name='Change' to set the measured variables.
+* Print the shape of the DataFrames reshaped and fractions_change. This has been done for you.
+* Create a DataFrame chn by extracting all the rows from reshaped in which the three letter code for each country ('NOC') is 'CHN'.
+* Print the last 5 rows of the DataFrame chn using the .tail() method. This has been done for you, so hit 'Submit Answer' to see the results!
+
+#### Script:
+```
+# Import pandas
+import pandas as pd
+
+# Reshape fractions_change: reshaped
+reshaped = pd.melt(fractions_change, id_vars='Edition', value_name='Change')
+
+# Print reshaped.shape and fractions_change.shape
+print(reshaped.shape, fractions_change.shape)
+
+# Extract rows from reshaped where 'NOC' == 'CHN': chn
+chn = reshaped[reshaped['NOC'] == 'CHN']
+
+# Print last 5 rows of chn with .tail()
+print(chn.tail())
+```
+#### Output:
+```
+In [2]: fractions_change.head()
+Out[2]: 
+NOC  Edition  AFG  AHO  ALG        ANZ  ARG  ARM        AUS        AUT  AZE  \
+0       1896  NaN  NaN  NaN        NaN  NaN  NaN        NaN        NaN  NaN   
+1       1900  NaN  NaN  NaN        NaN  NaN  NaN -13.134766 -32.304688  NaN   
+2       1904  NaN  NaN  NaN        NaN  NaN  NaN   0.000000 -30.169386  NaN   
+3       1908  NaN  NaN  NaN        NaN  NaN  NaN   0.000000 -23.013510  NaN   
+4       1912  NaN  NaN  NaN -26.092774  NaN  NaN   0.000000   6.254438  NaN   
+
+NOC    ...      URS  URU         USA  UZB  VEN  VIE  YUG  ZAM  ZIM        ZZX  
+0      ...      NaN  NaN         NaN  NaN  NaN  NaN  NaN  NaN  NaN        NaN  
+1      ...      NaN  NaN   -9.448242  NaN  NaN  NaN  NaN  NaN  NaN  33.561198  
+2      ...      NaN  NaN  199.651245  NaN  NaN  NaN  NaN  NaN  NaN -22.642384  
+3      ...      NaN  NaN  -19.549222  NaN  NaN  NaN  NaN  NaN  NaN   0.000000  
+4      ...      NaN  NaN  -12.105733  NaN  NaN  NaN  NaN  NaN  NaN   0.000000  
+
+[5 rows x 139 columns]
+```
+```
+<script.py> output:
+    (3588, 3) (26, 139)
+         Edition  NOC     Change
+    567     1992  CHN   4.240630
+    568     1996  CHN   7.860247
+    569     2000  CHN  -3.851278
+    570     2004  CHN   0.128863
+    571     2008  CHN  13.251332
+```
+#### Comment:
+Great work! On looking at the hosting countries from the last 5 Olympic editions and the fractional change of medals won by China the last 5 editions, you can see that China fared significantly better in 2008 (i.e., when China was the host country).
