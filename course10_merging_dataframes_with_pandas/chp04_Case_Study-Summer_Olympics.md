@@ -788,3 +788,58 @@ print(influence.head())
 ```
 #### Comment:
 Well done! It would be far more informative to visualize these results. This is exactly what you'll do in the next exercise!
+
+## 10. Plotting influence of host country
+This final exercise starts off with the DataFrames influence and editions in the namespace. Your job is to plot the influence of being a host country.
+
+### Instructions:
+* Create a Series called change by extracting the 'Change' column from influence.
+* Create a bar plot of change using the .plot() method with kind='bar'. Save the result as ax to permit further customization.
+* Customize the bar plot of change to improve readability:
+* Apply the method .set_ylabel("% Change of Host Country Medal Count") toax.
+* Apply the method .set_title("Is there a Host Country Advantage?") to ax.
+* Apply the method .set_xticklabels(editions['City']) to ax.
+* Reveal the final plot using plt.show().
+
+#### Script:
+```
+# Import pyplot
+import matplotlib.pyplot as plt
+
+# Extract influence['Change']: change
+change = influence['Change']
+
+# Make bar plot of change: ax
+ax = change.plot(kind = 'bar')
+
+# Customize the plot to improve readability
+ax.set_ylabel("% Change of Host Country Medal Count")
+ax.set_title("Is there a Host Country Advantage?")
+ax.set_xticklabels(editions['City'])
+
+# Display the plot
+plt.show()
+```
+
+#### Output:
+```
+In [2]: influence.head()
+Out[2]: 
+         NOC      Change
+Edition                 
+1896     GRE         NaN
+1900     FRA  198.002486
+1904     USA  199.651245
+1908     GBR  134.489218
+1912     SWE   71.896226
+
+In [3]: editions.head()
+Out[3]: 
+   Edition  Grand Total       City         Country
+0     1896          151     Athens          Greece
+1     1900          512      Paris          France
+2     1904          470  St. Louis   United States
+3     1908          804     London  United Kingdom
+4     1912          885  Stockholm          Sweden
+```
+![Alt text](./influence_bars.svg)
