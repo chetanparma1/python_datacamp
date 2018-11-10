@@ -49,3 +49,5 @@ print(engine.table_names())
 <script.py> output:
     ['census', 'state_fact']
 ```
+#### Comment:
+Wonderful work! This database has two tables, as you can see: 'census' and 'state_fact'. You'll be exploring both of these and more throughout this course!
