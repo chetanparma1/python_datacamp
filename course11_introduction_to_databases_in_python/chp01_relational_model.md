@@ -77,3 +77,10 @@ census = Table('census', metadata, autoload=True, autoload_with=engine)
 # Print census table metadata
 print(repr(census))
 ```
+#### Output:
+```
+<script.py> output:
+    Table('census', MetaData(bind=None), Column('state', VARCHAR(length=30), table=<census>), Column('sex', VARCHAR(length=1), table=<census>), Column('age', INTEGER(), table=<census>), Column('pop2000', INTEGER(), table=<census>), Column('pop2008', INTEGER(), table=<census>), schema=None)
+```
+#### Comment:
+Well done! Reflecting a table allows you to work with it in Python.
