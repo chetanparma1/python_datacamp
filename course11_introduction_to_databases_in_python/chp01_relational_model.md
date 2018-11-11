@@ -94,3 +94,23 @@ Following this, we can use the metadata container to find out more details about
 * Reflect the census table as you did in the previous exercise using the Table() function.
 * Print a list of column names of the census table by applying the .keys() method to census.columns.
 * Print the details of the census table using the metadata.tables dictionary along with the repr() function. To do this, first access the 'census' key of the metadata.tables dictionary, and place this inside the provided repr() function.
+
+#### Script:
+```
+# Reflect the census table from the engine: census
+census = Table('census', metadata, autoload=True, autoload_with=engine)
+
+# Print the column names
+print(census.columns.keys())
+
+# Print full table metadata
+print(repr(metadata.tables['census']))
+```
+#### Output:
+```
+<script.py> output:
+    ['state', 'sex', 'age', 'pop2000', 'pop2008']
+    Table('census', MetaData(bind=None), Column('state', VARCHAR(length=30), table=<census>), Column('sex', VARCHAR(length=1), table=<census>), Column('age', INTEGER(), table=<census>), Column('pop2000', INTEGER(), table=<census>), Column('pop2008', INTEGER(), table=<census>), schema=None)
+```
+#### Comment:
+Superb! The census table, as you can see, has five columns. Knowing the names of these columns and their data types will make it easier for you to structure your queries.
