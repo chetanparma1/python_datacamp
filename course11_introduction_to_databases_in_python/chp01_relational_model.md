@@ -228,3 +228,5 @@ print(first_row['state'])
     Illinois
     Illinois
 ```
+#### Comment:
+Excellent work! It looks like the first row consists of the state 'Illinois'.
