@@ -260,3 +260,10 @@ engine = create_engine('postgresql+psycopg2://student:datacamp@postgresql.csrrin
 # Use the .table_names() method on the engine to print the table names
 print(engine.table_names())
 ```
+#### Output:
+```
+<script.py> output:
+    ['census', 'state_fact', 'data', 'users']
+```
+#### Comment:
+Great work! Notice that this census database contains 4 tables: 'census', 'state_fact', 'data', and 'users'.
