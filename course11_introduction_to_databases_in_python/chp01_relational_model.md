@@ -267,3 +267,216 @@ print(engine.table_names())
 ```
 #### Comment:
 Great work! Notice that this census database contains 4 tables: 'census', 'state_fact', 'data', and 'users'.
+
+## 07. Filter data selected from a Table - Simple
+Having connected to the database, it's now time to practice filtering your queries!
+
+As mentioned in the video, a where() clause is used to filter the data that a statement returns. For example, to select all the records from the census table where the sex is Female (or 'F') we would do the following:
+
+select([census]).where(census.columns.sex == 'F')
+
+In addition to == we can use basically any python comparison operator (such as <=, !=, etc) in the where() clause.
+
+### Instructions:
+* Select all records from the census table by passing in census as a list to select().
+* Append a where clause to stmt to return only the records with a state of 'New York'.
+* Execute the statement stmt using .execute() and retrieve the results using .fetchall().
+* Iterate over results and print the age, sex and pop2008 columns from each record. For example, you can print out the age of result with result.age.
+
+#### Script:
+```
+# Create a select query: stmt
+stmt = select([census])
+
+# Add a where clause to filter the results to only those for New York
+stmt = stmt.where(census.columns.state == 'New York')
+
+# Execute the query to retrieve all the data returned: results
+results = connection.execute(stmt).fetchall()
+
+# Loop over the results and print the age, sex, and pop2008
+for result in results:
+    print(result.age, result.sex, result.pop2008)
+
+```
+#### Output:
+```
+
+<script.py> output:
+    0 M 128088
+    1 M 125649
+    2 M 121615
+    3 M 120580
+    4 M 122482
+    5 M 121205
+    6 M 120089
+    7 M 122355
+    8 M 118653
+    9 M 117369
+    10 M 118810
+    11 M 121121
+    12 M 126338
+    13 M 128713
+    14 M 129812
+    15 M 134463
+    16 M 136569
+    17 M 140114
+    18 M 156892
+    19 M 147556
+    20 M 146611
+    21 M 141932
+    22 M 138557
+    23 M 136150
+    24 M 132383
+    25 M 141850
+    26 M 129603
+    27 M 131419
+    28 M 127224
+    29 M 122449
+    30 M 126404
+    31 M 126124
+    32 M 123362
+    33 M 126486
+    34 M 120030
+    35 M 123017
+    36 M 127076
+    37 M 136270
+    38 M 144715
+    39 M 135027
+    40 M 135355
+    41 M 132905
+    42 M 140025
+    43 M 151555
+    44 M 149030
+    45 M 148147
+    46 M 146692
+    47 M 147648
+    48 M 155155
+    49 M 144287
+    50 M 143466
+    51 M 139630
+    52 M 133939
+    53 M 136723
+    54 M 125953
+    55 M 122478
+    56 M 118070
+    57 M 115823
+    58 M 117177
+    59 M 108293
+    60 M 106825
+    61 M 113681
+    62 M 83763
+    63 M 81226
+    64 M 76961
+    65 M 82242
+    66 M 70423
+    67 M 64117
+    68 M 63657
+    69 M 58801
+    70 M 57609
+    71 M 53231
+    72 M 51132
+    73 M 50696
+    74 M 44822
+    75 M 43592
+    76 M 41900
+    77 M 40417
+    78 M 40241
+    79 M 35941
+    80 M 34659
+    81 M 32022
+    82 M 28890
+    83 M 27217
+    84 M 23879
+    85 M 124478
+    0 F 122194
+    1 F 119661
+    2 F 116413
+    3 F 114877
+    4 F 116936
+    5 F 116051
+    6 F 115186
+    7 F 116951
+    8 F 113279
+    9 F 111919
+    10 F 113891
+    11 F 115607
+    12 F 120156
+    13 F 123797
+    14 F 124343
+    15 F 127635
+    16 F 130769
+    17 F 134311
+    18 F 150772
+    19 F 142871
+    20 F 141831
+    21 F 142302
+    22 F 138703
+    23 F 138084
+    24 F 135339
+    25 F 141601
+    26 F 130002
+    27 F 129600
+    28 F 129868
+    29 F 119821
+    30 F 125047
+    31 F 127486
+    32 F 123742
+    33 F 126908
+    34 F 121824
+    35 F 124485
+    36 F 130377
+    37 F 140890
+    38 F 148408
+    39 F 137936
+    40 F 138561
+    41 F 139720
+    42 F 145307
+    43 F 154437
+    44 F 154805
+    45 F 153651
+    46 F 151107
+    47 F 154997
+    48 F 158855
+    49 F 151022
+    50 F 149883
+    51 F 146988
+    52 F 142566
+    53 F 144121
+    54 F 135180
+    55 F 132338
+    56 F 127500
+    57 F 126450
+    58 F 128713
+    59 F 121743
+    60 F 119540
+    61 F 126847
+    62 F 96462
+    63 F 94667
+    64 F 90185
+    65 F 97321
+    66 F 83336
+    67 F 77404
+    68 F 77802
+    69 F 71850
+    70 F 71451
+    71 F 66625
+    72 F 65037
+    73 F 65719
+    74 F 58818
+    75 F 58722
+    76 F 57584
+    77 F 56907
+    78 F 58456
+    79 F 54136
+    80 F 52932
+    81 F 50693
+    82 F 48206
+    83 F 47777
+    84 F 43454
+    85 F 273476
+
+In [1]: 
+```
+#### Comment:
+Well done! Do you notice any interesting results? What was the most common age among males and females in New York in 2008?
