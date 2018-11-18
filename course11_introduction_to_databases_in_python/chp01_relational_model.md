@@ -491,8 +491,549 @@ We've already created a list of some of the most densely populated states.
 * Append a where clause to return all the records with a state in the states list. Use in_(states) on census.columns.state to do this.
 * Loop over the ResultProxy connection.execute(stmt) and print the state and pop2000 columns from each record.
 
+#### Script
+```
+# Create a query for the census table: stmt
+stmt = select([census])
+
+# Append a where clause to match all the states in_ the list states
+stmt = stmt.where((census.columns.state).in_(states))
+
+# Loop over the ResultProxy and print the state and its population in 2000
+for s in connection.execute(stmt):
+    print(s['state'], s['pop2000'])
+```
+
 #### Output:
 ```
 In [3]: states
 Out[3]: ['New York', 'California', 'Texas'] 
+```
+```
+In [9]: census.columns.keys()
+Out[9]: ['state', 'sex', 'age', 'pop2000', 'pop2008']
+```
+```
+
+<script.py> output:
+    New York 126237
+    New York 124008
+    New York 124725
+    New York 126697
+    New York 131357
+    New York 133095
+    New York 134203
+    New York 137986
+    New York 139455
+    New York 142454
+    New York 145621
+    New York 138746
+    New York 135565
+    New York 132288
+    New York 132388
+    New York 131959
+    New York 130189
+    New York 132566
+    New York 132672
+    New York 133654
+    New York 132121
+    New York 126166
+    New York 123215
+    New York 121282
+    New York 118953
+    New York 123151
+    New York 118727
+    New York 122359
+    New York 128651
+    New York 140687
+    New York 149558
+    New York 139477
+    New York 138911
+    New York 139031
+    New York 145440
+    New York 156168
+    New York 153840
+    New York 152078
+    New York 150765
+    New York 152606
+    New York 159345
+    New York 148628
+    New York 147892
+    New York 144195
+    New York 139354
+    New York 141953
+    New York 131875
+    New York 128767
+    New York 125406
+    New York 124155
+    New York 125955
+    New York 118542
+    New York 118532
+    New York 124418
+    New York 95025
+    New York 92652
+    New York 90096
+    New York 95340
+    New York 83273
+    New York 77213
+    New York 77054
+    New York 72212
+    New York 70967
+    New York 66461
+    New York 64361
+    New York 64385
+    New York 58819
+    New York 58176
+    New York 57310
+    New York 57057
+    New York 57761
+    New York 53775
+    New York 53568
+    New York 51263
+    New York 48440
+    New York 46702
+    New York 43508
+    New York 40730
+    New York 37950
+    New York 35774
+    New York 32453
+    New York 26803
+    California 252494
+    California 247978
+    California 250644
+    California 257443
+    California 266855
+    California 272801
+    California 274899
+    California 277580
+    California 283553
+    California 285478
+    California 284518
+    California 269009
+    California 262671
+    California 254889
+    California 253023
+    California 251962
+    California 249220
+    California 255482
+    California 252607
+    California 248356
+    California 250156
+    California 238235
+    California 235718
+    California 239698
+    California 240655
+    California 250964
+    California 245324
+    California 251413
+    California 260869
+    California 276142
+    California 293816
+    California 273159
+    California 268484
+    California 263472
+    California 269607
+    California 286895
+    California 284414
+    California 280861
+    California 281214
+    California 278802
+    California 290332
+    California 267684
+    California 268045
+    California 261885
+    California 252175
+    California 255340
+    California 239126
+    California 229057
+    California 219293
+    California 214700
+    California 219017
+    California 203068
+    California 200466
+    California 207237
+    California 160674
+    California 158483
+    California 150235
+    California 150046
+    California 133017
+    California 124106
+    California 121984
+    California 114331
+    California 110491
+    California 102859
+    California 99345
+    California 100052
+    California 91053
+    California 89634
+    California 88258
+    California 87840
+    California 88575
+    California 80843
+    California 79376
+    California 76365
+    California 73697
+    California 72885
+    California 69738
+    California 65865
+    California 62867
+    California 58012
+    California 51806
+    California 43254
+    California 40083
+    California 34144
+    California 30384
+    California 136442
+    California 239605
+    California 236543
+    California 240010
+    California 245739
+    California 254522
+    California 260264
+    California 261296
+    California 264083
+    California 270447
+    California 271482
+    California 270567
+    California 256656
+    California 249887
+    California 242724
+    California 240752
+    California 240170
+    California 233186
+    California 235767
+    California 234949
+    California 233477
+    California 233532
+    California 223990
+    California 222035
+    California 227742
+    California 228401
+    California 238602
+    California 233133
+    California 240008
+    California 249185
+    California 266010
+    California 278894
+    California 260916
+    California 256168
+    California 252784
+    California 256283
+    California 276234
+    California 277592
+    California 276277
+    California 275129
+    California 276094
+    California 283554
+    California 265614
+    California 265895
+    California 263355
+    California 255016
+    California 256779
+    California 244172
+    California 236211
+    California 226391
+    California 221928
+    California 225414
+    California 212545
+    California 208500
+    California 215228
+    California 168388
+    California 166675
+    California 158368
+    California 160423
+    California 142287
+    California 133235
+    California 132033
+    California 123328
+    California 120982
+    California 114959
+    California 111942
+    California 113547
+    California 104910
+    California 103883
+    California 102061
+    California 103181
+    California 106514
+    California 99453
+    California 100574
+    California 99772
+    California 99390
+    California 99277
+    California 95046
+    California 90193
+    California 86911
+    California 81990
+    California 75849
+    California 65410
+    California 61518
+    California 54748
+    California 50746
+    California 294583
+    New York 25041
+    New York 21687
+    New York 18873
+    New York 88366
+    New York 120355
+    New York 118219
+    New York 119577
+    New York 121029
+    New York 125247
+    New York 128227
+    New York 128428
+    New York 131161
+    New York 133646
+    New York 135746
+    New York 138287
+    New York 131904
+    New York 129028
+    New York 126571
+    New York 125682
+    New York 125409
+    New York 122770
+    New York 123978
+    New York 125307
+    New York 127956
+    New York 129184
+    New York 124575
+    New York 123701
+    New York 124108
+    New York 122624
+    New York 127474
+    New York 123033
+    New York 128125
+    New York 134795
+    New York 146832
+    New York 152973
+    New York 144001
+    New York 143930
+    New York 144653
+    New York 151147
+    New York 159228
+    New York 159999
+    New York 157911
+    New York 156103
+    New York 159284
+    New York 163331
+    New York 155353
+    New York 153688
+    New York 151615
+    New York 146774
+    New York 148318
+    New York 139802
+    New York 138062
+    New York 134107
+    New York 134399
+    New York 136630
+    New York 130843
+    New York 130196
+    New York 136064
+    New York 106579
+    New York 104847
+    New York 101857
+    New York 108406
+    New York 94346
+    New York 88584
+    New York 88932
+    New York 82899
+    New York 82172
+    New York 77171
+    New York 76032
+    New York 76498
+    New York 70465
+    New York 71088
+    New York 70847
+    New York 71377
+    New York 74378
+    New York 70611
+    New York 70513
+    New York 69156
+    New York 68042
+    New York 68410
+    New York 64971
+    New York 61287
+    New York 58911
+    New York 56865
+    New York 54553
+    New York 46381
+    New York 45599
+    New York 40525
+    New York 37436
+    New York 226378
+    Texas 172223
+    Texas 165635
+    Texas 165337
+    Texas 164292
+    Texas 165785
+    Texas 166278
+    Texas 167170
+    Texas 169210
+    Texas 171199
+    Texas 170521
+    Texas 173734
+    Texas 167859
+    Texas 166474
+    Texas 166014
+    Texas 166081
+    Texas 167257
+    Texas 165881
+    Texas 171567
+    Texas 170011
+    Texas 164671
+    Texas 163295
+    Texas 153946
+    Texas 150839
+    Texas 152673
+    Texas 153769
+    Texas 156739
+    Texas 153181
+    Texas 155480
+    Texas 161048
+    Texas 165852
+    Texas 167982
+    Texas 158505
+    Texas 153855
+    Texas 151149
+    Texas 155095
+    Texas 164514
+    Texas 167136
+    Texas 168668
+    Texas 167261
+    Texas 169195
+    Texas 173212
+    Texas 164647
+    Texas 163690
+    Texas 161774
+    Texas 154542
+    Texas 154603
+    Texas 145891
+    Texas 141254
+    Texas 133710
+    Texas 129998
+    Texas 128278
+    Texas 123298
+    Texas 120815
+    Texas 126031
+    Texas 95701
+    Texas 95537
+    Texas 93337
+    Texas 91482
+    Texas 82603
+    Texas 76614
+    Texas 73441
+    Texas 69422
+    Texas 67820
+    Texas 63502
+    Texas 62593
+    Texas 62994
+    Texas 57324
+    Texas 55581
+    Texas 54657
+    Texas 53235
+    Texas 52902
+    Texas 49046
+    Texas 46608
+    Texas 44784
+    Texas 42390
+    Texas 40487
+    Texas 37785
+    Texas 35332
+    Texas 33199
+    Texas 29635
+    Texas 27357
+    Texas 21864
+    Texas 20249
+    Texas 16946
+    Texas 15033
+    Texas 69392
+    Texas 164724
+    Texas 158669
+    Texas 157386
+    Texas 157374
+    Texas 158236
+    Texas 158722
+    Texas 160506
+    Texas 162126
+    Texas 163788
+    Texas 163500
+    Texas 165717
+    Texas 160176
+    Texas 159167
+    Texas 158693
+    Texas 158580
+    Texas 159654
+    Texas 155841
+    Texas 158372
+    Texas 156767
+    Texas 156778
+    Texas 156625
+    Texas 147729
+    Texas 144433
+    Texas 147865
+    Texas 146961
+    Texas 151098
+    Texas 148823
+    Texas 151810
+    Texas 158452
+    Texas 165252
+    Texas 164600
+    Texas 155658
+    Texas 150518
+    Texas 148996
+    Texas 152593
+    Texas 163350
+    Texas 167597
+    Texas 168463
+    Texas 168421
+    Texas 169355
+    Texas 171412
+    Texas 164244
+    Texas 163809
+    Texas 162822
+    Texas 155226
+    Texas 155427
+    Texas 149105
+    Texas 144081
+    Texas 136873
+    Texas 133610
+    Texas 133121
+    Texas 127211
+    Texas 125058
+    Texas 129694
+    Texas 99379
+    Texas 100403
+    Texas 97778
+    Texas 95755
+    Texas 87189
+    Texas 82764
+    Texas 79048
+    Texas 75160
+    Texas 74358
+    Texas 70332
+    Texas 70089
+    Texas 71266
+    Texas 65074
+    Texas 64383
+    Texas 63639
+    Texas 62713
+    Texas 64996
+    Texas 59894
+    Texas 58527
+    Texas 57708
+    Texas 56446
+    Texas 55989
+    Texas 52656
+    Texas 48993
+    Texas 47681
+    Texas 44609
+    Texas 42132
+    Texas 35378
+    Texas 33852
+    Texas 30076
+    Texas 27961
+    Texas 171538
+```
+#### Comment:
+```
+Great work! Along with in_, you can also use methods like and_ any_ to create more powerful where() clauses.
 ```
