@@ -1037,3 +1037,165 @@ Out[9]: ['state', 'sex', 'age', 'pop2000', 'pop2008']
 ```
 Great work! Along with in_, you can also use methods like and_ any_ to create more powerful where() clauses.
 ```
+## 09. Filter data selected from a Table - Advanced
+You're really getting the hang of this! SQLAlchemy also allows users to use conjunctions such as and_(), or_(), and not_() to build more complex filtering. For example, we can get a set of records for people in New York who are 21 or 37 years old with the following code:
+```
+select([census]).where(
+  and_(census.columns.state == 'New York',
+       or_(census.columns.age == 21,
+          census.columns.age == 37
+         )
+      )
+  )
+ ```
+ ### Instructions:
+* Import and_ from the sqlalchemy module.
+* Select all records from the census table.
+* Append a where clause to filter all the records whose state is 'California', and whose sex is not 'M'.
+* Iterate over the ResultProxy and print the age and sex columns from each record.
+
+#### Script:
+```
+# Import and_
+from sqlalchemy import and_
+
+# Build a query for the census table: stmt
+stmt = select([census])
+
+# Append a where clause to select only non-male records from California using and_
+stmt = stmt.where(
+    # The state of California with a non-male sex
+    and_(census.columns.state == 'California',
+         census.columns.sex != 'M'
+         )
+)
+
+# Loop over the ResultProxy printing the age and sex
+for result in connection.execute(stmt):
+    print(result['age'], result['sex'])
+```
+#### Output:
+```
+<script.py> output:
+    0 F
+    1 F
+    2 F
+    3 F
+    4 F
+    5 F
+    6 F
+    7 F
+    8 F
+    9 F
+    10 F
+    11 F
+    12 F
+    13 F
+    14 F
+    15 F
+    16 F
+    17 F
+    18 F
+    19 F
+    20 F
+    21 F
+    22 F
+    23 F
+    24 F
+    25 F
+    26 F
+    27 F
+    28 F
+    29 F
+    30 F
+    31 F
+    32 F
+    33 F
+    34 F
+    35 F
+    36 F
+    37 F
+    38 F
+    39 F
+    40 F
+    41 F
+    42 F
+    43 F
+    44 F
+    45 F
+    46 F
+    47 F
+    48 F
+    49 F
+    50 F
+    51 F
+    52 F
+    53 F
+    54 F
+    55 F
+    56 F
+    57 F
+    58 F
+    59 F
+    60 F
+    61 F
+    62 F
+    63 F
+    64 F
+    65 F
+    66 F
+    67 F
+    68 F
+    69 F
+    70 F
+    71 F
+    72 F
+    73 F
+    74 F
+    75 F
+    76 F
+    77 F
+    78 F
+    79 F
+    80 F
+    81 F
+    82 F
+    83 F
+    84 F
+    85 F
+```
+#### Comment:
+Superb work - you're getting quite good at querying!
+
+## 10. Ordering by a Single Column
+To sort the result output by a field, we use the .order_by() method. By default, the .order_by() method sorts from lowest to highest on the supplied column. You just have to pass in the name of the column you want sorted to .order_by().
+
+In the video, for example, Jason used stmt.order_by(census.columns.state) to sort the result output by the state column.
+
+### Instructions:
+* Select all records of the state column from the census table. To do this, pass census.columns.state as a list to select().
+* Append an `.order_by()` to sort the result output by the state column.
+* Execute stmt using the .execute() method on connection and retrieve all the results using .fetchall().
+* Print the first 10 rows of results.
+
+#### Script:
+```
+# Build a query to select the state column: stmt
+stmt = select([census.columns.state])
+
+# Order stmt by the state column
+stmt = stmt.order_by(census.columns.state)
+
+# Execute the query and store the results: results
+results = connection.execute(stmt).fetchall()
+
+# Print the first 10 results
+print(results[:10])
+```
+#### Output:
+```
+<script.py> output:
+    [('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',), ('Alabama',)]
+```
+#### Comment:
+Well done! Unsurprisingly, when ordering the state column in ascending order, 'Alabama' is the first result.
