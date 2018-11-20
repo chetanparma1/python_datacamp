@@ -146,7 +146,7 @@ print(results)
 #### Comment:
 Fantastic! Notice that the stmt converts into a SQL statement listing all the columns in the table.
 
-## 04. Selecting data from a Table with SQLAlchemy
+## 06. Selecting data from a Table with SQLAlchemy
 Excellent work so far! It's now time to build your first select statement using SQLAlchemy. SQLAlchemy provides a nice "Pythonic" way of interacting with databases. So rather than dealing with the differences between specific dialects of traditional SQL such as MySQL or PostgreSQL, you can leverage the Pythonic framework of SQLAlchemy to streamline your workflow and more efficiently query your data. For this reason, it is worth learning even if you may already be familiar with traditional SQL.
 
 In this exercise, you'll once again build a statement to query all records from the census table. This time, however, you'll make use of the select() function of the sqlalchemy module. This function requires a list of tables or columns as the only required argument.
@@ -192,7 +192,7 @@ In [1]:
 #### Comment:
 Well done! If you're a Pythonista, you will love the Pythonic framework that SQLAlchemy provides!
 
-## 05. Handling a ResultSet
+## 07. Handling a ResultSet
 Recall the differences between a ResultProxy and a ResultSet:
 
 * ResultProxy: The object returned by the .execute() method. It can be used in a variety of ways to get the data returned by the query.
