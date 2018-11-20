@@ -1287,3 +1287,28 @@ In this exercise, you will practice using `func.count()` and `.distinct()` to ge
 So far, you've seen .fetchall() and .first() used on a ResultProxy to get the results. The ResultProxy also has a method called `.scalar()` for getting just the value of a query that returns only one row and column.
 
 This can be very useful when you are querying for just a count or sum.
+
+### Instructions:
+* Build a select statement to count the distinct values in the state field of census.
+* Execute stmt to get the count and store the results as distinct_state_count.
+* Print the value of distinct_state_count.
+
+#### Script
+```
+# Build a query to count the distinct states values: stmt
+stmt = select([func.count(census.columns.state.distinct())])
+
+# Execute the query and store the scalar result: distinct_state_count
+distinct_state_count = connection.execute(stmt).scalar()
+
+# Print the distinct_state_count
+print(distinct_state_count)
+```
+#### Output:
+```
+<script.py> output:
+    51
+```
+
+#### Comment:
+Well done! Notice the use of the .scalar() method: This is useful when you want to get just the value of a query that returns only one row and column, like in this case.
