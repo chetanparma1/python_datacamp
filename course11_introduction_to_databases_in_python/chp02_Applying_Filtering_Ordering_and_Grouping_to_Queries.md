@@ -1117,4 +1117,4 @@ print(results[0].keys())
     ['state', 'count_1']
 ```
 #### Comment:
-Fantastic work! Notice that the the key for the count method just came out as count_1. This can make it hard in complex queries to tell what column is being referred to: In the next exercise, you'll practice assign more descriptive labels when performing such calculations.
+Fantastic work! Notice that the the key for the count method just came out as `count_1`. This can make it hard in complex queries to tell what column is being referred to: In the next exercise, you'll practice assign more descriptive labels when performing such calculations.
