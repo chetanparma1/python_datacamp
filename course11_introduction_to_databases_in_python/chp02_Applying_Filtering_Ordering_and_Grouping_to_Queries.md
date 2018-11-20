@@ -1199,3 +1199,5 @@ print(df)
     3     Florida    18257662
     4    Illinois    12867077
 ```
+#### Comment:
+Brilliant work! If you enjoy using pandas for your data scientific needs, you'll want to always feed ResultProxies into pandas DataFrames!
