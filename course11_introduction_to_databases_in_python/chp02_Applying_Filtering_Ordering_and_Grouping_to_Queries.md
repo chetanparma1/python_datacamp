@@ -1118,3 +1118,10 @@ print(results[0].keys())
 ```
 #### Comment:
 Fantastic work! Notice that the the key for the count method just came out as `count_1`. This can make it hard in complex queries to tell what column is being referred to: In the next exercise, you'll practice assign more descriptive labels when performing such calculations.
+
+## 10. Determining the Population Sum by State
+To avoid confusion with query result column names like `count_1`, we can use the `.label()` method to provide a name for the resulting column. This gets appendedto the function method we are using, and its argument is the name we want to use.
+
+We can pair `func.sum()` with `.group_by()` to get a sum of the population by State and use the label() method to name the output.
+
+We can also create the func.sum() expression before using it in the select statement. We do it the same way we would inside the select statement and store it in a variable. Then we use that variable in the select statement where the func.sum() would normally be.
