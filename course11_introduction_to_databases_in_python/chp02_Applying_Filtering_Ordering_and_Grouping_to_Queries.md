@@ -1079,3 +1079,6 @@ print(distinct_state_count)
 
 #### Comment:
 Well done! Notice the use of the .scalar() method: This is useful when you want to get just the value of a query that returns only one row and column, like in this case.
+
+## 09. Count of Records by State
+Often, we want to get a count for each record with a particular value in another column. The `.group_by()` method helps answer this type of query. You can pass a column to the .group_by() method and use in an aggregate function like sum() or count(). Much like the .order_by() method, .group_by() can take multiple columns as arguments.
