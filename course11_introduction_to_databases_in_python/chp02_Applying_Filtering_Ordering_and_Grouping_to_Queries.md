@@ -1201,3 +1201,14 @@ print(df)
 ```
 #### Comment:
 Brilliant work! If you enjoy using pandas for your data scientific needs, you'll want to always feed ResultProxies into pandas DataFrames!
+
+## 12. From SQLAlchemy results to a Graph
+We can also take advantage of pandas and Matplotlib to build figures of our data. Remember that data visualization is essential for both exploratory data analysis and communication of your data!
+
+### Instructions:
+* Import matplotlib.pyplot as plt.
+* Create a DataFrame df using pd.DataFrame() on the provided results.
+* Set the columns of the DataFrame df.columns to be the columns from the first result object results[0].keys().
+* Print the DataFrame df.
+* Use the plot.bar() method on df to create a bar plot of the results.
+* Display the plot with plt.show().
