@@ -1253,3 +1253,24 @@ Now you'll practice connecting to a MySQL database: it will be the same census d
 ** '@courses.csrrinzqubik.us-east-1.rds.amazonaws.com:3306/' (the host and port).
 ** 'census' (the database name).
 * Use the .table_names() method on engine to print the table names.
+
+#### Script
+```
+# Import create_engine function
+from sqlalchemy import create_engine
+
+# Create an engine to the census database
+# mysql = dialect
+# pymysql = driver
+engine = create_engine('mysql+pymysql://student:datacamp@courses.csrrinzqubik.us-east-1.rds.amazonaws.com:3306/census')
+
+# Print the table names
+print(engine.table_names())
+```
+#### Output:
+```
+<script.py> output:
+    ['census', 'state_fact']
+```
+#### Comment:
+Well done! This database, like the one you explored in Chapter 1, has two tables: 'census', and 'state_fact'.
