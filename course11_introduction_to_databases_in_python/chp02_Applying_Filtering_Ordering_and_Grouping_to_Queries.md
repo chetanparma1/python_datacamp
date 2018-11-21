@@ -1212,3 +1212,28 @@ We can also take advantage of pandas and Matplotlib to build figures of our data
 * Print the DataFrame df.
 * Use the plot.bar() method on df to create a bar plot of the results.
 * Display the plot with plt.show().
+
+#### Script:
+```
+# Import pyplot as plt from matplotlib
+from matplotlib import pyplot as plt
+
+# Create a DataFrame from the results: df
+df = pd.DataFrame(results)
+
+# Set Column names
+df.columns = results[0].keys()
+
+# Print the DataFrame
+print(df)
+
+# Plot the DataFrame
+df.plot.bar()
+plt.show()
+
+```
+#### Output:
+![Alt text](./sqlalchemy_graph.png)
+
+#### Comment:
+Well done! You're ready to learn about more advanced SQLAlchemy Queries!
