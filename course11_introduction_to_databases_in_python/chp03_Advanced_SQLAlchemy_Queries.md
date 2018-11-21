@@ -81,5 +81,13 @@ for result in results:
 In [3]: census.columns.keys()
 Out[3]: ['state', 'sex', 'age', 'pop2000', 'pop2008']
 ```
+```
+<script.py> output:
+    California:105705
+    Florida:100984
+    Texas:51901
+    New York:47098
+    Pennsylvania:42387
+```
 #### Comment:
 Excellent work! It looks like California grew the most between 2000 and 2008!
