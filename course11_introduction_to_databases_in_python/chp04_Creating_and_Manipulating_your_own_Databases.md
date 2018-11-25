@@ -334,3 +334,5 @@ print(connection.execute(select_stmt).fetchall())
     1
     [('32', 'New York', 'NY', 'USA', 'state', '10', 'current', 'occupied', '', '36', 'N.Y.', 'II', '1', 'Northeast', '2', 'Mid-Atlantic', '2')]
 ```
+#### Comment:
+Well done! As you can see, after executing the update statement, the fips_state code gets updated to 36.
