@@ -433,3 +433,46 @@ Out[5]:
 ```
 #### Comment:
 Well done! Having learned how to create tables in a database, insert data into them, and update the data, it's time to learn how to remove data from a database!
+
+## 09. Deleting all the records from a table
+Often, you'll need to empty a table of all of its records so you can reload the data. You can do this with a delete statement with just the table as an argument. For example, in the video, Jason deleted the table `extra_employees` by executing as follows:
+```
+delete_stmt = delete(extra_employees)
+result_proxy = connection.execute(delete_stmt)
+```
+Do be careful, though, as deleting cannot be undone!
+
+### Instructions:
+* Import `delete` and `select` from sqlalchemy.
+* Build a delete statement to remove all the data from the census table. Save it as stmt.
+* Execute stmt via the connection and save the results.
+* Hit 'Submit Answer' to select all remaining rows from the census table and print the result to confirm that the table is now empty!
+
+#### Script:
+```
+# Import delete, select
+from sqlalchemy import select, delete
+
+# Build a statement to empty the census table: stmt
+stmt = delete(census)
+
+# Execute the statement: results
+results = connection.execute(stmt)
+
+# Print affected rowcount
+print(results.rowcount)
+
+# Build a statement to select all records from the census table
+stmt = select([census])
+
+# Print the results of executing the statement to verify there are no rows
+print(connection.execute(stmt).fetchall())
+```
+#### Output:
+```
+<script.py> output:
+    8772
+    []
+```
+#### Comment:
+Great work! As you can see, there are no records left in the census table after executing the delete statement!
