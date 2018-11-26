@@ -370,3 +370,66 @@ print(results.rowcount)
 ```
 #### Comment:
 Fantastic work!
+
+## 08. Correlated Updates
+You can also update records with data from a select statement. This is called a correlated update. It works by defining a select statement that returns the value you want to update the record with and assigning that as the value in an update statement.
+
+You'll be using a flat_census in this exercise as the target of your correlated update. The flat_census table is a summarized copy of your census table.
+
+### Instructions:
+* Build a statement to select the `name` column from `state_fact`. Save the statement as fips_stmt.
+* Append a where clause to fips_stmt that matches fips_state from the state_fact table with fips_code in the flat_census table.
+* Build an update statement to set the state_name in flat_census to fips_stmt. Save the statement as update_stmt.
+* Hit 'Submit Answer' to execute update_stmt, store the results and print the rowcount of results.
+
+#### Script:
+```
+# Build a statement to select name from state_fact: stmt
+fips_stmt = select([state_fact.columns.name])
+
+# Append a where clause to Match the fips_state to flat_census fips_code
+fips_stmt = fips_stmt.where(
+    state_fact.columns.fips_state == flat_census.columns.fips_code)
+
+# Build an update statement to set the name to fips_stmt: update_stmt
+update_stmt = update(flat_census).values(state_name =fips_stmt)
+
+# Execute update_stmt: results
+results = connection.execute(update_stmt)
+
+# Print rowcount
+print(results.rowcount)
+```
+
+#### Output:
+```
+In [4]: flat_census.columns.keys()
+Out[4]: ['state_name', 'fips_code']
+```
+```
+In [5]: state_fact.columns.keys()
+Out[5]: 
+['id',
+ 'name',
+ 'abbreviation',
+ 'country',
+ 'type',
+ 'sort',
+ 'status',
+ 'occupied',
+ 'notes',
+ 'fips_state',
+ 'assoc_press',
+ 'standard_federal_region',
+ 'census_region',
+ 'census_region_name',
+ 'census_division',
+ 'census_division_name',
+ 'circuit_court']
+```
+```
+<script.py> output:
+    51
+```
+#### Comment:
+Well done! Having learned how to create tables in a database, insert data into them, and update the data, it's time to learn how to remove data from a database!
