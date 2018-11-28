@@ -92,7 +92,7 @@ plt.plot(year, computer_science, color='red')
 plt.show()
 ```
 #### Output:
-![Alt text](./plt_axes.png)
+![Alt text](./plt_axes.svg)
 
 #### Comment:
 Great work! As you can see, not only are there now two separate plots with their own axes, but the axes for each plot are slightly different.
