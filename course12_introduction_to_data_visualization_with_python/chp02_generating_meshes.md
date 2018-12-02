@@ -154,3 +154,6 @@ array([[0.90929743, 0.92521152, 0.93964547, ..., 0.93964547, 0.92521152,
 In [4]: 
 ```
 ![Alt text](./contour.svg)
+
+#### Comment:
+Great work! As you can see, the bottom two contour plots are filled, because you used `plt.contourf()` instead of `plt.contour()`.
