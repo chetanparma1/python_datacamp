@@ -244,7 +244,7 @@ plt.show()
 plt.savefig('xlim_and_ylim.png')
 ```
 #### Output:
-![Alt text](./xylim.png)
+![Alt text](./xylim.svg)
 
 #### Comment:
 Fantastic! This plot effectively captures the difference in trends between 1990 and 2010.
