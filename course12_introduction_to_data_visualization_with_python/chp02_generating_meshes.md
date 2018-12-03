@@ -229,3 +229,23 @@ In this exercise, you'll use some data from the auto-mpg data set. There are two
 * Specify 20 by 20 rectangular bins with the bins argument.
 * Specify the region covered with the optional range argument so that the plot samples hp between 40 and 235 on the x-axis and mpg between 8 and 48 on the y-axis.
 * Add a color bar to the histogram.
+
+#### Script:
+```
+# Generate a 2-D histogram
+plt.hist2d(hp, mpg, bins=(20, 20), range=[[40, 235], [8, 48]])
+
+# Add a color bar to the histogram
+plt.colorbar()
+
+# Add labels, title, and display the plot
+plt.xlabel('Horse power [hp]')
+plt.ylabel('Miles per gallon [mpg]')
+plt.title('hist2d() plot')
+plt.show()
+```
+#### Output:
+![Alt text](./hist2d.svg)
+
+#### Comment:
+Superb work! As you might expect, cars with higher hp have lower mpg.
