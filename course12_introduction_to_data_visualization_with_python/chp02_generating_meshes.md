@@ -321,3 +321,58 @@ plt.show()
 
 #### Comment:
 Excellent work! This image is represented as a 3D array. As you can see in the IPython Shell, its shape is `(480, 480, 3)`.
+
+## 08. Pseudocolor plot from image data
+Image data comes in many forms and it is not always appropriate to display the available channels in RGB space. In many situations, an image may be processed and analysed in some way before it is visualized in pseudocolor, also known as 'false' color.
+
+In this exercise, you will perform a simple analysis using the image showing an astronaut as viewed from space. Instead of simply displaying the image, you will compute the total intensity across the red, green and blue channels. The result is a single two dimensional array which you will display using `plt.imshow()` with the `'gray'` colormap.
+
+### Instructions:
+* Print the shape of the existing image array.
+* Compute the sum of the red, green, and blue channels of img by using the `.sum()` method with axis=2.
+* Print the shape of the intensity array to verify this is the shape you expect.
+* Plot intensity with `plt.imshow()` using a 'gray' colormap.
+* Add a colorbar to the figure.
+
+#### Script:
+```
+# Load the image into an array: img
+img = plt.imread('480px-Astronaut-EVA.jpg')
+
+# Print the shape of the image
+print(img.shape)
+
+# Compute the sum of the red, green and blue channels: intensity
+# this will 'collapse' the 3D numpy array into 2D numpy array.
+# so the idea is removing the original color of the image and then give it a new color map. 
+intensity = img.sum(axis=2)
+
+# Print the shape of the intensity
+print(intensity.shape)
+
+# Display the intensity with a colormap of 'gray'
+plt.imshow(intensity, cmap = 'gray')
+
+# Add a colorbar
+plt.colorbar()
+
+# Hide the axes and show the figure
+plt.axis('off')
+plt.show()
+```
+#### Output:
+```
+
+<script.py> output:
+    (480, 480, 3)
+    (480, 480)
+```
+* Original image
+![Alt text](./astro1.svg)
+* Image after reducing its dimension
+![Alt text](./astro2.svg)
+* final image with cmap = `'gray'`. 
+![Alt text](./astro3.svg)
+
+#### Comment:
+Great work! Notice how the array is now 2D.
