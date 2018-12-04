@@ -283,3 +283,41 @@ plt.show()
 
 #### Comment:
 Well done! Sometimes, you may prefer to use hexagonal bins, like in this plot, instead of rectangular bins.
+
+## 07. Loading, examining images
+Color images such as photographs contain the intensity of the red, green and blue color channels.
+
+* To read an image from file, use `plt.imread()` by passing the path to a file, such as a PNG or JPG file.
+* The color image can be plotted as usual using `plt.imshow()`.
+* The resulting image loaded is a NumPy array of three dimensions. The array typically has dimensions M×N×3, where M×N is the dimensions of the image. The third dimensions are referred to as color channels (typically red, green, and blue).
+* The color channels can be extracted by Numpy array slicing.
+
+In this exercise, you will load & display an <a href="https://en.wikipedia.org/wiki/File:Astronaut-EVA.jpg">image of an astronaut</a> (by NASA (Public domain), via <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>). You will also examine its attributes to understand how color images are represented.
+
+### Instructions:
+* Load the file '480px-Astronaut-EVA.jpg' into an array.
+* Print the shape of the img array. How wide and tall do you expect the image to be?
+* Prepare img for display using `plt.imshow()`.
+* Turn off the axes using `plt.axis('off')`.
+
+#### Script:
+```
+# Load the image into an array: img
+img = plt.imread('480px-Astronaut-EVA.jpg')
+
+# Print the shape of the image
+print(img.shape)
+
+# Display the image
+plt.imshow(img)
+
+# Hide the axes
+plt.axis('off')
+plt.show()
+
+```
+#### Output:
+![Alt text](./astronaut.svg)
+
+#### Comment:
+Excellent work! This image is represented as a 3D array. As you can see in the IPython Shell, its shape is `(480, 480, 3)`.
