@@ -267,7 +267,7 @@ In this exercise, you'll use the same auto-mpg data as in the last exercise (aga
 #### Script:
 ```
 # Generate a 2d histogram with hexagonal bins
-plt.hexbin(hp, mpg, gridsize=(15, 12), extent=[40, 235, 8, 48])
+plt.hexbin(hp, mpg, gridsize=(15, 12), extent=(40, 235, 8, 48))
        
 # Add a color bar to the histogram
 plt.colorbar()
