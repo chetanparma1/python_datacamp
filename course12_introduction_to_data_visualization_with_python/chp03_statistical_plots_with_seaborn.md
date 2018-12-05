@@ -159,3 +159,6 @@ Out[1]:
 
 ##### **Scatter plot with sns, order 1 & 2, scatter=None, with prev plt scatter** <br />
 ![Alt text](./plt_sns12_scatter.svg)
+
+#### Comment:
+Well done! It seems like a regression of order 2 is necessary to properly capture the relationship between 'weight' and 'mpg'.
