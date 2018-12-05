@@ -25,3 +25,25 @@ sns.lmplot(x = 'weight', y = 'hp', data=auto)
 plt.show()
 
 ```
+#### Output:
+```
+In [4]: auto.head()
+Out[4]: 
+    mpg  cyl  displ   hp  weight  accel  yr  origin              name  color  \
+0  18.0    6  250.0   88    3139   14.5  71      US      ford mustang    red   
+1   9.0    8  304.0  193    4732   18.5  70      US          hi 1200d  green   
+2  36.1    4   91.0   60    1800   16.4  78    Asia  honda civic cvcc   blue   
+3  18.5    6  250.0   98    3525   19.0  77      US      ford granada    red   
+4  34.3    4   97.0   78    2188   15.8  80  Europe         audi 4000   blue   
+
+        size marker  
+0  27.370336      o  
+1  62.199511      o  
+2   9.000000      x  
+3  34.515625      o  
+4  13.298178      s
+```
+![Alt text](./sns_auto.png)
+
+#### Comment:
+Fantastic work! Unsurprisingly, there is a strong correlation between 'hp' and 'weight', and a linear regression is easily able to capture this trend.
