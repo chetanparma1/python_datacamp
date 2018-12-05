@@ -129,32 +129,32 @@ Out[1]:
 4  13.298178      s
 ```
 <br />
-#####**scatter plot with plt** <br />
-![Alt text](./plt_scatter.svg)
+##### **scatter plot with plt** <br />
+![Alt text](./scatter_plt.svg)
 <br />
-#####**Scatter plot with sns, scatter = True** <br />
+##### **Scatter plot with sns, scatter = True** <br />
 ![Alt text](./sns_scatter_true.svg)
 <br />
 
-#####**Scatter plot with sns, scatter=None, no prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=None, no prev plt scatter** <br />
 ![Alt text](./sns_scatter_none_noprevplt.svg)
 <br />
 
-#####**Scatter plot with sns, scatter=None, with prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=None, with prev plt scatter** <br />
 ![Alt text](./sns_scatter_none_prevplt.svg)
 <br />
 
-#####**Scatter plot with sns, scatter=True, order=2, no prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=True, order=2, no prev plt scatter** <br />
 ![Alt text](./sns_scatter2_noprevplt.svg)
 <br />
 
-#####**Scatter plot with sns, scatter=None, order=2, with prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=None, order=2, with prev plt scatter** <br />
 ![Alt text](./sns_scatter2_none_prevplt.svg)
 <br />
 
-#####**Scatter plot with sns, scatter=True, order=2, no prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=True, order=2, no prev plt scatter** <br />
 ![Alt text](./sns_scatter2_true.svg)
 <br />
 
-#####**Scatter plot with sns, order 1 & 2, scatter=None, with prev plt scatter** <br />
+##### **Scatter plot with sns, order 1 & 2, scatter=None, with prev plt scatter** <br />
 ![Alt text](./plt_sns12_scatter.svg)
