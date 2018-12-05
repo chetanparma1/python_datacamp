@@ -128,10 +128,11 @@ Out[1]:
 3  34.515625      o  
 4  13.298178      s
 ```
-<br />
+
 ##### **scatter plot with plt** <br />
 ![Alt text](./scatter_plt.svg)
 <br />
+
 ##### **Scatter plot with sns, scatter = True** <br />
 ![Alt text](./sns_scatter_true.svg)
 <br />
