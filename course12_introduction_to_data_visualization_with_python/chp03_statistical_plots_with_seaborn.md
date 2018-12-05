@@ -149,7 +149,7 @@ Out[1]:
 ![Alt text](./sns_scatter2_noprevplt.svg)
 <br />
 
-##### **Scatter plot with sns, scatter=True, order=2, with prev plt scatter** <br />
+##### **Scatter plot with sns, scatter=None, order=2, with prev plt scatter** <br />
 ![Alt text](./sns_scatter2_none_prevplt.svg)
 <br />
 
