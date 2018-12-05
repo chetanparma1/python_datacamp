@@ -43,7 +43,7 @@ Out[4]:
 3  34.515625      o  
 4  13.298178      s
 ```
-![Alt text](./sns_auto.png)
+![Alt text](./sns_auto.svg)
 
 #### Comment:
 Fantastic work! Unsurprisingly, there is a strong correlation between 'hp' and 'weight', and a linear regression is easily able to capture this trend.
