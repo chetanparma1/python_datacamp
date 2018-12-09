@@ -327,3 +327,8 @@ sns.jointplot(x='hp', y='mpg', data=auto)
 # Display the plot
 plt.show()
 ```
+#### Output:
+![Alt text](./jointplot.svg)
+
+#### Comment:
+Well done! In the next exercise, you'll learn how to extend this plot by specifying the `kind` parameter.
