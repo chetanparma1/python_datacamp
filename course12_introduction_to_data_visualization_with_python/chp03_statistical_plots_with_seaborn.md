@@ -396,3 +396,36 @@ You will also visualize the joint distributions separated by continent of origin
 
 ### Instructions:
 Plot the pairwise joint distributions separated by continent of origin and display the regressions.
+
+#### Script:
+```
+# Print the first 5 rows of the DataFrame
+print(auto.head())
+
+# Plot the pairwise joint distributions grouped by 'origin' along with regression lines
+sns.pairplot(auto, kind='reg', hue='origin')
+
+# Display the plot
+plt.show()
+```
+#### Output:
+```
+In [1]: # Print the first 5 rows of the DataFrame
+        print(auto.head())
+        
+        # Plot the pairwise joint distributions grouped by 'origin' along with regression lines
+        sns.pairplot(auto, kind='reg', hue='origin')
+        
+        # Display the plot
+        plt.show()
+    mpg   hp  origin
+0  18.0   88      US
+1   9.0  193      US
+2  36.1   60    Asia
+3  18.5   98      US
+4  34.3   78  Europe
+```
+![Alt text](./pairplot_hue.svg)
+
+#### Comment:
+Wonderful work! Plots like this are why Seaborn is such a useful library: Using just one command, you're able to quickly extract a lot of valuable insight from a dataset.
