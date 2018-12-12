@@ -415,3 +415,202 @@ plt.show()
 
 #### Comment:
 Great work! Notice that the histogram is not well centered over the range of possible pixel intensies. The CDF rises sharply near the middle (that relates to the overall grayness of the image).
+
+## 10. Equalizing an image histogram
+<a href="https://en.wikipedia.org/wiki/Histogram_equalization">Histogram equalizationa</a> is an image processing procedure that reassigns image pixel intensities. The basic idea is to use interpolation to map the original CDF of pixel intensities to a CDF that is almost a straight line. In essence, the pixel intensities are spread out and this has the practical effect of making a sharper, contrast-enhanced image. This is particularly useful in astronomy and medical imaging to help us see more features.
+
+For this exercise, you will again work with the <a href="https://commons.wikimedia.org/wiki/File:Unequalized_Hawkes_Bay_NZ.jpg">grayscale image of Hawkes Bay, New Zealand</a> (originally by Phillip Capper, modified by User:Konstable, via Wikimedia Commons, <a href="http://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>). Notice the sample code produces the same plot as the previous exercise. Your task is to modify the code from the previous exercise to plot the new equalized image as well as its PDF and CDF.
+
+* The arrays `image` and `pixels` are extracted for you in advance.
+* The CDF of the original image is computed using plt.hist().
+* Notice an array new_pixels is created for you that interpolates new pixel values using the original image CDF.
+
+### Instructions:
+* Use the NumPy array method .reshape() to create a 2-D array new_image from the 1-D array new_pixels. The resulting new_image should have the same shape as image.shape.
+* Display new_image with a 'gray' color map to display the sharper, equalized image.
+* Plot the PDF of new_pixels in 'red'.
+* Use plt.twinx() to overlay plots with different vertical scales on a common horizontal axis.
+* Plot the CDF of `new_pixels` in `'blue'`.
+
+#### Script:
+```
+# Load the image into an array: image
+image = plt.imread('640px-Unequalized_Hawkes_Bay_NZ.jpg')
+
+# Flatten the image into 1 dimension: pixels
+pixels = image.flatten()
+
+# Generate a cumulative histogram
+cdf, bins, patches = plt.hist(pixels, bins=256, range=(0,256), normed=True, cumulative=True)
+new_pixels = np.interp(pixels, bins[:-1], cdf*255)
+
+# Reshape new_pixels as a 2-D array: new_image
+new_image = new_pixels.reshape(427, 640)
+
+# Display the new image with 'gray' color map
+plt.subplot(2,1,1)
+plt.title('Equalized image')
+plt.axis('off')
+plt.imshow(new_image, cmap='gray')
+
+# Generate a histogram of the new pixels
+plt.subplot(2,1,2)
+pdf = plt.hist(new_pixels, bins=64, range=(0,256), normed=False, color='red', alpha=0.4)
+plt.grid('off')
+
+# Use plt.twinx() to overlay the CDF in the bottom subplot
+plt.twinx()
+plt.xlim((0,256))
+plt.grid('off')
+
+# Add title
+plt.title('PDF & CDF (equalized image)')
+
+# Generate a cumulative histogram of the new pixels
+cdf = plt.hist(new_pixels, bins=64, range=(0,256),
+               cumulative=True, normed=True,
+               color='blue', alpha=0.4)
+plt.show()
+```
+
+#### Output:
+```
+In [13]: image
+Out[13]: 
+array([[151, 141, 145, ..., 170, 176, 174],
+       [160, 143, 134, ..., 148, 150, 147],
+       [140, 146, 148, ..., 140, 145, 143],
+       ...,
+       [146, 130, 136, ..., 146, 146, 143],
+       [142, 127, 134, ..., 146, 146, 143],
+       [140, 124, 133, ..., 146, 146, 143]], dtype=uint8)
+```
+```
+In [30]: image.shape
+Out[30]: (427, 640)
+```
+![Alt text](./hawkes_bay1.svg)
+```
+In [15]: pixels
+Out[15]: array([151, 141, 145, ..., 146, 146, 143], dtype=uint8)
+```
+![Alt text](./image_pixel_hist.svg)
+```
+In [2]: pixels.shape
+Out[2]: (273280,)
+```
+```
+In [22]: cdf
+Out[22]: 
+array([0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       3.65925059e-06, 3.65925059e-06, 1.09777518e-05, 2.56147541e-05,
+       3.65925059e-05, 4.39110070e-05, 6.58665105e-05, 1.09777518e-04,
+       1.97599532e-04, 2.85421546e-04, 4.02517564e-04, 5.70843091e-04,
+       8.12353630e-04, 1.17096019e-03, 1.63202576e-03, 2.28337237e-03,
+       3.38480679e-03, 4.87778103e-03, 6.95257611e-03, 9.67505855e-03,
+       1.33489461e-02, 1.75387881e-02, 2.28264052e-02, 2.89739461e-02,
+       3.64132026e-02, 4.64322307e-02, 5.87639052e-02, 7.38766101e-02,
+       9.31864754e-02, 1.16382465e-01, 1.43501171e-01, 1.74568208e-01,
+       2.09459163e-01, 2.48902225e-01, 2.88264783e-01, 3.25237851e-01,
+       3.59323770e-01, 3.92099678e-01, 4.23375293e-01, 4.53337237e-01,
+       4.81831821e-01, 5.09843384e-01, 5.36651054e-01, 5.63722190e-01,
+       5.90039520e-01, 6.15453015e-01, 6.40635978e-01, 6.65533519e-01,
+       6.89940720e-01, 7.14172278e-01, 7.37090164e-01, 7.57739315e-01,
+       7.75903835e-01, 7.93197453e-01, 8.08709016e-01, 8.23071575e-01,
+       8.36157055e-01, 8.48378952e-01, 8.59982436e-01, 8.70897980e-01,
+       8.80810890e-01, 8.89340603e-01, 8.97043326e-01, 9.04259368e-01,
+       9.10867974e-01, 9.16741071e-01, 9.22065281e-01, 9.26997951e-01,
+       9.31561036e-01, 9.35703308e-01, 9.39874854e-01, 9.43365779e-01,
+       9.46567623e-01, 9.49304742e-01, 9.51928425e-01, 9.54361827e-01,
+       9.56553718e-01, 9.58445550e-01, 9.60289813e-01, 9.62243852e-01,
+       9.64278396e-01, 9.66280006e-01, 9.68296253e-01, 9.70575966e-01,
+       9.73071575e-01, 9.75395199e-01, 9.77462676e-01, 9.79691159e-01,
+       9.81765954e-01, 9.83913934e-01, 9.86028981e-01, 9.88326991e-01,
+       9.91166569e-01, 9.94397687e-01, 9.96318794e-01, 9.97467799e-01,
+       9.98287471e-01, 9.98682670e-01, 9.99033958e-01, 9.99227898e-01,
+       9.99355972e-01, 9.99513320e-01, 9.99619438e-01, 9.99696282e-01,
+       9.99762149e-01, 9.99817037e-01, 9.99828015e-01, 9.99864608e-01,
+       9.99871926e-01, 9.99893882e-01, 9.99919496e-01, 9.99934133e-01,
+       9.99941452e-01, 9.99952430e-01, 9.99956089e-01, 9.99959748e-01,
+       9.99967067e-01, 9.99970726e-01, 9.99974385e-01, 9.99981704e-01,
+       9.99981704e-01, 9.99985363e-01, 9.99989022e-01, 9.99989022e-01,
+       9.99992681e-01, 9.99996341e-01, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00,
+       1.00000000e+00, 1.00000000e+00, 1.00000000e+00, 1.00000000e+00])
+```
+```
+In [23]: bins
+Out[23]: 
+array([  0.,   1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.,  10.,
+        11.,  12.,  13.,  14.,  15.,  16.,  17.,  18.,  19.,  20.,  21.,
+        22.,  23.,  24.,  25.,  26.,  27.,  28.,  29.,  30.,  31.,  32.,
+        33.,  34.,  35.,  36.,  37.,  38.,  39.,  40.,  41.,  42.,  43.,
+        44.,  45.,  46.,  47.,  48.,  49.,  50.,  51.,  52.,  53.,  54.,
+        55.,  56.,  57.,  58.,  59.,  60.,  61.,  62.,  63.,  64.,  65.,
+        66.,  67.,  68.,  69.,  70.,  71.,  72.,  73.,  74.,  75.,  76.,
+        77.,  78.,  79.,  80.,  81.,  82.,  83.,  84.,  85.,  86.,  87.,
+        88.,  89.,  90.,  91.,  92.,  93.,  94.,  95.,  96.,  97.,  98.,
+        99., 100., 101., 102., 103., 104., 105., 106., 107., 108., 109.,
+       110., 111., 112., 113., 114., 115., 116., 117., 118., 119., 120.,
+       121., 122., 123., 124., 125., 126., 127., 128., 129., 130., 131.,
+       132., 133., 134., 135., 136., 137., 138., 139., 140., 141., 142.,
+       143., 144., 145., 146., 147., 148., 149., 150., 151., 152., 153.,
+       154., 155., 156., 157., 158., 159., 160., 161., 162., 163., 164.,
+       165., 166., 167., 168., 169., 170., 171., 172., 173., 174., 175.,
+       176., 177., 178., 179., 180., 181., 182., 183., 184., 185., 186.,
+       187., 188., 189., 190., 191., 192., 193., 194., 195., 196., 197.,
+       198., 199., 200., 201., 202., 203., 204., 205., 206., 207., 208.,
+       209., 210., 211., 212., 213., 214., 215., 216., 217., 218., 219.,
+       220., 221., 222., 223., 224., 225., 226., 227., 228., 229., 230.,
+       231., 232., 233., 234., 235., 236., 237., 238., 239., 240., 241.,
+       242., 243., 244., 245., 246., 247., 248., 249., 250., 251., 252.,
+       253., 254., 255., 256.])
+```
+```
+In [29]: new_pixels
+Out[29]: 
+array([169.71104728,  99.98541789, 130.01006294, ..., 136.84601874,
+       136.84601874, 115.60099532])
+```
+![Alt text](./hawkes_bay_equalized.svg)
+<br />
+<br />
+<b> new image pixel histogram </b>  <br />
+![Alt text](./new_image_pixel_hist.svg)
+<br />
+<br />
+<b> new image pixel cdf histogram </b>  <br />
+![Alt text](./new_image_pixel_cdf.svg)
+<br />
+<br />
+<b> final output </b>  <br />
+![Alt text](./hawkes_bay_final.svg)
