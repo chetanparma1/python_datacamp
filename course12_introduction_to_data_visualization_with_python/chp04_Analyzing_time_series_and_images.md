@@ -614,3 +614,6 @@ array([169.71104728,  99.98541789, 130.01006294, ..., 136.84601874,
 <br />
 <b> final output </b>  <br />
 ![Alt text](./hawkes_bay_final.svg)
+
+#### Comment:
+Excellent work! Histogram equalization can help make an image sharper.
