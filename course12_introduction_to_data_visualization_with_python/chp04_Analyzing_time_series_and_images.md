@@ -617,3 +617,142 @@ array([169.71104728,  99.98541789, 130.01006294, ..., 136.84601874,
 
 #### Comment:
 Excellent work! Histogram equalization can help make an image sharper.
+
+## 11. Extracting histograms from a color image
+This exercise resembles the last in that you will plot histograms from an image. This time, you will use <a href="http://imgsrc.hubblesite.org/hu/db/images/hs-2004-32-b-small_web.jpg">a color image of the Helix Nebula as seen by the Hubble and the Cerro Toledo Inter-American Observatory</a>. The separate RGB (red-green-blue) channels will be extracted for you as two-dimensional arrays `red`, `green`, and blue respectively. You will plot three overlaid color histograms on common axes (one for each channel) in a subplot as well as the original image in a separate subplot.
+
+### Instructions:
+* Display image in the top subplot of a 2×1 subplot grid. Don't use a colormap here.
+* Flatten the 2-D arrays red, green, and blue into 1-D arrays.
+* Display three histograms in the bottom subplot: one for `red_pixels`, one for `green_pixels`, and one for blue_pixels. For each, use 64 bins and specify a translucency of alpha=0.2.
+
+#### Script:
+```
+# Load the image into an array: image
+image = plt.imread('hs-2004-32-b-small_web.jpg')
+
+# Display image in top subplot
+plt.subplot(2,1,1)
+plt.title('Original image')
+plt.axis('off')
+plt.imshow(image)
+
+# Extract 2-D arrays of the RGB channels: red, blue, green
+red, green, blue = image[:,:,0], image[:,:,1], image[:,:,2]
+
+# Flatten the 2-D arrays of the RGB channels into 1-D
+red_pixels = red.flatten()
+blue_pixels = blue.flatten()
+green_pixels = green.flatten()
+
+# Overlay histograms of the pixels of each color in the bottom subplot
+plt.subplot(2,1,2)
+plt.title('Histograms from color image')
+plt.xlim((0,256))
+plt.hist(red_pixels, bins=64, normed=True, color='red', alpha=0.2)
+plt.hist(blue_pixels, bins=64, normed=True, color='blue', alpha=0.2)
+plt.hist(green_pixels, bins=64, normed=True, color='green', alpha=0.2)
+
+# Display the plot
+plt.show()
+
+```
+
+#### Output:
+```
+In [4]: image
+Out[4]: 
+array([[[135,  40,  36],
+        [131,  36,  30],
+        [124,  29,  23],
+        ...,
+        [ 28,   5,  11],
+        [ 27,   6,  11],
+        [ 27,   6,  11]],
+
+       [[123,  30,  25],
+        [121,  28,  23],
+        [117,  24,  17],
+        ...,
+        [ 29,   6,  12],
+        [ 28,   5,  11],
+        [ 27,   6,  11]],
+
+       [[108,  17,  14],
+        [107,  16,  11],
+        [108,  17,  12],
+        ...,
+        [ 30,   8,  11],
+        [ 29,   7,  10],
+        [ 29,   7,  10]],
+
+       ...,
+
+       [[ 32,   8,   8],
+        [ 32,   8,   8],
+        [ 32,   8,   8],
+        ...,
+        [ 33,   7,  16],
+        [ 38,   8,  18],
+        [ 39,   9,  19]],
+
+       [[ 30,   9,   8],
+        [ 30,   9,   8],
+        [ 30,   9,   8],
+        ...,
+        [ 33,   7,  16],
+        [ 38,   8,  18],
+        [ 40,  10,  20]],
+
+       [[ 29,   8,   7],
+        [ 29,   8,   7],
+        [ 29,   8,   7],
+        ...,
+        [ 33,   7,  16],
+        [ 39,   9,  19],
+        [ 40,  10,  20]]], dtype=uint8)
+```
+```
+In [9]: image.shape
+Out[9]: (200, 200, 3)
+```
+<br />
+<br /> 
+<b> Original Image of Helix </b>
+![Alt text](./helix.svg)
+
+```
+In [10]: red
+Out[10]: 
+array([[135, 131, 124, ...,  28,  27,  27],
+       [123, 121, 117, ...,  29,  28,  27],
+       [108, 107, 108, ...,  30,  29,  29],
+       ...,
+       [ 32,  32,  32, ...,  33,  38,  39],
+       [ 30,  30,  30, ...,  33,  38,  40],
+       [ 29,  29,  29, ...,  33,  39,  40]], dtype=uint8)
+
+In [11]: green
+Out[11]: 
+array([[40, 36, 29, ...,  5,  6,  6],
+       [30, 28, 24, ...,  6,  5,  6],
+       [17, 16, 17, ...,  8,  7,  7],
+       ...,
+       [ 8,  8,  8, ...,  7,  8,  9],
+       [ 9,  9,  9, ...,  7,  8, 10],
+       [ 8,  8,  8, ...,  7,  9, 10]], dtype=uint8)
+
+In [12]: blue
+Out[12]: 
+array([[36, 30, 23, ..., 11, 11, 11],
+       [25, 23, 17, ..., 12, 11, 11],
+       [14, 11, 12, ..., 11, 10, 10],
+       ...,
+       [ 8,  8,  8, ..., 16, 18, 19],
+       [ 8,  8,  8, ..., 16, 18, 20],
+       [ 7,  7,  7, ..., 16, 19, 20]], dtype=uint8)
+```
+![Alt text](./helix_img_hist.svg)
+
+#### Comment:
+Excellent work! Notice how the histogram generated from this color image differs from the histogram you generated earlier from a grayscale image.
