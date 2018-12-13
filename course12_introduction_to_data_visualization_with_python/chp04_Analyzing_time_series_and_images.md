@@ -489,7 +489,7 @@ array([[151, 141, 145, ..., 170, 176, 174],
 In [30]: image.shape
 Out[30]: (427, 640)
 ```
-![Alt text](./hawkes_bay1.svg)
+![Alt text](./hawkeys_bay1.svg)
 ```
 In [15]: pixels
 Out[15]: array([151, 141, 145, ..., 146, 146, 143], dtype=uint8)
