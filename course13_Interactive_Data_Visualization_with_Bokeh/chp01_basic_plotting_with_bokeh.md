@@ -134,3 +134,38 @@ show(p)
 
 #### Comment:
 Great work! You can use these parameters to get really creative with the way you customize your scatter plots.
+
+## 05. Lines
+We can draw lines on Bokeh plots with the `line()` glyph function.
+
+In this exercise, you'll plot the daily adjusted closing price of Apple Inc.'s stock (AAPL) from 2000 to 2013.
+
+The data points are provided for you as lists. date is a list of <a href="https://docs.python.org/3.5/library/datetime.html">datetime objects</a> to plot on the x-axis and price is a list of prices to plot on the y-axis.
+
+Since we are plotting dates on the x-axis, you must add `x_axis_type='datetime'` when creating the figure object.
+
+### Instructions:
+* Import the `figure` function from `bokeh.plotting`.
+* Create a figure p using the figure() function with x_axis_type set to 'datetime'. The other two parameters are x_axis_label and y_axis_label.
+* Plot date and price along the x- and y-axes using p.line().
+
+#### Script:
+```
+# Import figure from bokeh.plotting
+from bokeh.plotting import figure
+
+# Create a figure with x_axis_type="datetime": p
+p = figure(x_axis_type='datetime', x_axis_label='Date', y_axis_label='US Dollars')
+
+# Plot date along the x axis and price along the y axis
+p.line(date, price)
+
+# Specify the name of the output file and show the result
+output_file('line.html')
+show(p)
+```
+#### Output:
+![Alt text](./bokeh_line.png)
+
+#### Comment:
+Great work! In the next exercise you will use the same dataset to plot lines and markers together.
