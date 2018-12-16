@@ -205,3 +205,168 @@ show(p)
 
 #### Comment:
 Great work!
+
+## 07. Patches
+In Bokeh, extended geometrical shapes can be plotted by using the `patches()` glyph function. The patches glyph takes as input a list-of-lists collection of numeric values specifying the vertices in x and y directions of each distinct patch to plot.
+
+In this exercise, you will plot the state borders of Arizona, Colorado, New Mexico and Utah. The latitude and longitude vertices for each state have been prepared as lists.
+
+Your job is to plot longitude on the x-axis and latitude on the y-axis. The figure object has been created for you as `p`.
+
+### Instructions:
+* Create a list of the longitude positions for each state as x. This has already been done for you.
+* Create a list of the latitude positions for each state as y. The variable names for the latitude positions are az_lats, co_lats, nm_lats, and ut_lats.
+* Use p.patches() to add the patches glyph to the figure p. Supply the x and y lists as arguments along with a `line_color` of `'white'`.
+
+#### Script:
+```
+# Create a list of az_lons, co_lons, nm_lons and ut_lons: x
+x = [az_lons, co_lons, nm_lons, ut_lons]
+
+# Create a list of az_lats, co_lats, nm_lats and ut_lats: y
+y = [az_lats, co_lats, nm_lats, ut_lats]
+
+# Add patches to figure p with line_color=white for x and y
+p.patches(x, y, line_color='white')
+
+# Specify the name of the output file and show the result
+output_file('four_corners.html')
+show(p)
+```
+
+#### Output:
+```
+In [3]: az_lons[:10]
+Out[3]: 
+[-114.63332,
+ -114.63349,
+ -114.63423,
+ -114.60899,
+ -114.63064,
+ -114.57354,
+ -114.58031,
+ -114.61121,
+ -114.6768,
+ -114.66076]
+
+In [4]: co_lons[:10]
+Out[4]: 
+[-109.04984,
+ -109.06017,
+ -109.06015,
+ -109.05655,
+ -109.05305,
+ -109.05158,
+ -109.05119,
+ -109.05077,
+ -109.05132,
+ -109.05077]
+
+In [5]: nm_lons[:10]
+Out[5]: 
+[-103.55583,
+ -104.00265,
+ -104.64165,
+ -105.14679,
+ -105.90075,
+ -106.55721,
+ -106.63119,
+ -106.62216,
+ -106.63325,
+ -106.61103]
+
+In [6]: ut_lons[:10]
+Out[6]: 
+[-114.04392,
+ -114.04391,
+ -114.04375,
+ -114.04195,
+ -114.04061,
+ -114.04055,
+ -114.0398,
+ -114.04172,
+ -114.0391,
+ -113.80254]
+
+In [7]: az_lats[0:10]
+Out[7]: 
+[34.87057,
+ 35.00186,
+ 35.00332,
+ 35.07971,
+ 35.11791,
+ 35.14231,
+ 35.21811,
+ 35.37012,
+ 35.49125,
+ 35.5417]
+
+In [8]: co_lats[:10]
+Out[8]: 
+[38.215,
+ 38.40118,
+ 38.60929,
+ 38.81393,
+ 38.95788,
+ 39.11656,
+ 39.22605,
+ 39.36423,
+ 39.56752,
+ 39.79876]
+
+In [9]: nm_lats[:10]
+Out[9]: 
+[32.00032,
+ 32.00001,
+ 32.00041,
+ 32.0005,
+ 32.00198,
+ 32.00076,
+ 31.98981,
+ 31.93601,
+ 31.90997,
+ 31.84661]
+
+In [10]: ut_lats[:10]
+Out[10]: 
+[40.68928,
+ 40.68985,
+ 40.76026,
+ 41.05548,
+ 41.36,
+ 41.59062,
+ 41.89425,
+ 41.99372,
+ 41.99367,
+ 41.98895]
+
+```
+```
+In [14]: len(az_lons)
+Out[14]: 208
+
+In [15]: len(az_lats)
+Out[15]: 208
+
+In [16]: len(co_lons)
+Out[16]: 162
+
+In [17]: len(co_lats)
+Out[17]: 162
+
+In [19]: len(nm_lons)
+Out[19]: 208
+
+In [20]: len(nm_lats)
+Out[20]: 208
+
+In [21]: len(ut_lons)
+Out[21]: 135
+
+In [22]: len(ut_lats)
+Out[22]: 135
+```
+![Alt text](./bokeh_patches.png)
+
+#### Comment:
+Great work!
