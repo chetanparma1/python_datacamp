@@ -370,3 +370,63 @@ Out[22]: 135
 
 #### Comment:
 Great work!
+
+## 08. Plotting data from NumPy arrays
+In the previous exercises, you made plots using data stored in lists. You learned that Bokeh can plot both numbers and datetime objects.
+
+In this exercise, you'll generate NumPy arrays using `np.linspace()` and `np.cos()` and plot them using the circle glyph.
+
+np.linspace() is a function that returns an array of evenly spaced numbers over a specified interval. For example, np.linspace(0, 10, 5) returns an array of 5 evenly spaced samples calculated over the interval [0, 10]. np.cos(x) calculates the element-wise cosine of some array x.
+
+For more information on NumPy functions, you can refer to the <a href="https://docs.scipy.org/doc/numpy/user/index.html#user">NumPy User Guide</a> and <a href="https://docs.scipy.org/doc/numpy/reference/index.html">NumPy Reference</a>.
+
+The figure p has been provided for you.
+
+### Instructions:
+* Import numpy as np.
+* Create an array x using `np.linspace()` with 0, 5, and 100 as inputs.
+* Create an array y using `np.cos()` with x as input.
+* Add circles at x and y using p.circle().
+
+#### Script:
+```
+In [5]: x[:10]
+Out[5]: 
+array([ 0.        ,  0.05050505,  0.1010101 ,  0.15151515,  0.2020202 ,
+        0.25252525,  0.3030303 ,  0.35353535,  0.4040404 ,  0.45454545])
+
+In [6]: len(x)
+Out[6]: 100
+
+In [7]: y[:10]
+Out[7]: 
+array([ 1.        ,  0.99872489,  0.99490282,  0.98854352,  0.97966323,
+        0.96828458,  0.95443659,  0.93815458,  0.91948007,  0.89846069])
+
+In [8]: len(y)
+Out[8]: 100
+
+```
+
+#### Output:
+```
+In [5]: x[:10]
+Out[5]: 
+array([ 0.        ,  0.05050505,  0.1010101 ,  0.15151515,  0.2020202 ,
+        0.25252525,  0.3030303 ,  0.35353535,  0.4040404 ,  0.45454545])
+
+In [6]: len(x)
+Out[6]: 100
+
+In [7]: y[:10]
+Out[7]: 
+array([ 1.        ,  0.99872489,  0.99490282,  0.98854352,  0.97966323,
+        0.96828458,  0.95443659,  0.93815458,  0.91948007,  0.89846069])
+
+In [8]: len(y)
+Out[8]: 100
+```
+![Alt text](./linspace_cos.png)
+
+#### Comment:
+Great work!
