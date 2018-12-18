@@ -430,3 +430,65 @@ Out[8]: 100
 
 #### Comment:
 Great work!
+
+## 09. Plotting data from Pandas DataFrames
+You can create Bokeh plots from Pandas DataFrames by passing column selections to the glyph functions.
+
+Bokeh can plot floating point numbers, integers, and datetime data types. In this example, you will read a CSV file containing information on 392 automobiles manufactured in the US, Europe and Asia from 1970 to 1982.
+
+The CSV file is provided for you as 'auto.csv'.
+
+Your job is to plot miles-per-gallon (`mpg`) vs horsepower (`hp`) by passing Pandas column selections into the p.circle() function. Additionally, each glyph will be colored according to values in the color column.
+
+### Instructions:
+* Import pandas as pd.
+* Use the read_csv() function of pandas to read in 'auto.csv' and store it in the DataFrame df.
+* Import figure from bokeh.plotting.
+* Use the figure() function to create a figure p with the x-axis labeled 'HP' and the y-axis labeled 'MPG'.
+* Plot mpg (on the y-axis) vs hp (on the x-axis) by color using p.circle(). Note that the x-axis should be specified before the y-axis inside p.circle(). You will need to use Pandas DataFrame indexing to pass in the columns. For example, to access the color column, you can use df['color'], and then pass it in as an argument to the color parameter of p.circle(). Also specify a size of 10.
+
+#### Script:
+```
+# Import pandas as pd
+import pandas as pd
+
+# Read in the CSV file: df
+df = pd.read_csv('auto.csv')
+
+# Import figure from bokeh.plotting
+from bokeh.plotting import figure
+
+# Create the figure: p
+p = figure(x_axis_label='HP', y_axis_label='MPG')
+
+# Plot mpg vs hp by color
+p.circle(df['hp'], df['mpg'], size=10, color=df['color'])
+
+# Specify the name of the output file and show the result
+output_file('auto-df.html')
+show(p)
+
+```
+
+#### Output:
+```
+In [3]: df.head()
+Out[3]: 
+    mpg  cyl  displ   hp  weight  accel  yr  origin              name  color  \
+0  18.0    6  250.0   88    3139   14.5  71      US      ford mustang   blue   
+1   9.0    8  304.0  193    4732   18.5  70      US          hi 1200d   blue   
+2  36.1    4   91.0   60    1800   16.4  78    Asia  honda civic cvcc    red   
+3  18.5    6  250.0   98    3525   19.0  77      US      ford granada   blue   
+4  34.3    4   97.0   78    2188   15.8  80  Europe         audi 4000  green   
+
+   size  
+0  15.0  
+1  20.0  
+2  10.0  
+3  15.0  
+4  10.0
+```
+![Alt text](./bokeh_panda.png)
+
+#### Comment:
+Great work!
