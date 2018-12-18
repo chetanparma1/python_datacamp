@@ -511,3 +511,62 @@ Which of the following statements about ColumnDataSource objects is true?
 
 #### Comment:
 Correct. Ragged (different length) columns are not permitted within a single ColumnDataSource.
+
+## 11. The Bokeh ColumnDataSource (continued)
+You can create a `ColumnDataSource` object directly from a Pandas DataFrame by passing the DataFrame to the class initializer.
+
+In this exercise, we have imported pandas as `pd` and read in a data set containing all Olympic medals awarded in the 100 meter sprint from 1896 to 2012. A color column has been added indicating the CSS colorname we wish to use in the plot for every data point.
+
+Your job is to import the ColumnDataSource class, create a new ColumnDataSource object from the DataFrame df, and plot circle glyphs with 'Year' on the x-axis and 'Time' on the y-axis. Color each glyph by the color column.
+
+The figure object p has already been created for you.
+
+### Instructions:
+* Import the `ColumnDataSource` class from `bokeh.plotting`.
+* Use the ColumnDataSource() function to make a new ColumnDataSource object called source from the DataFrame df.
+* Use p.circle() to plot circle glyphs of size=8 on the figure p with 'Year' on the x-axis and 'Time' on the y-axis. Be sure to also specify source=source and color='color' so that the ColumnDataSource object is used and each glyph is colored by the color column.
+
+#### Script:
+```
+# Import the ColumnDataSource class from bokeh.plotting
+# from bokeh.models import ColumnDataSource
+from bokeh.plotting import ColumnDataSource
+
+# Create a ColumnDataSource from df: source
+source = ColumnDataSource(df)
+
+# Add circle glyphs to the figure p
+p.circle(x = 'Year', y='Time', size=8, source=source, color='color')
+
+# Specify the name of the output file and show the result
+output_file('sprint.html')
+show(p)
+
+```
+
+#### Output:
+```
+In [1]: df.head(12)
+Out[1]: 
+                Name Country   Medal   Time  Year        color
+0         Usain Bolt     JAM    GOLD   9.63  2012    goldenrod
+1        Yohan Blake     JAM  SILVER   9.75  2012       silver
+2      Justin Gatlin     USA  BRONZE   9.79  2012  saddlebrown
+3         Usain Bolt     JAM    GOLD   9.69  2008    goldenrod
+4   Richard Thompson     TRI  SILVER   9.89  2008       silver
+5         Walter Dix     USA  BRONZE   9.91  2008  saddlebrown
+6      Justin Gatlin     USA    GOLD   9.85  2004    goldenrod
+7   Francis Obikwelu     POR  SILVER   9.86  2004       silver
+8     Maurice Greene     USA  BRONZE   9.87  2004  saddlebrown
+9     Maurice Greene     USA    GOLD   9.87  2000    goldenrod
+10        Ato Boldon     TRI  SILVER   9.99  2000       silver
+11  Obadele Thompson     BAR  BRONZE  10.04  2000  saddlebrown
+```
+```
+In [5]: source
+Out[5]: ColumnDataSource(id='0432fe7d-c39d-4798-b502-99bc7d922e60', ...)
+```
+![Alt text](./datasource.png)
+
+#### Comment:
+Great work!
