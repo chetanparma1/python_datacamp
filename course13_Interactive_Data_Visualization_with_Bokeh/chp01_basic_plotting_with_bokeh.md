@@ -492,3 +492,22 @@ Out[3]:
 
 #### Comment:
 Great work!
+
+## 10. The Bokeh ColumnDataSource
+The ColumnDataSource is a table-like data object that maps string column names to sequences (columns) of data. It is the central and most common data structure in Bokeh.
+
+Which of the following statements about ColumnDataSource objects is true?
+
+### Possible Answers
+* All columns in a ColumnDataSource must have the same length.
+** press 1
+* ColumnDataSource objects cannot be shared between different plots.
+** press 2
+* ColumnDataSource objects are interchangeable with Pandas DataFrames.
+** press 3
+
+#### Answer:
+1
+
+#### Comment:
+Correct. Ragged (different length) columns are not permitted within a single ColumnDataSource.
