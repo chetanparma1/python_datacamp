@@ -647,3 +647,12 @@ show(p)
 
 ### Comment:
 Great work!
+
+## 14. Colormapping
+The final glyph customization we'll practice is using the CategoricalColorMapper to color each glyph by a categorical property.
+
+Here, you're going to use the automobile dataset to plot miles-per-gallon vs weight and color each circle glyph by the region where the automobile was manufactured.
+
+The origin column will be used in the ColorMapper to color automobiles manufactured in the US as blue, Europe as red and Asia as green.
+
+The automobile data set is provided to you as a Pandas DataFrame called df. The figure is provided for you as p.
