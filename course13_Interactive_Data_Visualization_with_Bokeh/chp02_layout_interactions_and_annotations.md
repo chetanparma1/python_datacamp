@@ -49,3 +49,10 @@ show(layout)
 
 #### Comment:
 Great work!
+
+## 02. Creating columns of plots
+In this exercise, you're going to use the column() function to create a single column layout of the two plots you created in the previous exercise.
+
+Figure p1 has been created for you.
+
+In this exercise and the ones to follow, you may have to scroll down to view the lower portion of the figure.
