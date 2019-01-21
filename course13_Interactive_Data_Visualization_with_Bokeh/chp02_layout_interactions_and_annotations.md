@@ -136,3 +136,18 @@ Great work!
 ## 04. Investigating the layout API
 Bokeh layouts allow for positioning items visually in the page presented to the user. What kinds of objects can be put into Bokeh layouts?
 
+### Possible Answers
+* Plots
+** press 1
+* Widgets
+** press 2
+* Other Layouts
+** press 3
+* All of the above
+** press 4
+
+#### Answer:
+4
+
+#### Comment:
+Correct. Plots, widgets and nested sub-layouts can be handled.
