@@ -338,3 +338,8 @@ layout = row([p1, p2])
 output_file('linked_brush.html')
 show(layout)
 ```
+#### Output:
+![Alt text](./linked_brush.gif)
+
+#### Comment:
+Great work! Be sure to pop the figure out into a new window before playing with the Box Select and Lasso Select tools to make sure you can see everything.
