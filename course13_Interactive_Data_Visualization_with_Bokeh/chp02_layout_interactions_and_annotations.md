@@ -404,3 +404,22 @@ show(p)
 
 #### Comment:
 Great work!
+
+## 12. Hover tooltips for exposing details
+When configuring hover tools, certain pre-defined fields such as mouse position or glyph index can be accessed with $-prefixed names, for example $x, $index. But tooltips can display values from arbitrary columns in a ColumnDataSource.
+
+What is the correct format to display values from a column "sales" in a hover tooltip? 
+
+### Possible Answers
+* &{sales}
+** press 1
+* %sales%
+** press 2
+* @sales
+** press 3
+
+#### Answer:
+3
+
+#### Comment:
+Correct. The @ prefix denotes the name of a column to display values from.
