@@ -123,3 +123,22 @@ curdoc().add_root(layout)
 
 #### Comment:
 Excellent! The next step now is to learn how to connect these sliders to plots.
+
+## 05. Adding callbacks to sliders
+Callbacks are functions that a user can define, like def callback(attr, old, new), that can be called automatically when some property of a Bokeh object (e.g., the value of a Slider) changes.
+
+How are callbacks added for the value property of Slider objects?
+
+### Possible Answers
+* By passing a callback function to the callback method.
+** press 1
+* By passing a callback function to the on_change method.
+** press 2
+* By assigning the callback function to the Slider.update property.
+** press 3
+
+#### Answer:
+2
+
+#### Comment:
+Correct. A callback is added by calling myslider.on_change('value', callback).
