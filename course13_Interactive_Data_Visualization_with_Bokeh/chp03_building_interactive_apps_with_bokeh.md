@@ -370,3 +370,6 @@ curdoc().add_root(layout)
 ```
 #### Output:
 ![Alt text](./button.gif)
+
+#### Comment:
+Great work! Notice how clicking the button updates the data in accordance with the sinusoidal function you wrote.
