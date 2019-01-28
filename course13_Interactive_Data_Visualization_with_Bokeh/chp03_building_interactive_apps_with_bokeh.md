@@ -405,3 +405,8 @@ radio = RadioGroup(labels = ['Option 1', 'Option 2', 'Option 3'])
 # Add widgetbox(toggle, checkbox, radio) to the current document
 curdoc().add_root(widgetbox(toggle, checkbox, radio))
 ```
+#### Output:
+![Alt text](./button_all.gif)
+
+#### Comment:
+Great work! Toggles, CheckboxGroups, and RadioGroups allow you to add your own stylistic touch to buttons in Bokeh apps.
