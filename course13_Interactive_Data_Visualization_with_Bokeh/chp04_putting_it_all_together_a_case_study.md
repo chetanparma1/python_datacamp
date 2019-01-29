@@ -129,5 +129,8 @@ plot.yaxis.axis_label = 'Life Expectancy (years)'
 curdoc().add_root(plot)
 curdoc().title = 'Gapminder'
 ```
-#### Comment
+#### Output
 ![Alt text](./gapminder_1970.png)
+
+#### Comment:
+Great work! Notice how life expectancy seems to go down as fertility goes up? It would be interesting to see how this varies by continent. In the next exercise, you'll do this by shading each glyph by its continent.
