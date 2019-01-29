@@ -1,9 +1,9 @@
 # Chapter 04: Putting It All Together: A Case Study
 
 ## 01. Introducing the project dataset
-For the final chapter, you'll be looking at some of the Gapminder datasets combined into one tidy file called "gapminder_tidy.csv". This data set is available as a pandas DataFrame under the variable name data.
+For the final chapter, you'll be looking at some of the Gapminder datasets combined into one tidy file called "gapminder_tidy.csv". This data set is available as a pandas DataFrame under the variable name `data`.
 
-It is always a good idea to begin with some Exploratory Data Analysis. Pandas has a number of built-in methods that help with this. For example, data.head() displays the first five rows/entries of data, while data.tail() displays the last five rows/entries. data.shape gives you information about how many rows and columns there are in the data set. Another particularly useful method is data.info(), which provides a concise summary of data, including information about the number of entries, columns, data type of each column, and number of non-null entries in each column.
+It is always a good idea to begin with some Exploratory Data Analysis. Pandas has a number of built-in methods that help with this. For example, data.head() displays the first five rows/entries of data, while data.tail() displays the last five rows/entries. data.shape gives you information about how many rows and columns there are in the data set. Another particularly useful method is `data.info()`, which provides a concise summary of data, including information about the number of entries, columns, data type of each column, and number of non-null entries in each column.
 
 Use the IPython Shell and the pandas methods mentioned above to explore this data set. How many entries and columns does this data set have?
 
@@ -175,3 +175,16 @@ curdoc().title = 'Gapminder'
 
 #### Comment:
 Great work! The plot provides a lot more information now that you have added the shading. The next step is to add a slider to control the year. This will let you interactively visualize the change over the last few decades.
+
+## 05. Adding a slider to vary the year
+Until now, we've been plotting data only for 1970. In this exercise, you'll add a slider to your plot to change the year being plotted. To do this, you'll create an update_plot() function and associate it with a slider to select values between 1970 and 2010.
+
+After you are done, you may have to scroll to the right to view the entire plot. As you play around with the slider, notice that the title of the plot is not updated along with the year. This is something you'll fix in the next exercise!
+
+### Instructions:
+* Import the widgetbox and row functions from bokeh.layouts, and the Slider function from bokeh.models.
+* Define the update_plot callback function with parameters attr, old and new.
+* Set the yr name to slider.value and set source.data = new_data.
+* Make a slider object called slider using the Slider() function with a start year of 1970, end year of 2010, step of 1, value of 1970, and title of 'Year'.
+* Attach the callback to the 'value' property of slider. This can be done using on_change() and passing in 'value' and update_plot.
+* Make a row layout of widgetbox(slider) and plot and add it to the current document.
