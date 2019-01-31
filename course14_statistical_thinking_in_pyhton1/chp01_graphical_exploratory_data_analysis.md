@@ -20,3 +20,22 @@ Even though you probably have not read Tukey's book, I suspect you already have 
 
 #### Comment:
 You're right. That statement is pretty absurd. If you don't have time to do EDA, you really don't have time to do hypothesis tests. And you should always do EDA first.
+
+## 02. Advantages of graphical EDA
+Which of the following is not true of graphical EDA?
+
+### Possible Answers
+* It often involves converting tabular data into graphical form.
+** press 1
+* If done well, graphical representations can allow for more rapid interpretation of data.
+** press 2
+* A nice looking plot is always the end goal of a statistical analysis.
+** press 3
+* There is no excuse for neglecting to do graphical EDA.
+** press 4
+
+#### Answer:3
+3
+
+#### Comment:
+Correct! While a good, informative plot can sometimes be the end point of an analysis, it is more like a beginning: it helps guide you in the quantitative statistical analyses that come next.
