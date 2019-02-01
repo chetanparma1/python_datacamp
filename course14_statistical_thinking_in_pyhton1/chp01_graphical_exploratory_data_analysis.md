@@ -71,4 +71,7 @@ plt.hist(versicolor_petal_length)
 plt.show()
 ```
 #### Output;
-![Alt text](./facet_sragep_rbmi_table.png)
+![Alt text](./hist_versicolor.svg)
+
+#### Comment:
+Great work!
