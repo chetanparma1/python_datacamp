@@ -183,3 +183,18 @@ plt.show()
 
 #### Comment:
 Great work!
+
+## 07. Interpreting a bee swarm plot
+Which of the following conclusions could you draw from the bee swarm plot of iris petal lengths you generated in the previous exercise? For your convenience, the bee swarm plot is regenerated and shown to the right.
+
+### Possible Answers
+* All I. versicolor petals are shorter than I. virginica petals.
+* I. setosa petals have a broader range of lengths than the other two species.
+* I. virginica petals tend to be the longest, and I. setosa petals tend to be the shortest of the three species.
+* I. versicolor is a hybrid of I. virginica and I. setosa.
+
+#### Answer:
+3
+
+#### Comment:
+Correct! Notice that we said "tend to be." Some individual I. virginica flowers may be shorter than individual I. versicolor flowers. It is also possible that an individual I. setosa flower may have longer petals than in individual I. versicolor flower, though this is highly unlikely, and was not observed by Anderson.
