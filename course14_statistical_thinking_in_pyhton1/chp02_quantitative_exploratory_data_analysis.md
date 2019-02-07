@@ -18,3 +18,10 @@ Which one of the following statements is true about means and medians?
 
 #### Comment:
 Correct!
+
+## 02. Computing means
+The mean of all measurements gives an indication of the typical magnitude of a measurement. It is computed using np.mean().
+
+### Instructions:
+* Compute the mean petal length of Iris versicolor from Anderson's classic data set. The variable versicolor_petal_length is provided in your namespace. Assign the mean to mean_length_vers.
+* Hit submit to print the result.
