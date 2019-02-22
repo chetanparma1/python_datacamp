@@ -146,3 +146,72 @@ It is important to have some understanding of what commonly-used functions are d
 * Compute the mean of the elements in diff_sq using np.mean(). Store the result as variance_explicit.
 * Compute the variance of versicolor_petal_length using np.var(). Store the result as variance_np.
 * Print both variance_explicit and variance_np in one print call to make sure they are consistent.
+
+#### Script:
+```
+# Array of differences to mean: differences
+differences = versicolor_petal_length - versicolor_petal_length.mean()
+
+# Square the differences: diff_sq
+diff_sq = differences ** 2
+
+# Compute the mean square difference: variance_explicit
+variance_explicit = np.mean(diff_sq)
+
+# Compute the variance using NumPy: variance_np
+variance_np = np.var(versicolor_petal_length)
+
+# Print the results
+print(variance_explicit, variance_np)
+
+```
+
+#### Output:
+```
+In [1]: versicolor_petal_length
+Out[1]: 
+array([4.7, 4.5, 4.9, 4. , 4.6, 4.5, 4.7, 3.3, 4.6, 3.9, 3.5, 4.2, 4. ,
+       4.7, 3.6, 4.4, 4.5, 4.1, 4.5, 3.9, 4.8, 4. , 4.9, 4.7, 4.3, 4.4,
+       4.8, 5. , 4.5, 3.5, 3.8, 3.7, 3.9, 5.1, 4.5, 4.5, 4.7, 4.4, 4.1,
+       4. , 4.4, 4.6, 4. , 3.3, 4.2, 4.2, 4.2, 4.3, 3. , 4.1])
+```
+```
+In [4]: versicolor_petal_length.mean()
+Out[4]: 4.26
+```
+```
+In [7]: differences
+Out[7]: 
+array([ 0.44,  0.24,  0.64, -0.26,  0.34,  0.24,  0.44, -0.96,  0.34,
+       -0.36, -0.76, -0.06, -0.26,  0.44, -0.66,  0.14,  0.24, -0.16,
+        0.24, -0.36,  0.54, -0.26,  0.64,  0.44,  0.04,  0.14,  0.54,
+        0.74,  0.24, -0.76, -0.46, -0.56, -0.36,  0.84,  0.24,  0.24,
+        0.44,  0.14, -0.16, -0.26,  0.14,  0.34, -0.26, -0.96, -0.06,
+       -0.06, -0.06,  0.04, -1.26, -0.16])
+```
+```
+In [9]: diff_sq
+Out[9]: 
+array([0.1936, 0.0576, 0.4096, 0.0676, 0.1156, 0.0576, 0.1936, 0.9216,
+       0.1156, 0.1296, 0.5776, 0.0036, 0.0676, 0.1936, 0.4356, 0.0196,
+       0.0576, 0.0256, 0.0576, 0.1296, 0.2916, 0.0676, 0.4096, 0.1936,
+       0.0016, 0.0196, 0.2916, 0.5476, 0.0576, 0.5776, 0.2116, 0.3136,
+       0.1296, 0.7056, 0.0576, 0.0576, 0.1936, 0.0196, 0.0256, 0.0676,
+       0.0196, 0.1156, 0.0676, 0.9216, 0.0036, 0.0036, 0.0036, 0.0016,
+       1.5876, 0.0256])
+```
+```
+In [11]: variance_explicit
+Out[11]: 0.21640000000000004
+
+```
+```
+In [13]: variance_np
+Out[13]: 0.21640000000000004
+```
+```
+<script.py> output:
+    0.21640000000000004 0.21640000000000004
+```
+#### Comment:
+Great work!
