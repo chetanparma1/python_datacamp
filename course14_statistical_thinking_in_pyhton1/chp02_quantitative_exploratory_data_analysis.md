@@ -242,3 +242,5 @@ print(np.std(versicolor_petal_length))
     0.4651881339845203
 
 ```
+#### Comment:
+Yep, they are exactly the same!
