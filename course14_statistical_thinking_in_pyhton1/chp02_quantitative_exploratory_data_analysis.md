@@ -280,3 +280,24 @@ plt.show()
 
 #### Comment:
 Indeed, we see some correlation. Longer petals also tend to be wider.
+
+## 09. Variance and covariance by looking
+Consider four scatter plots of x-y data, appearing to the right. 
+![Alt text](./var_covar.svg)
+Which has, respectively,
+
+the highest variance in the variable x,
+the highest covariance,
+negative covariance?
+
+### Possible Answers:
+* a, c, b
+* d, c, a
+* d, c, b
+* d, d, b
+
+#### Answer:
+3
+
+#### Comment:
+Well-reasoned!
