@@ -13,3 +13,9 @@ Why do we do statistical inference?
 ** press 3
 * All of these.
 ** press 4
+
+### Answer:
+4
+
+#### Comment:
+Correct! Statistical inference involves taking your data to probabilistic conclusions about what you would expect if you took even more data, and you can make decisions based on these conclusions.
