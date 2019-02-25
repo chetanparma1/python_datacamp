@@ -19,3 +19,20 @@ Why do we do statistical inference?
 
 #### Comment:
 Correct! Statistical inference involves taking your data to probabilistic conclusions about what you would expect if you took even more data, and you can make decisions based on these conclusions.
+
+## 02. Why do we use the language of probability?
+Which of the following is not a reason why we use probabilistic language in statistical inference?
+
+### Possible Answers
+* Probability provides a measure of uncertainty.
+** press 1
+* Probabilistic language is not very precise.
+** press 2
+* Data are almost never exactly the same when acquired again, and probability allows us to say how much we expect them to vary.
+** press 3
+
+#### Answer:
+2
+
+#### Comment:
+Correct. Probabilistic language is in fact very precise. It precisely describes uncertainty.
