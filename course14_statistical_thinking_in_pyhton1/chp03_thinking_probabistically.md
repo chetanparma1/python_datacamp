@@ -223,3 +223,45 @@ plt.show()
 
 #### Comment:
 Great work! If you know the story, using built-in algorithms to directly sample out of the distribution is much faster.
+
+## 08. Plotting the Binomial PMF
+As mentioned in the video, plotting a nice looking PMF requires a bit of matplotlib trickery that we will not go into here. Instead, we will plot the PMF of the Binomial distribution as a histogram with skills you have already learned. The trick is setting up the edges of the bins to pass to plt.hist() via the bins keyword argument. We want the bins centered on the integers. So, the edges of the bins should be -0.5, 0.5, 1.5, 2.5, ... up to max(n_defaults) + 1.5. You can generate an array like this using np.arange() and then subtracting 0.5 from the array.
+
+You have already sampled out of the Binomial distribution during your exercises on loan defaults, and the resulting samples are in the NumPy array n_defaults.
+
+### Instructions:
+* Using np.arange(), compute the bin edges such that the bins are centered on the integers. Store the resulting array in the variable bins.
+* Use plt.hist() to plot the histogram of n_defaults with the normed=True and bins=bins keyword arguments.
+Show the plot.
+
+#### Script:
+```
+# Compute bin edges: bins
+bins = np.arange(0, max(n_defaults) + 2) - 0.5
+# bins = np.arange(0, max(n_defaults) + 1.5) - 0.5
+
+# Generate histogram
+plt.hist(n_defaults, bins=bins, normed=True)
+
+# Label axes
+plt.xlabel('number of defaults of 100 loans')
+plt.ylabel('ecdf')
+
+
+# Show the plot
+plt.show()
+
+```
+#### Output:
+![Alt text](./pmf.svg)
+
+```
+In [2]: bins = np.arange(0, max(n_defaults) + 2) - 0.5
+
+In [3]: bins
+Out[3]: 
+array([-0.5,  0.5,  1.5,  2.5,  3.5,  4.5,  5.5,  6.5,  7.5,  8.5,  9.5,
+       10.5, 11.5, 12.5, 13.5, 14.5])
+```
+#### Comment:
+Great!
