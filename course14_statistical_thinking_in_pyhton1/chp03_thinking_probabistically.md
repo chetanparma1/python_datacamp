@@ -359,19 +359,3 @@ print('Probability of seven or more no-hitters:', p_large)
 ```
 #### Comment:
 The result is about 0.007. This means that it is not that improbable to see a 7-or-more no-hitter season in a century. We have seen two in a century and a half, so it is not unreasonable.
-
-## 12. Interpreting PDFs
-Consider the PDF shown to the right (it may take a second to load!). Which of the following is true?
-![Alt text](./pdf.svg)
-
-### Possible Answers
-* x is more likely than not less than 10.
-* x is more likely than not greater than 10.
-* We cannot tell from the PDF if x is more likely to be greater than or less than 10.
-* This is not a valid PDF because it has two peaks.
-
-#### Answer:
-1
-
-#### Comment:
-Correct! The probability is given by the area under the PDF, and there is more area to the left of 10 than to the right.
