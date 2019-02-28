@@ -95,3 +95,19 @@ plt.show()
 
 #### Comment:
 Great work! The CDFs all pass through the mean at the 50th percentile; the mean and median of a Normal distribution are equal. The width of the CDF varies with the standard deviation.
+
+## 05. Gauss and the 10 Deutschmark banknote
+What are the mean and standard deviation, respectively, of the Normal distribution that was on the 10 Deutschmark banknote, shown to the right?
+![Alt text](./banknote.svg)
+
+### Possible Answers
+* mean = 3, std = 1
+* mean = 3, std = 2
+* mean = 0.4, std = 1
+* mean = 0.6, std = 6
+
+#### Answer:
+1
+
+#### Comment:
+Correct!
