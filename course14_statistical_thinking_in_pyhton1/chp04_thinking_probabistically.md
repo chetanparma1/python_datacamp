@@ -193,3 +193,22 @@ print('Probability of besting Secretariat:', prob)
 ```
 #### Comment:
 Great work! We had to take a million samples because the probability of a fast time is very low and we had to be sure to sample enough. We get that there is only a 0.06% chance of a horse running the Belmont as fast as Secretariat.
+
+## 08. Matching a story and a distribution
+How might we expect the time between Major League no-hitters to be distributed? Be careful here: a few exercises ago, we considered the probability distribution for the number of no-hitters in a season. Now, we are looking at the probability distribution of the time between no hitters.
+
+### Possible Answers
+* Normal
+** press 1
+* Exponential
+** press 2
+* Poisson
+** press 3
+* Uniform
+** press 4
+
+#### Answer:
+3
+
+#### Comment:
+Correct!
