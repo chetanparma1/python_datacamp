@@ -259,3 +259,5 @@ def successive_poisson(tau1, tau2, size=1):
 
     return t1 + t2
 ```
+#### Comment:
+Great work! We'll put the function to use in the next exercise.
