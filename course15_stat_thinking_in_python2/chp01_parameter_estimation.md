@@ -404,3 +404,57 @@ Why should exploratory data analysis be the first step in an analysis of data (a
 
 #### Comment:
 Yes! Always do EDA as you jump into a data set.
+
+## 08. Linear regression on appropriate Anscombe data
+For practice, perform a linear regression on the data set from Anscombe's quartet that is most reasonably interpreted with linear regression.
+
+### Instructions:
+* Compute the parameters for the slope and intercept using np.polyfit(). The Anscombe data are stored in the arrays x and y.
+* Print the slope a and intercept b.
+* Generate theoretical x and y data from the linear regression. Your x array, which you can create with np.array(), should consist of 3 and 15. To generate the y data, multiply the slope by x_theor and add the intercept.
+* Plot the Anscombe data as a scatter plot and then plot the theoretical line. Remember to include the marker='.' and linestyle='none' keyword arguments in addition to x and y when to plot the Anscombe data as a scatter plot. You do not need these arguments when plotting the theoretical line.
+* Hit 'Submit Answer' to see the plot!
+
+#### Script:
+```
+# Perform linear regression: a, b
+a, b = np.polyfit(x, y, 1)
+
+# Print the slope and intercept
+print(a, b)
+
+# Generate theoretical x and y data: x_theor, y_theor
+x_theor = np.array([3, 15])
+y_theor = a * x_theor + b
+
+# Plot the Anscombe data and theoretical line
+_ = plt.plot(x, y, marker='.', linestyle='none')
+_ = plt.plot(x_theor, y_theor, marker='.', linestyle='none')
+
+# Label the axes
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Show the plot
+plt.show()
+```
+
+#### Output:
+```
+In [1]: x
+Out[1]: array([10.,  8., 13.,  9., 11., 14.,  6.,  4., 12.,  7.,  5.])
+
+In [2]: y
+Out[2]: 
+array([ 8.04,  6.95,  7.58,  8.81,  8.33,  9.96,  7.24,  4.26, 10.84,
+        4.82,  5.68])
+
+```
+```
+<script.py> output:
+    0.5000909090909095 3.000090909090909
+```
+![Alt text](./anscombe_theoritical.svg)
+
+#### Comment:
+Great work! You're getting to be a linear regression pro!
