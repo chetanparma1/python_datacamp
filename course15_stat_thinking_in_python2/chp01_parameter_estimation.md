@@ -385,3 +385,22 @@ Out[4]: 1.888050610636557
 
 #### Comment:
 Great work! Notice that the minimum on the plot, that is the value of the slope that gives the minimum sum of the square of the residuals, is the same value you got when performing the regression.
+
+## 07. The importance of EDA
+Why should exploratory data analysis be the first step in an analysis of data (after getting your data imported and cleaned, of course)?
+
+### Possible Answers
+* You can be protected from misinterpretation of the type demonstrated by Anscombe's quartet.
+** press 1
+* EDA provides a good starting point for planning the rest of your analysis.
+** press 2
+* EDA is not really any more difficult than any of the subsequent analysis, so there is no excuse for not exploring the data.
+** press 3
+* All of these reasons!
+** press 4
+
+#### Answer:
+4
+
+#### Comment:
+Yes! Always do EDA as you jump into a data set.
