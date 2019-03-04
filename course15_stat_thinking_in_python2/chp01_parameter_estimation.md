@@ -458,3 +458,33 @@ array([ 8.04,  6.95,  7.58,  8.81,  8.33,  9.96,  7.24,  4.26, 10.84,
 
 #### Comment:
 Great work! You're getting to be a linear regression pro!
+
+## 09. Linear regression on all Anscombe data
+Now, to verify that all four of the Anscombe data sets have the same slope and intercept from a linear regression, you will compute the slope and intercept for each set. The data are stored in lists; anscombe_x = [x1, x2, x3, x4] and anscombe_y = [y1, y2, y3, y4], where, for example, x2 and y2 are the x and y values for the second Anscombe data set.
+
+### Instructions:
+* Write a for loop to do the following for each Anscombe data set.
+** Compute the slope and intercept.
+** Print the slope and intercept.
+
+#### Script:
+```
+# Iterate through x,y pairs
+for x, y in zip(anscombe_x, anscombe_y):
+    # Compute the slope and intercept: a, b
+    a, b = np.polyfit(x, y, 1)
+
+    # Print the result
+    print('slope:', a, 'intercept:', b)
+
+```
+#### Output:
+```
+<script.py> output:
+    slope: 0.5000909090909095 intercept: 3.000090909090909
+    slope: 0.5000000000000004 intercept: 3.0009090909090896
+    slope: 0.4997272727272731 intercept: 3.0024545454545453
+    slope: 0.4999090909090908 intercept: 3.0017272727272735
+```
+#### Comment:
+Great work! Indeed, they all have the same slope and intercept.
