@@ -103,7 +103,7 @@ Out[2]: 133
 Good job! Notice how the bootstrap samples give an idea of how the distribution of rainfalls is spread.
 
 ## 04. Generating many bootstrap replicates
-The function bootstrap_replicate_1d() from the video is available in your namespace. Now you'll write another function, draw_bs_reps(data, func, size=1), which generates many bootstrap replicates from the data set. This function will come in handy for you again and again as you compute confidence intervals and later when you do hypothesis tests.
+The `function bootstrap_replicate_1d()` from the video is available in your namespace. It only generates 1 bootstrap replicate. Now you'll write another function, `draw_bs_reps(data, func, size=1)`, which generates many bootstrap replicates from the data set. This function will come in handy for you again and again as you compute confidence intervals and later when you do hypothesis tests.
 
 For your reference, the bootstrap_replicate_1d() function is provided below:
 ```
@@ -213,3 +213,41 @@ Out[2]: array([779.76992481, 820.95043233])
 
 #### Comment:
 Correct! See, it's simple to get confidence intervals using bootstrap!
+
+## 07. Bootstrap replicates of other statistics
+We saw in a previous exercise that the mean is Normally distributed. This does not necessarily hold for other statistics, but no worry: as hackers, we can always take bootstrap replicates! In this exercise, you'll generate bootstrap replicates for the variance of the annual rainfall at the Sheffield Weather Station and plot the histogram of the replicates.
+
+Here, you will make use of the draw_bs_reps() function you defined <a href="https://campus.datacamp.com/courses/statistical-thinking-in-python-part-2/bootstrap-confidence-intervals?ex=6">a few exercises ago</a>. It is provided below for your reference:
+```
+def draw_bs_reps(data, func, size=1):
+    return np.array([bootstrap_replicate_1d(data, func) for _ in range(size)])
+```
+
+### Instructions:
+* Draw 10000 bootstrap replicates of the variance in annual rainfall, stored in the rainfall dataset, using your draw_bs_reps() function. Hint: Pass in np.var for computing the variance.
+* Divide your variance replicates (bs_replicates) by 100 to put the variance in units of square centimeters for convenience.
+* Make a histogram of bs_replicates using the normed=True keyword argument and 50 bins.
+
+#### Script:
+```
+# Generate 10,000 bootstrap replicates of the variance: bs_replicates
+bs_replicates = draw_bs_reps(rainfall, np.var, 10000)
+
+# Put the variance in units of square centimeters
+# p.s: rainfall is stored in unit of millimeters (mm)
+bs_replicates = bs_replicates/100
+
+# Make a histogram of the results
+_ = plt.hist(bs_replicates, bins=50, normed=True)
+_ = plt.xlabel('variance of annual rainfall (sq. cm)')
+_ = plt.ylabel('PDF')
+
+# Show the plot
+plt.show()
+
+```
+#### Output:
+![Alt text](./rainfall_var.svg)
+
+#### Comment:
+Great work! This is not normally distributed, as it has a longer tail to the right. Note that you can also compute a confidence interval on the variance, or any other statistic, using np.percentile() with your bootstrap replicates.
