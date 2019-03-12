@@ -325,3 +325,5 @@ def draw_bs_pairs_linreg(x, y, size=1):
     return bs_slope_reps, bs_intercept_reps
 
 ```
+#### Comment:
+Great work! This will also be useful for you going forward.
