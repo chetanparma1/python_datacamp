@@ -361,3 +361,89 @@ plt.show()
 
 #### Comment:
 Great work!
+
+## 11. Plotting bootstrap regressions
+A nice way to visualize the variability we might expect in a linear regression is to plot the line you would get from each bootstrap replicate of the slope and intercept. Do this for the first 100 of your bootstrap replicates of the slope and intercept (stored as bs_slope_reps and bs_intercept_reps).
+
+### Instructions:
+* Generate an array of x-values consisting of 0 and 100 for the plot of the regression lines. Use the np.array() function for this.
+* Write a for loop in which you plot a regression line with a slope and intercept given by the pairs bootstrap replicates. Do this for 100 lines.
+* When plotting the regression lines in each iteration of the for loop, recall the regression equation y = a*x + b. Here, a is bs_slope_reps[i] and b is bs_intercept_reps[i].
+* Specify the keyword arguments linewidth=0.5, alpha=0.2, and color='red' in your call to plt.plot().
+* Make a scatter plot with illiteracy on the x-axis and fertility on the y-axis. Remember to specify the marker='.' and linestyle='none' keyword arguments.
+* Label the axes, set a 2% margin, and show the plot. This has been done for you, so hit 'Submit Answer' to visualize the bootstrap regressions!
+
+#### Script:
+```
+# Generate array of x-values for bootstrap lines: x
+x = np.array([0, 100])
+
+# Plot the bootstrap lines
+for i in range(100):
+    _ = plt.plot(x, 
+                 bs_slope_reps[i]*x + bs_intercept_reps[i],
+                 linewidth=0.5, alpha=0.2, color='red')
+
+# Plot the data
+_ = plt.plot(illiteracy, fertility, marker='.', linestyle='none')
+
+# Label axes, set the margins, and show the plot
+_ = plt.xlabel('illiteracy')
+_ = plt.ylabel('fertility')
+plt.margins(0.02)
+plt.show()
+
+
+# # this is just for my understanding
+# for i in range(5):
+#     y = bs_slope_reps[i]*x + bs_intercept_reps[i]
+#     print(x, y)
+```
+
+#### Output:
+```
+In [6]: len(bs_intercept_reps)
+Out[6]: 5000
+
+In [7]: len(bs_slope_reps)
+Out[7]: 5000
+```
+```
+In [4]: bs_intercept_reps[0:10]
+Out[4]: 
+array([1.78457301, 2.15906733, 1.88394922, 1.82776782, 1.90471959,
+       1.79148723, 1.92146583, 1.82108255, 1.88656516, 1.96501076])
+
+In [5]: bs_slope_reps[0:10]
+Out[5]: 
+array([0.05288543, 0.03766856, 0.05020376, 0.05243753, 0.05080393,
+       0.05062333, 0.05458338, 0.05190415, 0.05304969, 0.04742824])
+```
+```
+In [1]: x = np.array([0, 100])
+
+In [2]: x
+Out[2]: array([  0, 100])
+```
+```
+In [13]: # this is just for my understanding
+         for i in range(5):
+             y = bs_slope_reps[i]*x + bs_intercept_reps[i]
+             print(x, y)
+[  0 100] [1.78457301 7.0731157 ]
+[  0 100] [2.15906733 5.92592329]
+[  0 100] [1.88394922 6.90432533]
+[  0 100] [1.82776782 7.07152115]
+[  0 100] [1.90471959 6.98511276]
+```
+##### the bootstrap lines only: 
+![Alt text](./bootstrap_lines.svg)
+
+##### the data plot only: 
+![Alt text](./data_plot_only.svg)
+
+##### bootstrap lines and data
+![Alt text](./bootstrap_lines_and_data.svg)
+
+#### Comment:
+Great work! You now have some serious chops for parameter estimation. Let's move on to hypothesis testing!
