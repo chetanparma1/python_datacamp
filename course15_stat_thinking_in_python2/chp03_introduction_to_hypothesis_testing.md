@@ -30,3 +30,20 @@ def permutation_sample(data1, data2):
 ```
 #### Comment:
 Great work!
+
+## 02. Visualizing permutation sampling
+To help see how permutation sampling works, in this exercise you will generate permutation samples and look at them graphically.
+
+We will use the Sheffield Weather Station data again, this time considering the monthly rainfall in July (a dry month) and November (a wet month). We expect these might be differently distributed, so we will take permutation samples to see how their ECDFs would look if they were identically distributed.
+
+The data are stored in the Numpy arrays rain_june and rain_november.
+
+As a reminder, permutation_sample() has a function signature of permutation_sample(data_1, data_2) with a return value of permuted_data[:len(data_1)], permuted_data[len(data_1):], where `permuted_data = np.random.permutation(np.concatenate((data_1, data_2)))`.
+
+### Instructions:
+* Write a for loop to 50 generate permutation samples, compute their ECDFs, and plot them.
+** Generate a permutation sample pair from rain_june and rain_november using your permutation_sample() function.
+** Generate the x and y values for an ECDF for each of the two permutation samples for the ECDF using your ecdf() function.
+** Plot the ECDF of the first permutation sample (x_1 and y_1) as dots. Do the same for the second permutation sample (x_2 and y_2).
+* Generate x and y values for ECDFs for the rain_june and rain_november data and plot the ECDFs using respectively the keyword arguments color='red' and color='blue'.
+* Label your axes, set a 2% margin, and show your plot. This has been done for you, so just hit 'Submit Answer' to view the plot!
