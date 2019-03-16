@@ -109,3 +109,20 @@ Out[4]: 133
 
 #### Comment:
 Great work! Notice that the permutation samples ECDFs overlap and give a purple haze. None of the ECDFs from the permutation samples overlap with the observed data, suggesting that the hypothesis is not commensurate with the data. July and November rainfall are not identically distributed.
+
+## 03. Test statistics
+When performing hypothesis tests, your choice of test statistic should be:
+
+### Possible Answers
+* something well-known, like the mean or median.
+** press 1
+* be a parameter that can be estimated.
+** press 2
+* be pertinent to the question you are seeking to answer in your hypothesis test.
+** press 3
+
+#### Answer:
+3
+
+#### Comment:
+Yes! The most important thing to consider is: What are you asking?
