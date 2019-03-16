@@ -47,3 +47,65 @@ As a reminder, permutation_sample() has a function signature of permutation_samp
 ** Plot the ECDF of the first permutation sample (x_1 and y_1) as dots. Do the same for the second permutation sample (x_2 and y_2).
 * Generate x and y values for ECDFs for the rain_june and rain_november data and plot the ECDFs using respectively the keyword arguments color='red' and color='blue'.
 * Label your axes, set a 2% margin, and show your plot. This has been done for you, so just hit 'Submit Answer' to view the plot!
+
+#### Script:
+```
+for i in range(50):
+    # Generate permutation samples
+    perm_sample_1, perm_sample_2 = permutation_sample(rain_june, rain_november)
+
+
+    # Compute ECDFs
+    x_1, y_1 = ecdf(perm_sample_1)
+    x_2, y_2 = ecdf(perm_sample_2)
+
+    # Plot ECDFs of permutation sample
+    _ = plt.plot(x_1, y_1, marker='.', linestyle='none',
+                 color='red', alpha=0.02)
+    _ = plt.plot(x_2, y_2, marker='.', linestyle='none',
+                 color='blue', alpha=0.02)
+
+# Create and plot ECDFs from original data
+x_1, y_1 = ecdf(rain_june)
+x_2, y_2 = ecdf(rain_november)
+_ = plt.plot(x_1, y_1, marker='.', linestyle='none', color='red')
+_ = plt.plot(x_2, y_2, marker='.', linestyle='none', color='blue')
+
+# Label axes, set margin, and show plot
+plt.margins(0.02)
+_ = plt.xlabel('monthly rainfall (mm)')
+_ = plt.ylabel('ECDF')
+plt.show()
+```
+
+#### Output:
+```
+In [1]: rain_june[:5]
+Out[1]: array([66.2, 39.7, 76.4, 26.5, 11.2])
+
+In [2]: len(rain_june)
+Out[2]: 133
+
+In [3]: rain_november[:5]
+Out[3]: array([83.6, 30.9, 62.2, 37. , 41. ])
+
+In [4]: len(rain_november)
+Out[4]: 133
+```
+##### ECDF plot for 133 permuted samples (1 iteration) 
+![Alt text](./ecdf_permutation1.svg)
+
+##### ECDF plot for 133 permuted samples (5 iterations) 
+![Alt text](./ecdf_permutation.svg)
+
+##### ECDF plot for 133 permuted samples (50 iterations) 
+![Alt text](./ecdf_permutation.svg)
+
+##### ECDF Plot for the original data
+![Alt text](./ecdf_original_data.svg)
+
+##### ECDF plot for 133 samples, both the original and the permuted samples (50 iterations)
+![Alt text](./ecdf_permutation_original.svg)
+
+#### Comment:
+Great work! Notice that the permutation samples ECDFs overlap and give a purple haze. None of the ECDFs from the permutation samples overlap with the observed data, suggesting that the hypothesis is not commensurate with the data. July and November rainfall are not identically distributed.
