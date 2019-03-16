@@ -126,3 +126,20 @@ When performing hypothesis tests, your choice of test statistic should be:
 
 #### Comment:
 Yes! The most important thing to consider is: What are you asking?
+
+## 04. What is a p-value?
+The p-value is generally a measure of:
+
+### Possible Answers
+* the probability that the hypothesis you are testing is true.
+** press 1
+* the probability of observing your data if the hypothesis you are testing is true.
+** press 2
+* the probability of observing a test statistic equally or more extreme than the one you observed, given that the null hypothesis is true.
+** press 3
+
+#### Answer:
+3
+
+#### Comment:
+Correct!
