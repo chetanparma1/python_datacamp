@@ -176,3 +176,53 @@ def draw_perm_reps(data_1, data_2, func, size=1):
 ```
 #### Comment:
 Great work!
+
+## 06. Look before you leap: EDA before hypothesis testing
+Kleinteich and Gorb (Sci. Rep., 4, 5225, 2014) performed an interesting experiment with South American horned frogs. They held a plate connected to a force transducer, along with a bait fly, in front of them. They then measured the impact force and adhesive force of the frog's tongue when it struck the target.
+
+Frog A is an adult and Frog B is a juvenile. The researchers measured the impact force of 20 strikes for each frog. In the next exercise, we will test the hypothesis that the two frogs have the same distribution of impact forces. But, remember, it is important to do EDA first! Let's make a bee swarm plot for the data. They are stored in a Pandas data frame, df, where column ID is the identity of the frog and column impact_force is the impact force in Newtons (N).
+
+### Instructions:
+* Use sns.swarmplot() to make a bee swarm plot of the data by specifying the x, y, and data keyword arguments.
+* Label your axes.
+* Show the plot.
+
+#### Script:
+```
+# Make bee swarm plot
+_ = sns.swarmplot(x= 'ID', y='impact_force', data=df)
+
+# Label axes
+_ = plt.xlabel('frog')
+_ = plt.ylabel('impact force (N)')
+
+# Show the plot
+plt.show()
+```
+
+#### Output:
+```
+In [1]: df.head(10)
+Out[1]: 
+   ID  impact_force
+20  A         1.612
+21  A         0.605
+22  A         0.327
+23  A         0.946
+24  A         0.541
+25  A         1.539
+26  A         0.529
+27  A         0.628
+28  A         1.453
+29  A         0.297
+
+```
+```
+In [3]: df.shape
+Out[3]: (40, 2)
+```
+
+![Alt text](./frog_swarmplot.svg)
+
+#### Comment:
+Eyeballing it, it does not look like they come from the same distribution. Frog A, the adult, has three or four very hard strikes, and Frog B, the juvenile, has a couple weak ones. However, it is possible that with only 20 samples it might be too difficult to tell if they have difference distributions, so we should proceed with the hypothesis test.
