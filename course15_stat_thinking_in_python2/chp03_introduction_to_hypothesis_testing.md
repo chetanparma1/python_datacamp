@@ -226,3 +226,78 @@ Out[3]: (40, 2)
 
 #### Comment:
 Eyeballing it, it does not look like they come from the same distribution. Frog A, the adult, has three or four very hard strikes, and Frog B, the juvenile, has a couple weak ones. However, it is possible that with only 20 samples it might be too difficult to tell if they have difference distributions, so we should proceed with the hypothesis test.
+
+## 07. Permutation test on frog data
+The average strike force of Frog A was 0.71 Newtons (N), and that of Frog B was 0.42 N for a difference of 0.29 N. It is possible the frogs strike with the same force and this observed difference was by chance. You will compute the probability of getting at least a 0.29 N difference in mean strike force under the hypothesis that the distributions of strike forces for the two frogs are identical. We use a permutation test with a test statistic of the difference of means to test this hypothesis.
+
+For your convenience, the data has been stored in the arrays force_a and force_b.
+
+### Instructions:
+* Define a function with call signature diff_of_means(data_1, data_2) that returns the differences in means between two data sets, mean of data_1 minus mean of data_2.
+* Use this function to compute the empirical difference of means that was observed in the frogs.
+* Draw 10,000 permutation replicates of the difference of means.
+* Compute the p-value.
+* Print the p-value.
+
+
+#### Script:
+```
+def diff_of_means(data_1, data_2):
+    """Difference in means of two arrays."""
+
+    # The difference of means of data_1, data_2: diff
+    diff = np.mean(data_1) - np.mean(data_2)
+
+    return diff
+
+# Compute difference of mean impact force from experiment: empirical_diff_means
+empirical_diff_means = diff_of_means(force_a, force_b)
+
+# Draw 10,000 permutation replicates: perm_replicates
+perm_replicates = draw_perm_reps(force_a, force_b,
+                                 diff_of_means, size=10000)
+
+# Compute p-value: p
+p = np.sum(perm_replicates >= empirical_diff_means) / len(perm_replicates)
+
+# Print the result
+print('p-value =', p)
+```
+
+#### Output:
+```
+In [1]: force_a
+Out[1]: 
+array([1.612, 0.605, 0.327, 0.946, 0.541, 1.539, 0.529, 0.628, 1.453,
+       0.297, 0.703, 0.269, 0.751, 0.245, 1.182, 0.515, 0.435, 0.383,
+       0.457, 0.73 ])
+
+In [2]: force_b
+Out[2]: 
+array([0.172, 0.142, 0.037, 0.453, 0.355, 0.022, 0.502, 0.273, 0.72 ,
+       0.582, 0.198, 0.198, 0.597, 0.516, 0.815, 0.402, 0.605, 0.711,
+       0.614, 0.468])
+
+In [3]: type(force_a)
+Out[3]: numpy.ndarray
+
+In [4]: type(force_b)
+Out[4]: numpy.ndarray
+```
+```
+In [2]: empirical_diff_means
+Out[2]: 0.28825000000000006
+```
+```
+In [6]: perm_replicates
+Out[6]: array([ 0.00865,  0.00935,  0.01845, ..., -0.05835,  0.25855,  0.16225])
+
+In [7]: len(perm_replicates)
+Out[7]: 10000
+```
+```
+<script.py> output:
+    p-value = 0.0063
+```
+#### Comment:
+The p-value tells you that there is about a 0.6% chance that you would get the difference of means observed in the experiment if frogs were exactly the same. A p-value below 0.01 is typically said to be "statistically significant," but: warning! warning! warning! You have computed a p-value; it is a number. I encourage you not to distill it to a yes-or-no phrase. p = 0.006 and p = 0.000000006 are both said to be "statistically significant," but they are definitely not the same!
