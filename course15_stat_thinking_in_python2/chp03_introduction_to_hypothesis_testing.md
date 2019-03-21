@@ -334,3 +334,78 @@ print('p = ', p)
 ```
 #### Comment:
 Great work! The low p-value suggests that the null hypothesis that Frog B and Frog C have the same mean impact force is false.
+
+## 09. A two-sample bootstrap hypothesis test for difference of means
+We now want to test the hypothesis that Frog A and Frog B have the same mean impact force, but not necessarily the same distribution, which is also impossible with a permutation test.
+
+To do the two-sample bootstrap test, we shift both arrays to have the same mean, since we are simulating the hypothesis that their means are, in fact, equal. We then draw bootstrap samples out of the shifted arrays and compute the difference in means. This constitutes a bootstrap replicate, and we generate many of them. The p-value is the fraction of replicates with a difference in means greater than or equal to what was observed.
+
+The objects `forces_concat` and `empirical_diff_means` are already in your namespace.
+
+### Instructions:
+* Compute the mean of all forces (from forces_concat) using `np.mean()`.
+* Generate shifted data sets for both force_a and force_b such that the mean of each is the mean of the concatenated array of impact forces.
+* Generate 10,000 bootstrap replicates of the mean each for the two shifted arrays.
+* Compute the bootstrap replicates of the difference of means by subtracting the replicates of the shifted impact force of Frog B from those of Frog A.
+* Compute and print the p-value from your bootstrap replicates.
+
+#### Script:
+```
+# Compute mean of all forces: mean_force
+mean_force = np.mean(forces_concat)
+
+# Generate shifted arrays
+force_a_shifted = force_a - np.mean(force_a) + mean_force
+force_b_shifted = force_b - np.mean(force_b) + mean_force 
+
+# Compute 10,000 bootstrap replicates from shifted arrays
+bs_replicates_a = draw_bs_reps(force_a_shifted, np.mean, 10000)
+bs_replicates_b = draw_bs_reps(force_b_shifted, np.mean, 10000)
+
+# Get replicates of difference of means: bs_replicates
+bs_replicates = bs_replicates_a - bs_replicates_b
+
+# Compute and print p-value: p
+p = np.sum(bs_replicates >= empirical_diff_means) / bs_replicates.size
+print('p-value =', p)
+
+```
+
+#### Output:
+```
+# forces_concat is an array made of the combination of force_a and force_b.
+In [1]: forces_concat[:10]
+Out[1]: 
+array([1.612, 0.605, 0.327, 0.946, 0.541, 1.539, 0.529, 0.628, 1.453,
+       0.297])
+
+In [2]: len(forces_concat)
+Out[2]: 40
+```
+```
+In [1]: forces_concat[:10]
+Out[1]: 
+array([1.612, 0.605, 0.327, 0.946, 0.541, 1.539, 0.529, 0.628, 1.453,
+       0.297])
+
+In [2]: len(forces_concat)
+Out[2]: 40
+```
+```
+In [8]: force_a_shifted[:10]
+Out[8]: 
+array([1.467875, 0.460875, 0.182875, 0.801875, 0.396875, 1.394875,
+       0.384875, 0.483875, 1.308875, 0.152875])
+```
+```
+In [10]: force_b_shifted[:10]
+Out[10]: 
+array([0.316125, 0.286125, 0.181125, 0.597125, 0.499125, 0.166125,
+       0.646125, 0.417125, 0.864125, 0.726125])
+```
+```
+<script.py> output:
+    p-value = 0.0043
+```
+#### Comment:
+Nice work! You got a similar result as when you did the permutation test. Nonetheless, remember that it is important to carefully think about what question you want to ask. Are you only interested in the mean impact force, or in the distribution of impact forces?
