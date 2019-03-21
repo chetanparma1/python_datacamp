@@ -312,3 +312,25 @@ To set up the bootstrap hypothesis test, you will take the mean as our test stat
 * Use your draw_bs_reps() function to take 10,000 bootstrap replicates of the mean of your translated forces.
 * Compute the p-value by finding the fraction of your bootstrap replicates that are less than the observed mean impact force of Frog B. Note that the variable of interest here is force_b.
 * Print your p-value.
+
+#### Script:
+```
+# Make an array of translated impact forces: translated_force_b
+translated_force_b = force_b - np.mean(force_b) + 0.55
+
+# Take bootstrap replicates of Frog B's translated impact forces: bs_replicates
+bs_replicates = draw_bs_reps(translated_force_b, np.mean, 10000)
+
+# Compute fraction of replicates that are less than the observed Frog B force: p
+p = np.sum(bs_replicates <= np.mean(force_b)) / 10000
+
+# Print the p-value
+print('p = ', p)
+```
+#### Output:
+```
+<script.py> output:
+    p =  0.0046
+```
+#### Comment:
+Great work! The low p-value suggests that the null hypothesis that Frog B and Frog C have the same mean impact force is false.
