@@ -36,3 +36,20 @@ print('p-value =', p)
 ```
 #### Comment:
 Great work! This small p-value suggests that party identity had a lot to do with the voting. Importantly, the South had a higher fraction of Democrat representatives, and consequently also a more racist bias.
+
+## 02. What is equivalent?
+You have experience matching a stories to probability distributions. Similarly, you use the same procedure for two different A/B tests if their stories match. In the Civil Rights Act example you just did, you performed an A/B test on voting data, which has a Yes/No type of outcome for each subject (in that case, a voter). Which of the following situations involving testing by a web-based company has an equivalent set up for an A/B test as the one you just did with the Civil Rights Act of 1964?
+
+### Possible Answers
+* You measure how much time each customer spends on your website before and after an advertising campaign.
+** press 1
+* You measure the number of people who click on an ad on your company's website before and after changing its color.
+** press 2
+* You measure how many clicks each person has on your company's website before and after changing the header layout.
+** press 3
+
+#### Answer:
+2
+
+#### Comment:
+Yup! The "Democrats" are those who view the ad before the color change, and the "Republicans" are those who view it after.
