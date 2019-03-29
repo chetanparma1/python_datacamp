@@ -100,3 +100,18 @@ Out[5]: array([ 645, 2088,   42, 2090,   11,  886, 1665, 1084, 2900, 2432])
 ```
 #### Comment:
 Your p-value is 0.0001, which means that only one out of your 10,000 replicates had a result as extreme as the actual difference between the dead ball and live ball eras. This suggests strong statistical significance. Watch out, though, you could very well have gotten zero replicates that were as extreme as the observed value. This just means that the p-value is quite small, almost certainly smaller than 0.001.
+
+## 04. What should you have done first?
+That was a nice hypothesis test you just did to check out whether the rule changes in 1920 changed the rate of no-hitters. But what should you have done with the data first?
+
+### Possible Answers
+* Performed EDA, perhaps plotting the ECDFs of inter-no-hitter times in the dead ball and live ball eras.
+** press 1
+* Nothing. The hypothesis test was only a few lines of code.
+** press 2
+
+#### Answer:
+1
+
+#### Comment:
+Yes! Always a good idea to do first! I encourage you to go ahead and plot the ECDFs right now. You will see by eye that the null hypothesis that the distributions are the same is almost certainly not true.
