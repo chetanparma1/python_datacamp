@@ -115,3 +115,30 @@ That was a nice hypothesis test you just did to check out whether the rule chang
 
 #### Comment:
 Yes! Always a good idea to do first! I encourage you to go ahead and plot the ECDFs right now. You will see by eye that the null hypothesis that the distributions are the same is almost certainly not true.
+
+## 05. Simulating a null hypothesis concerning correlation
+The observed correlation between female illiteracy and fertility in the data set of 162 countries may just be by chance; the fertility of a given country may actually be totally independent of its illiteracy. You will test this null hypothesis in the next exercise.
+
+To do the test, you need to simulate the data assuming the null hypothesis is true. Of the following choices, which is the best way to to do it?
+
+### Possible Answers
+* Choose 162 random numbers to represent the illiteracy rate and 162 random numbers to represent the corresponding fertility rate.
+** press 1
+* Do a pairs bootstrap: Sample pairs of observed data with replacement to generate a new set of (illiteracy, fertility) data.
+** press 2
+* Do a bootstrap sampling in which you sample 162 illiteracy values with replacement and then 162 fertility values with replacement.
+** press 3
+* Do a permutation test: Permute the illiteracy values but leave the fertility values fixed to generate a new set of (illiteracy, fertility) data.
+** press 4
+* Do a permutation test: Permute both the illiteracy and fertility values to generate a new set of (illiteracy, fertility data).
+** press 5
+
+#### Answer:
+4
+
+#### Explanation:
+* option 1: If you just randomly choose numbers, they have nothing at all to do with the measured data.
+* option 2: Pairs bootstrap will get you a confidence interval on the Pearson correlation. You can get a confidence interval for its value. You would find, for example, that it cannot be close to zero. But this is not a simulation of the null hypothesis.
+* option 3: This works and is a legitimate way to simulate the data. The pairings are now random. However, it is not preferred because it is not exact like a permutation test is.
+* option 4: Yes, this exactly simulates the null hypothesis and does so more efficiently than the last option. It is exact because it uses all data and eliminates any correlation because which illiteracy value pairs to which fertility value is shuffled.
+* option 5: This works perfectly, and is exact because it uses all data and eliminates any correlation because which illiteracy value pairs to which fertility value is shuffled. However, it is not necessary, and computationally inefficient, to permute both illiteracy and fertility..
