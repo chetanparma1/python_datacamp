@@ -142,3 +142,55 @@ To do the test, you need to simulate the data assuming the null hypothesis is tr
 * option 3: This works and is a legitimate way to simulate the data. The pairings are now random. However, it is not preferred because it is not exact like a permutation test is.
 * option 4: Yes, this exactly simulates the null hypothesis and does so more efficiently than the last option. It is exact because it uses all data and eliminates any correlation because which illiteracy value pairs to which fertility value is shuffled.
 * option 5: This works perfectly, and is exact because it uses all data and eliminates any correlation because which illiteracy value pairs to which fertility value is shuffled. However, it is not necessary, and computationally inefficient, to permute both illiteracy and fertility..
+
+## 06. Hypothesis test on Pearson correlation
+The observed correlation between female illiteracy and fertility may just be by chance; the fertility of a given country may actually be totally independent of its illiteracy. You will test this hypothesis. To do so, permute the illiteracy values but leave the fertility values fixed. This simulates the hypothesis that they are totally independent of each other. For each permutation, compute the Pearson correlation coefficient and assess how many of your permutation replicates have a Pearson correlation coefficient greater than the observed one.
+
+The function pearson_r() that you wrote in the <a href="https://campus.datacamp.com/courses/statistical-thinking-in-python-part-1/quantitative-exploratory-data-analysis?ex=15">prequel to this course </a> for computing the Pearson correlation coefficient is already in your name space.
+
+### Instructions:
+* Compute the observed Pearson correlation between illiteracy and fertility.
+* Initialize an array to store your permutation replicates.
+* Write a for loop to draw 10,000 replicates:
+* Permute the illiteracy measurements using np.random.permutation().
+* Compute the Pearson correlation between the permuted illiteracy array, illiteracy_permuted, and fertility.
+* Compute and print the p-value from the replicates.
+
+#### Script:
+```
+# Compute observed correlation: r_obs
+r_obs = pearson_r(illiteracy, fertility)
+
+# Initialize permutation replicates: perm_replicates
+perm_replicates = np.empty(10000)
+
+# Draw replicates
+for i in range(10000):
+    # Permute illiteracy measurments: illiteracy_permuted
+    illiteracy_permuted = np.random.permutation(illiteracy)
+
+    # Compute Pearson correlation
+    perm_replicates[i] = pearson_r(illiteracy_permuted, fertility)
+
+# Compute p-value: p
+p = np.sum(perm_replicates > r_obs)/len(perm_replicates)
+print('p-val =', p)
+```
+
+#### Output:
+```
+In [5]: r_obs
+Out[5]: 0.8041324026815344
+```
+```
+In [27]: perm_replicates[:7]
+Out[27]: 
+array([4.04738577e-320, 1.66006057e-321, 0.00000000e+000, 2.23506445e-316,
+       4.94065646e-324, 2.23507749e-316, 4.94065646e-324])
+```
+```
+<script.py> output:
+    p-val = 0.0
+```
+#### Comment:
+You got a p-value of zero. In hacker statistics, this means that your p-value is very low, since you never got a single replicate in the 10,000 you took that had a Pearson correlation greater than the observed one. You could try increasing the number of replicates you take to continue to move the upper bound on your p-value lower and lower.
