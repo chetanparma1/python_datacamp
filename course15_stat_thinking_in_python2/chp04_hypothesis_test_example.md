@@ -206,3 +206,31 @@ First, we will do EDA, as usual. Plot ECDFs of the alive sperm count for untreat
 * Use your ecdf() function to generate x,y values from the control and treated arrays for plotting the ECDFs.
 * Plot the ECDFs on the same plot.
 * The margins have been set for you, along with the legend and axis labels. Hit 'Submit Answer' to see the result!
+
+#### Script:
+```
+# Compute x,y values for ECDFs
+x_control, y_control = ecdf(control)
+x_treated, y_treated = ecdf(treated)
+
+# Plot the ECDFs
+plt.plot(x_control, y_control, marker='.', linestyle='none')
+plt.plot(x_treated, y_treated, marker='.', linestyle='none')
+
+# Set the margins
+plt.margins(0.02)
+
+# Add a legend
+plt.legend(('control', 'treated'), loc='lower right')
+
+# Label axes and show plot
+plt.xlabel('millions of alive sperm per mL')
+plt.ylabel('ECDF')
+plt.show()
+
+```
+#### Output:
+![Alt text](./control_treated.svg)
+
+#### Comment:
+Nice plot! The ECDFs show a pretty clear difference between the treatment and control; treated bees have fewer alive sperm. Let's now do a hypothesis test in the next exercise.
