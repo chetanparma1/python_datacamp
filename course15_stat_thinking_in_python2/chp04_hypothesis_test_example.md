@@ -247,3 +247,38 @@ For your reference, the call signature for the draw_bs_reps() function <a href="
 * Generate 10,000 bootstrap replicates of the mean each for the two shifted arrays. Use your draw_bs_reps() function.
 * Compute the bootstrap replicates of the difference of means.
 * The code to compute and print the p-value has been written for you. Hit 'Submit Answer' to see the result!
+
+#### Script:
+```
+# Compute the difference in mean sperm count: diff_means
+diff_means = np.mean(control) - np.mean(treated)
+
+# Compute mean of pooled data: mean_count
+mean_count = np.mean(np.concatenate((control, treated)))
+
+# Generate shifted data sets
+control_shifted = control - np.mean(control) + mean_count
+treated_shifted = treated - np.mean(treated) + mean_count
+
+# Generate bootstrap replicates
+bs_reps_control = draw_bs_reps(control_shifted,
+                       np.mean, size=10000)
+bs_reps_treated = draw_bs_reps(treated_shifted,
+                       np.mean, size=10000)
+
+# Get replicates of difference of means: bs_replicates
+bs_replicates = bs_reps_control - bs_reps_treated
+
+# Compute and print p-value: p
+p = np.sum(bs_replicates >= np.mean(control) - np.mean(treated)) \
+            / len(bs_replicates)
+print('p-value =', p)
+
+```
+#### Output:
+```
+<script.py> output:
+    p-value = 0.0
+```
+#### Comment:
+Nice work! The p-value is small, most likely less than 0.0001, since you never saw a bootstrap replicated with a difference of means at least as extreme as what was observed. In fact, when I did the calculation with 10 million replicates, I got a p-value of 2e-05.
