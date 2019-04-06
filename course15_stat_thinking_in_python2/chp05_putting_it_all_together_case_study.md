@@ -219,3 +219,54 @@ plt.show()
 
 #### Comment:
 Great work! In looking at the plot, we see that beaks got deeper (the red points are higher up in the y-direction), but not really longer. If anything, they got a bit shorter, since the red dots are to the left of the blue dots. So, it does not look like the beaks kept the same shape; they became shorter and deeper.
+
+## 06. Linear regressions
+Perform a linear regression for both the 1975 and 2012 data. Then, perform pairs bootstrap estimates for the regression parameters. Report 95% confidence intervals on the slope and intercept of the regression line.
+
+You will use the draw_bs_pairs_linreg() function you wrote back in chapter 2.
+
+As a reminder, its call signature is draw_bs_pairs_linreg(x, y, size=1), and it returns bs_slope_reps and bs_intercept_reps.
+
+### Instructions:
+* Compute the slope and intercept for both the 1975 and 2012 data sets.
+* Obtain 1000 pairs bootstrap samples for the linear regressions using your draw_bs_pairs_linreg() function.
+* Compute 95% confidence intervals for the slopes and the intercepts.
+
+#### Script:
+```
+# Compute the linear regressions
+slope_1975, intercept_1975 = np.polyfit(bl_1975, bd_1975, deg = 1)
+slope_2012, intercept_2012 = np.polyfit(bl_2012, bd_2012, deg = 1)
+
+# Perform pairs bootstrap for the linear regressions
+bs_slope_reps_1975, bs_intercept_reps_1975 = \
+        draw_bs_pairs_linreg(bl_1975, bd_1975, 1000)
+bs_slope_reps_2012, bs_intercept_reps_2012 = \
+        draw_bs_pairs_linreg(bl_2012, bd_2012, 1000)
+
+# Compute confidence intervals of slopes
+slope_conf_int_1975 = np.percentile(bs_slope_reps_1975, [2.5, 97.5])
+slope_conf_int_2012 = np.percentile(bs_slope_reps_2012, [2.5, 97.5])
+intercept_conf_int_1975 = np.percentile(bs_intercept_reps_1975, [2.5, 97.5])
+intercept_conf_int_2012 = np.percentile(bs_intercept_reps_2012, [2.5, 97.5])
+
+# Print the results
+print('1975: slope =', slope_1975,
+      'conf int =', slope_conf_int_1975)
+print('1975: intercept =', intercept_1975,
+      'conf int =', intercept_conf_int_1975)
+print('2012: slope =', slope_2012,
+      'conf int =', slope_conf_int_2012)
+print('2012: intercept =', intercept_2012,
+      'conf int =', intercept_conf_int_2012)
+```
+#### Output:
+```
+<script.py> output:
+    1975: slope = 0.4652051691605937 conf int = [0.33851226 0.59306491]
+    1975: intercept = 2.3908752365842263 conf int = [0.64892945 4.18037063]
+    2012: slope = 0.462630358835313 conf int = [0.33137479 0.60695527]
+    2012: intercept = 2.977247498236019 conf int = [1.06792753 4.70599387]
+```
+#### Comment:
+Nicely done! It looks like they have the same slope, but different intercepts.
