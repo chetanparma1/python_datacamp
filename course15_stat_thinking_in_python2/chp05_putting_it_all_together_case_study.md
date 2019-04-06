@@ -156,3 +156,33 @@ Be careful! The hypothesis we are testing is not that the beak depths come from 
 * Take 10,000 bootstrap replicates of the mean each for the 1975 and 2012 beak depths.
 * Subtract the 1975 replicates from the 2012 replicates to get bootstrap replicates of the difference.
 * Compute and print the p-value. The observed difference in means you computed in the last exercise is still in your namespace as mean_diff.
+
+#### Script:
+```
+# Compute mean of combined data set: combined_mean
+combined_mean = np.mean(np.concatenate((bd_1975, bd_2012)))
+
+# Shift the samples
+bd_1975_shifted = bd_1975 - np.mean(bd_1975) + combined_mean
+bd_2012_shifted = bd_2012 - np.mean(bd_2012) + combined_mean
+
+# Get bootstrap replicates of shifted data sets
+bs_replicates_1975 = draw_bs_reps(bd_1975_shifted, np.mean, 10000)
+bs_replicates_2012 = draw_bs_reps(bd_2012_shifted, np.mean, 10000)
+
+# Compute replicates of difference of means: bs_diff_replicates
+bs_diff_replicates = bs_replicates_2012 - bs_replicates_1975
+
+# Compute the p-value
+p = np.sum(bs_diff_replicates >= mean_diff) / len(bs_diff_replicates)
+
+# Print p-value
+print('p =', p)
+```
+#### Output:
+```
+<script.py> output:
+    p = 0.0034
+```
+#### Comment:
+We get a p-value of 0.0034, which suggests that there is a statistically significant difference. But remember: it is very important to know how different they are! In the previous exercise, you got a difference of 0.2 mm between the means. You should combine this with the statistical significance. Changing by 0.2 mm in 37 years is substantial by evolutionary standards. If it kept changing at that rate, the beak depth would double in only 400 years.
