@@ -430,4 +430,4 @@ In [5]:
 ![Alt text](./scandens_fortis.svg)
 
 #### Comment:
-t appears as though there is a stronger correlation in G. fortis than in G. scandens. This suggests that beak depth is more strongly inherited in G. fortis. We'll quantify this correlation next.
+It appears as though there is a stronger correlation in G. fortis than in G. scandens. This suggests that beak depth is more strongly inherited in G. fortis. We'll quantify this correlation next.
