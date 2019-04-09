@@ -373,3 +373,61 @@ In the previous exercise, you computed the mean beak length to depth ratio with 
 
 #### Comment:
 Great work!
+
+## 10. EDA of heritability
+The array bd_parent_scandens contains the average beak depth (in mm) of two parents of the species G. scandens. The array bd_offspring_scandens contains the average beak depth of the offspring of the respective parents. The arrays bd_parent_fortis and bd_offspring_fortis contain the same information about measurements from G. fortis birds.
+
+Make a scatter plot of the average offspring beak depth (y-axis) versus average parental beak depth (x-axis) for both species. Use the alpha=0.5 keyword argument to help you see overlapping points.
+
+### Instructions:
+* Generate scatter plots for both species. Display the data for G. fortis in blue and G. scandens in red.
+* Set the axis labels, make a legend, and show the plot.
+
+#### Script:
+```
+# Make scatter plots
+_ = plt.plot(bd_parent_fortis, bd_offspring_fortis,
+             marker='.', linestyle='none', color='blue', alpha=0.5)
+_ = plt.plot(bd_parent_scandens, bd_offspring_scandens,
+             marker='.', linestyle='none', color='red', alpha=0.5)
+
+# Label axes
+_ = plt.xlabel('parental beak depth (mm)')
+_ = plt.ylabel('offspring beak depth (mm)')
+
+# Add legend
+_ = plt.legend(('G. fortis', 'G. scandens'), loc='lower right')
+
+# Show plot
+plt.show()
+
+```
+
+#### Output:
+```
+In [1]: bd_parent_scandens[:14]
+Out[1]: 
+array([8.3318, 8.4035, 8.5317, 8.7202, 8.7089, 8.7541, 8.773 , 8.8107,
+       8.7919, 8.8069, 8.6523, 8.6146, 8.6938, 8.7127])
+
+In [2]: bd_offspring_scandens[:14]
+Out[2]: 
+array([8.419 , 9.2468, 8.1532, 8.0089, 8.2215, 8.3734, 8.5025, 8.6392,
+       8.7684, 8.8139, 8.7911, 8.9051, 8.9203, 8.8747])
+
+In [3]: bd_parent_fortis[:14]
+Out[3]: 
+array([10.1  ,  9.55 ,  9.4  , 10.25 , 10.125,  9.7  ,  9.05 ,  7.4  ,
+        9.   ,  8.65 ,  9.625,  9.9  ,  9.55 ,  9.05 ])
+
+In [4]: bd_offspring_fortis[:14]
+Out[4]: 
+array([10.7 ,  9.78,  9.48,  9.6 , 10.27,  9.5 ,  9.  ,  7.46,  7.65,
+        8.63,  9.81,  9.4 ,  9.48,  8.75])
+
+In [5]: 
+```
+![Alt text](./scandens_fortis.svg)
+
+#### Comment:
+t appears as though there is a stronger correlation in G. fortis than in G. scandens. This suggests that beak depth is more strongly inherited in G. fortis. We'll quantify this correlation next.
