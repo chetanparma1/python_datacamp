@@ -445,3 +445,25 @@ You have <a href="https://campus.datacamp.com/courses/statistical-thinking-in-py
 * Extract x values and y values from the input array using the indices you just chose to generate a bootstrap sample.
 * Use func to compute the statistic of interest from the bootstrap samples of x and y and store it in your array of bootstrap replicates.
 * Return the array of bootstrap replicates.
+
+#### Script:
+```
+def draw_bs_pairs(x, y, func, size=1):
+    """Perform pairs bootstrap for a single statistic."""
+
+    # Set up array of indices to sample from: inds
+    inds = np.arange(len(x))
+
+    # Initialize replicates: bs_replicates
+    bs_replicates = np.empty(size)
+
+    # Generate replicates
+    for i in range(size):
+        bs_inds = np.random.choice(inds, len(inds))
+        bs_x, bs_y = x[bs_inds], y[bs_inds]
+        bs_replicates[i] = func(bs_x, bs_y)
+
+    return bs_replicates
+```
+#### Comment:
+Great work!
