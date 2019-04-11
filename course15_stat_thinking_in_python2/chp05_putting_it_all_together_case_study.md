@@ -467,3 +467,13 @@ def draw_bs_pairs(x, y, func, size=1):
 ```
 #### Comment:
 Great work!
+
+## 12. Pearson correlation of offspring and parental data
+The Pearson correlation coefficient seems like a useful measure of how strongly the beak depth of parents are inherited by their offspring. Compute the Pearson correlation coefficient between parental and offspring beak depths for G. scandens. Do the same for G. fortis. Then, use the function you wrote in the last exercise to compute a 95% confidence interval using pairs bootstrap.
+
+Remember, the data are stored in bd_parent_scandens, bd_offspring_scandens, bd_parent_fortis, and bd_offspring_fortis.
+
+### Instructions:
+* Use the pearson_r() function <a href="https://campus.datacamp.com/courses/statistical-thinking-in-python-part-1/quantitative-exploratory-data-analysis?ex=15">you wrote in the prequel to this course</a> to compute the Pearson correlation coefficient for G. scandens and G. fortis.
+* Acquire 1000 pairs bootstrap replicates of the Pearson correlation coefficient using the draw_bs_pairs() function you wrote in the previous exercise for G. scandens and G. fortis.
+* Compute the 95% confidence interval for both using your bootstrap replicates.
