@@ -558,3 +558,13 @@ print('G. fortis:', heritability_fortis, conf_int_fortis)
 ```
 #### Comment:
 Here again, we see that G. fortis has stronger heritability than G. scandens. This suggests that the traits of G. fortis may be strongly incorporated into G. scandens by introgressive hybridization.
+
+## 14. Is beak depth heritable at all in G. scandens?
+The heritability of beak depth in G. scandens seems low. It could be that this observed heritability was just achieved by chance and beak depth is actually not really heritable in the species. You will test that hypothesis here. To do this, you will do a pairs permutation test.
+
+### Instructions:
+* Initialize your array of replicates of heritability. We will take 10,000 pairs permutation replicates.
+* Write a for loop to generate your replicates.
+** Permute the bd_parent_scandens array using np.random.permutation().
+** Compute the heritability between the permuted array and the bd_offspring_scandens array using the heritability() function you wrote in the last exercise. Store the result in the replicates array.
+* Compute the p-value as the number of replicates that are greater than the observed heritability_scandens you computed in the last exercise.
