@@ -516,3 +516,8 @@ This exercise highlights a very important point. Statistical inference (and data
 Remember, the data are stored in bd_parent_scandens, bd_offspring_scandens, bd_parent_fortis, and bd_offspring_fortis.
 
 ### Instructions
+* Write a function heritability(parents, offspring) that computes heritability defined as the ratio of the covariance of the trait in parents and offspring divided by the variance of the trait in the parents. Hint: Remind yourself of the np.cov() function we covered in the prequel to this course.
+* Use this function to compute the heritability for G. scandens and G. fortis.
+* Acquire 1000 bootstrap replicates of the heritability using pairs bootstrap for G. scandens and G. fortis.
+* Compute the 95% confidence interval for both using your bootstrap replicates.
+* Print the results.
