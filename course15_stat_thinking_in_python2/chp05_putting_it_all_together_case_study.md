@@ -521,3 +521,40 @@ Remember, the data are stored in bd_parent_scandens, bd_offspring_scandens, bd_p
 * Acquire 1000 bootstrap replicates of the heritability using pairs bootstrap for G. scandens and G. fortis.
 * Compute the 95% confidence interval for both using your bootstrap replicates.
 * Print the results.
+
+#### Script:
+```
+def heritability(parents, offspring):
+    """Compute the heritability from parent and offspring samples."""
+    covariance_matrix = np.cov(parents, offspring)
+    return covariance_matrix[0,1] / covariance_matrix[0,0]
+
+# Compute the heritability
+heritability_scandens = heritability(bd_parent_scandens, bd_offspring_scandens)
+heritability_fortis = heritability(bd_parent_fortis, bd_offspring_fortis)
+
+# Acquire 1000 bootstrap replicates of heritability
+replicates_scandens = draw_bs_pairs(
+        bd_parent_scandens, bd_offspring_scandens, heritability, size=1000)
+        
+replicates_fortis = draw_bs_pairs(
+        bd_parent_fortis, bd_offspring_fortis, heritability, size=1000)
+
+
+# Compute 95% confidence intervals
+conf_int_scandens = np.percentile(replicates_scandens, [2.5, 97.5])
+conf_int_fortis = np.percentile(replicates_fortis, [2.5, 97.5])
+
+# Print results
+print('G. scandens:', heritability_scandens, conf_int_scandens)
+print('G. fortis:', heritability_fortis, conf_int_fortis)
+
+```
+#### Output:
+```
+<script.py> output:
+    G. scandens: 0.5485340868685982 [0.34395487 0.75638267]
+    G. fortis: 0.7229051911438159 [0.64655013 0.79688342]
+```
+#### Comment:
+Here again, we see that G. fortis has stronger heritability than G. scandens. This suggests that the traits of G. fortis may be strongly incorporated into G. scandens by introgressive hybridization.
