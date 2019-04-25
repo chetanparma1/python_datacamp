@@ -36,3 +36,17 @@ FROM cities
     -- 2. Match on the country codes
     ON cities.country_code = countries.code;
 ```
+### Instructions & Script 3:
+* Modify the SELECT statement to keep only the name of the city, the name of the country, and the name of the region the country resides in.
+* Recall from our Intro to SQL for Data Science course that you can alias fields using AS. Alias the name of the city AS city and the name of the country AS country.
+
+```
+SELECT cities.name as city,  countries.name as country, countries.region
+FROM cities
+  -- 1. Inner join to countries
+  INNER JOIN countries
+    -- 2. Match on the country codes
+    ON cities.country_code = countries.code;
+```
+#### Comment:
+Great work! In the next exercise you'll explore how you can do more aliasing to limit the amount of writing.
