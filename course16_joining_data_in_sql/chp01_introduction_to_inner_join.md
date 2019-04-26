@@ -174,3 +174,44 @@ FROM countries AS c
 
 #### Comment:
 Correct!
+
+## 05. Inner join with using
+When joining tables with a common field name, e.g.
+```
+SELECT *
+FROM countries
+  INNER JOIN economies
+    ON countries.code = economies.code
+```
+You can use USING as a shortcut:
+
+```
+SELECT *
+FROM countries
+  INNER JOIN economies
+    USING(code)
+```
+You'll now explore how this can be done with the countries and languages tables.
+
+### Instructions:
+* Inner join countries on the left and languages on the right with USING(code).
+* Select the fields corresponding to:
+** country name AS country,
+** continent name,
+** language name AS language, and
+** whether or not the language is official.
+Remember to alias your tables using the first letter of their names.
+
+#### Script:
+```
+-- 4. Select fields
+SELECT c.name AS country, c.continent, l.name as language, l.official
+  -- 1. From countries (alias as c)
+  FROM countries as c
+  -- 2. Join to languages (as l)
+  INNER JOIN languages as l
+    -- 3. Match using code
+    on c.code = l.code;
+```
+#### Comment:
+Well done! Another technique to save you some typing!
