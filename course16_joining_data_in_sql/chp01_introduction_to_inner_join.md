@@ -135,12 +135,7 @@ SELECT c.code, name, region, e.year, fertility_rate, e.unemployment_rate
     -- 5. Match on country code
     ON c.code = e.code;
 ```
-* ### Instructions & Script 3:
-Scroll down the query result and take a look at the results for Albania from your previous query. Does something seem off to you?
-* The trouble with doing your last join on c.code = e.code and not also including year is that e.g. the 2010 value for fertility_rate is also paired with the 2015 value for unemployment_rate.
-* Fix your previous query: in your last ON clause, use AND to add an additional joining condition. In addition to joining on code in c and e, also join on year in e and p.
-
-### Instructions & Script 4:
+### Instructions & Script 3:
 * Scroll down the query result and take a look at the results for Albania from your previous query. Does something seem off to you?
 * The trouble with doing your last join on c.code = e.code and not also including year is that e.g. the 2010 value for fertility_rate is also paired with the 2015 value for unemployment_rate.
 * Fix your previous query: in your last ON clause, use AND to add an additional joining condition. In addition to joining on code in c and e, also join on year in e and p.
@@ -160,3 +155,22 @@ SELECT c.code, name, region, e.year, fertility_rate, e.unemployment_rate
 ```
 #### Comment:
 Good work! Time to learn something new!
+
+## 04. Review inner join using on
+Why does the following code result in an error?
+```
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+  INNER JOIN languages AS l;
+```
+### Possible Answers
+* The languages table has more rows than the countries table.
+* There are multiple languages spoken in many countries.
+* INNER JOIN requires a specification of the key field (or fields) in each table.
+* Join queries may not be followed by a semi-colon.
+
+#### Answer:
+3
+
+#### Comment:
+Correct!
