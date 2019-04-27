@@ -24,3 +24,19 @@ FROM cities AS c1
 -- Order by descending country code
 ORDER BY code DESC;
 ```
+
+### Instructions & Script 2
+Change the code to perform a LEFT JOIN instead of an INNER JOIN. After executing this query, note how many records the query result contains.
+```
+SELECT c1.name AS city, code, c2.name AS country,
+       region, city_proper_pop
+FROM cities AS c1
+  -- 1. Join right table (with alias)
+  LEFT JOIN countries AS c2
+    -- 2. Match on country code
+    ON c1.country_code = c2.code
+-- 3. Order by descending country code
+ORDER BY code DESC;
+```
+#### Comment:
+Perfect! Notice that the INNER JOIN version resulted in 230 records. The LEFT JOIN version returned 236 rows.
