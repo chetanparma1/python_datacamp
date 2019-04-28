@@ -316,3 +316,22 @@ WHERE region LIKE 'M%nesia';
 ```
 #### Comment:
 Well done! How many countries are in the regions you filtered on?
+
+## 06. Review outer joins
+A(n) ___ join is a join combining the results of a ___ join and a ___ join.
+
+### Possible Answers:
+* left, full, right
+** press 1
+* right, full, left
+** press 2
+* inner, left, right
+** press 3
+* None of the above are true
+** press 4
+
+#### Answer:
+4
+
+#### Comment:
+Correct!
