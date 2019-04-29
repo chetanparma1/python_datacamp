@@ -101,3 +101,25 @@ ORDER BY code, year;
 ```
 #### Comment:
 Boom!
+
+## 05. Intersect (2)
+As you think about major world cities and their corresponding country, you may ask which countries also have a city with the same name as their country name?
+
+### Instructions:
+Use INTERSECT to answer this question with countries and cities!
+
+#### Script:
+```
+-- Select fields
+SELECT name
+  -- From countries
+  FROM countries
+	-- Set theory clause
+	INTERSECT
+-- Select fields
+SELECT name
+  -- From cities
+  FROM cities;
+```
+#### Comment:
+Nice one! Hong Kong is part of China, but it appears separately here because it has its own ISO country code. Depending upon your analysis, treating Hong Kong separately could be useful or a mistake. Always check your dataset closely before you perform an analysis!
