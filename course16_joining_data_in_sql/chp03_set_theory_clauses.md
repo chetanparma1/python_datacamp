@@ -177,3 +177,49 @@ order by capital;
 ```
 #### Comment:
 Well done. Is this query surprising, as the instructions suggested?
+
+## 08. Semi-join
+You are now going to use the concept of a semi-join to identify languages spoken in the Middle East.
+
+### Instructions & Script 1:
+Flash back to our <a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science">Intro to SQL for Data Science</a> course and begin by selecting all country codes in the Middle East as a single field result using SELECT, FROM, and WHERE.
+```
+-- Select code
+SELECT code
+  -- From countries
+  FROM countries
+-- Where region is Middle East
+WHERE region = 'Middle East';
+```
+### Instructions & Script 2:
+* Comment out the answer to the previous tab by surrounding it in /* and */. You'll come back to it!
+* Below the commented code, select only unique languages by name appearing in the languages table.
+* Order the resulting single field table by name in ascending order.
+```
+-- SELECT code
+--   FROM countries
+-- WHERE region = 'Middle East';
+
+-- Select field
+SELECT DISTINCT name
+  -- From languages
+  FROM languages
+-- Order by name
+ORDER BY name;
+```
+### Instructions & Script 3:
+Now combine the previous two queries into one query:
+
+* Add a WHERE IN statement to the SELECT DISTINCT query, and use the commented out query from the first instruction in there. That way, you can determine the unique languages spoken in the Middle East.
+
+<br /> Carefully review this result and its code after completing it. It serves as a great example of subqueries, which are the focus of Chapter 4.
+
+```
+SELECT DISTINCT name
+  FROM languages
+  WHERE code IN (
+    SELECT code FROM countries WHERE region = 'Middle East')
+ORDER BY name;
+```
+#### Comment:
+Your first subquery is a fact! Let's dive a little deeper into the concept.
