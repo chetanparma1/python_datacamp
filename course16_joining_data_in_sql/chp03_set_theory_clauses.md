@@ -256,3 +256,57 @@ This inner join isn't quite right. What is missing from this second code block t
 
 #### Comment:
 Correct! There's no use on retrieving 'Arabic' multiple times; you only care about DISTINCT languages here.
+
+## 10. Diagnosing problems using anti-join
+Another powerful join in SQL is the anti-join. It is particularly useful in identifying which records are causing an incorrect number of records to appear in join queries.
+
+You will also see another example of a subquery here, as you saw in the first exercise on semi-joins. Your goal is to identify the currencies used in Oceanian countries!
+
+### Instruction & Script 1:
+Begin by determining the number of countries in countries that are listed in Oceania using SELECT, FROM, and WHERE.
+
+```
+-- Select statement
+select count(code)
+  -- From countries
+  from countries
+-- Where continent is Oceania
+where continent = 'Oceania';
+```
+### Instruction & Script 2:
+* Complete an inner join with countries AS c1 on the left and currencies AS c2 on the right to get the different currencies used in the countries of Oceania.
+* Match ON the code field in the two tables.
+* Include the country code, country name, and basic_unit AS currency.
+Observe query result and make note of how many different countries are listed here.
+
+```
+-- 5. Select fields (with aliases)
+SELECT c1.code, c1.name, c2.basic_unit as currency 
+  -- 1. From countries (alias as c1)
+  FROM countries as c1
+  	-- 2. Join with currencies (alias as c2)
+  	INNER JOIN currencies as c2
+    -- 3. Match on code
+    on c1.code = c2.code
+-- 4. Where continent is Oceania
+where continent = 'Oceania';
+```
+### Instruction & Script 3:
+Note that not all countries in Oceania were listed in the resulting inner join with currencies. Use an anti-join to determine which countries were not included!
+
+* Use NOT IN and (SELECT code FROM currencies) as a subquery to get the country code and country name for the Oceanian countries that are not included in the currencies table.
+```
+SELECT code, name FROM countries
+  WHERE continent = 'Oceania' 
+  AND code not in (SELECT code from currencies);
+```
+#### Output:
+code	name
+ASM	American Samoa
+FJI	Fiji Islands
+GUM	Guam
+FSM	Micronesia, Federated States of
+MNP	Northern Mariana Islands
+
+#### Comment:
+Nice! Can you tell which countries were not included now?
