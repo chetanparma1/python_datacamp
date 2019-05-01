@@ -310,3 +310,37 @@ MNP	Northern Mariana Islands
 
 #### Comment:
 Nice! Can you tell which countries were not included now?
+
+## 11. Set theory challenge
+Congratulations! You've now made your way to the challenge problem for this third chapter. Your task here will be to incorporate two of UNION/UNION ALL/INTERSECT/EXCEPT to solve a challenge involving three tables.
+
+In addition, you will use a subquery as you have in the last two exercises! This will be great practice as you hop into subqueries more in Chapter 4!
+
+### Instructions:
+* Identify the country codes that are included in either economies or currencies but not in populations.
+* Use that result to determine the names of cities in the countries that match the specification in the previous instruction.
+
+#### Script:
+```
+-- Select the city name
+SELECT c1.name
+  -- Alias the table where city name resides
+  from cities AS c1
+  -- Choose only records matching the result of multiple set theory clauses
+  WHERE c1.country_code IN
+(
+    -- Select appropriate field from economies AS e
+    SELECT e.code
+    FROM economies AS e
+    -- Get all additional (unique) values of the field from currencies AS c2  
+    UNION
+    SELECT c2.code
+    FROM currencies AS c2
+    -- Exclude those appearing in populations AS p
+    EXCEPT
+    SELECT p.country_code
+    FROM populations AS p
+);
+```
+#### Comment:
+Success! Head over to the final chapter of this course to feel the power of subqueries at your fingertips!
