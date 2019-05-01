@@ -140,3 +140,20 @@ South Korea	7
 ```
 #### Comment:
 Great! The next video will introduce you to using subqueries in the FROM clause. Exciting stuff!
+
+## 04. Subquery inside from
+The last type of subquery you will work with is one inside of FROM.
+
+You will use this to determine the number of languages spoken for each country, identified by the country's local name! (Note this may be different than the name field and is stored in the local_name field.)
+
+### Instructions & Script 1:
+* Begin by determining for each country code how many languages are listed in the languages table using SELECT, FROM, and GROUP BY.
+* Alias the aggregated field as lang_num.
+```
+-- Select fields (with aliases)
+select code, count(name) as lang_num
+  -- From languages
+  from languages
+-- Group by code
+group by code;
+```
