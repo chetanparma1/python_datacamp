@@ -157,3 +157,25 @@ select code, count(name) as lang_num
 -- Group by code
 group by code;
 ```
+### Instructions & Script 2:
+* Include the previous query (aliased as subquery) as a subquery in the FROM clause of a new query.
+* Select the local name of the country from countries.
+* Also, select lang_num from subquery.
+* Make sure to use WHERE appropriately to match code in countries and in subquery.
+* Sort by lang_num in descending order.
+```
+-- Select fields
+select countries.local_name, subquery.lang_num
+  -- From countries
+  from countries, 
+  	-- Subquery (alias as subquery)
+  	(select code, count(name) as lang_num
+      from languages
+      group by code) AS subquery
+  -- Where codes match
+  WHERE countries.code = subquery.code
+-- Order by descending number of languages
+order by lang_num desc;
+```
+#### Comment:
+This one wasn't easy!
