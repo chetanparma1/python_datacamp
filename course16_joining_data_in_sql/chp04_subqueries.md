@@ -278,3 +278,33 @@ Yemen	Asia	39.403
 ```
 #### Comment:
 Wow! Take a step back and look back at what you did!
+
+## 06. Subquery challenge
+Let's test your understanding of the subqueries with a challenge problem! Use a subquery to get 2015 economic data for countries that do not have
+
+* gov_form of 'Constitutional Monarchy' or
+* 'Republic' in their gov_form.
+Here, gov_form stands for the form of the government for each country. Review the different entries for gov_form in the countries table.
+
+### Instructions:
+* Select the country code, inflation rate, and unemployment rate.
+* Order by inflation rate ascending.
+* Do not use table aliasing in this exercise.
+
+#### Script:
+```
+-- Select fields
+SELECT e.code, e.inflation_rate, e.unemployment_rate
+  -- From economies
+  FROM economies e
+  -- Where year is 2015 and code is not in
+  WHERE year = 2015 AND code NOT IN
+  	-- Subquery
+  	(SELECT c.code
+  	 FROM countries c
+  	 WHERE (gov_form = 'Constitutional Monarchy' OR gov_form LIKE '%Republic%'))
+-- Order by inflation rate
+ORDER BY e.inflation_rate;
+```
+#### Comment:
+Superb! Let's review subqueries before you head off to the last video of this course!
