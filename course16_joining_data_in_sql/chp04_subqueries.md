@@ -482,4 +482,4 @@ Budapest	HUN	1759410	2927940	60.090184211731
 ```
 
 #### Comment:
-That's a wrap! Please help improve this course by filling in a short survey (less than 1 minute to complete). Check out the excellent follow-up course entitled Intermediate SQL by Mona Khalil too!
+That's a wrap! Please help improve this course by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7ztMnCeZt7Lq8moPoK0f1uCUebnFePbrl2UWgu6Q9Ar8D0w/viewform?usp=pp_url&entry.1367247047=Joining+Data+in+SQL">a short survey</a> (less than 1 minute to complete). Check out the excellent follow-up course entitled <a href="https://www.datacamp.com/courses/intermediate-sql">Intermediate SQL</a> by Mona Khalil too!
