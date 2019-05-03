@@ -429,3 +429,57 @@ Central Africa	Africa	4.96788883209229
 ```
 #### Comment:
 Interesting. It seems that the average fertility rate is lowest in Southern Europe and highest in Central Africa. Two down, one to go!
+
+## 09. Final challenge (3)
+Welcome to the last challenge problem. By now you're a query warrior! Remember that these challenges are designed to take you to the limit to solidify your SQL knowledge! Take a deep breath and solve this step-by-step.
+
+You are now tasked with determining the top 10 capital cities in Europe and the Americas in terms of a calculated percentage using city_proper_pop and metroarea_pop in cities.
+
+Do not use table aliasing in this exercise.
+
+### Instructions:
+* Select the city name, country code, city proper population, and metro area population.
+* Calculate the percentage of metro area population composed of city proper population for each city in cities, aliased as city_perc.
+* Focus only on capital cities in Europe and the Americas in a subquery.
+* Make sure to exclude records with missing data on metro area population.
+* Order the result by city_perc descending.
+* Then determine the top 10 capital cities in Europe and the Americas in terms of this city_perc percentage.
+
+#### Script:
+```
+-- Select fields
+SELECT cities.name, cities.country_code, cities.city_proper_pop, cities.metroarea_pop,   
+      -- Calculate city_perc
+      cities.city_proper_pop / cities.metroarea_pop * 100 AS city_perc
+  -- From appropriate table
+  FROM cities
+  -- Where 
+  WHERE cities.name IN
+    -- Subquery
+    (SELECT countries.capital
+     FROM countries
+     WHERE (countries.continent = 'Europe'
+        OR countries.continent LIKE '%America'))
+       AND cities.metroarea_pop IS NOT NULL
+-- Order appropriately
+ORDER BY city_perc desc
+-- Limit amount
+limit 10;
+```
+#### Output:
+```
+name	country_code	city_proper_pop	metroarea_pop	city_perc
+Lima	PER	8852000	10750000	82.3441863059998
+Bogota	COL	7878780	9800000	80.3957462310791
+Moscow	RUS	12197600	16170000	75.4334926605225
+Vienna	AUT	1863880	2600000	71.6877281665802
+Montevideo	URY	1305080	1947600	67.0096158981323
+Caracas	VEN	1943900	2923960	66.4818167686462
+Rome	ITA	2877220	4353780	66.0855233669281
+Brasilia	BRA	2556150	3919860	65.2101457118988
+London	GBR	8673710	13879800	62.4918222427368
+Budapest	HUN	1759410	2927940	60.090184211731
+```
+
+#### Comment:
+That's a wrap! Please help improve this course by filling in a short survey (less than 1 minute to complete). Check out the excellent follow-up course entitled Intermediate SQL by Mona Khalil too!
