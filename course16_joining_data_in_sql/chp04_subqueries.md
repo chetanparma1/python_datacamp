@@ -372,3 +372,60 @@ Panama	46.557	5.898
 ```
 #### Comment:
 One down, two to go!
+
+## 08. Final challenge (2)
+Whoofta! That was challenging, huh?
+
+Let's ease up a bit and calculate the average fertility rate for each region in 2015.
+
+### Instructions:
+* Include the name of region, its continent, and average fertility rate aliased as avg_fert_rate.
+* Sort based on avg_fert_rate ascending.
+* Remember that you'll need to GROUP BY all fields that aren't included in the aggregate function of SELECT.
+
+#### Script:
+```
+-- Select fields
+SELECT c.region, c.continent, avg(p.fertility_rate) AS avg_fert_rate
+  -- From left table
+  FROM countries AS c
+    -- Join to right table
+    INNER JOIN populations AS p
+      -- Match on join condition
+      ON c.code = p.country_code
+  -- Where specific records matching some condition
+  WHERE year = 2015
+-- Group appropriately
+GROUP BY c.region, c.continent
+-- Order appropriately
+ORDER BY avg_fert_rate;
+```
+#### Output:
+```
+region	continent	avg_fert_rate
+Southern Europe	Europe	1.42610000371933
+Eastern Europe	Europe	1.49088890022702
+Baltic Countries	Europe	1.60333331425985
+Eastern Asia	Asia	1.62071430683136
+Western Europe	Europe	1.6325000077486
+North America	North America	1.76575002074242
+British Islands	Europe	1.875
+Nordic Countries	Europe	1.89333335558573
+Australia and New Zealand	Oceania	1.91149997711182
+Caribbean	North America	1.95057143483843
+Southeast Asia	Asia	2.15600001811981
+South America	South America	2.27475001414617
+Central America	North America	2.32637499272823
+Middle East	Asia	2.54705556895998
+Southern and Central Asia	Asia	2.63414285864149
+Micronesia	Oceania	2.86475002765656
+Northern Africa	Africa	2.9081666469574
+Southern Africa	Africa	2.99079999923706
+Melanesia	Oceania	3.13579998016357
+Polynesia	Oceania	3.24433326721191
+Eastern Africa	Africa	4.38670586838442
+Western Africa	Africa	4.96012498438358
+Central Africa	Africa	4.96788883209229
+```
+#### Comment:
+Interesting. It seems that the average fertility rate is lowest in Southern Europe and highest in Central Africa. Two down, one to go!
