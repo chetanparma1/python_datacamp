@@ -308,3 +308,18 @@ ORDER BY e.inflation_rate;
 ```
 #### Comment:
 Superb! Let's review subqueries before you head off to the last video of this course!
+
+## 07. Subquery review
+Within which SQL clause are subqueries most frequently found?
+
+### Possible Answers
+* WHERE --> press 1
+* FROM --> press 2
+* SELECT --> press 3
+* IN --> press 4
+
+#### Answer:
+1
+
+#### Comment:
+Correct!
