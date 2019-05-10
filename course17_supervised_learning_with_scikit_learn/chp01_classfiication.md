@@ -477,3 +477,74 @@ array([[0, 1, 0, ..., 1, 0, 1],
 ```
 #### Comment:
 Excellent! Now that your k-NN classifier with 6 neighbors has been fit to the data, it can be used to predict the labels of new data points.
+
+## 05. k-Nearest Neighbors: Predict
+Having fit a k-NN classifier, you can now use it to predict the label of a new data point. However, there is no unlabeled data available since all of it was used to fit the model! You can still use the .predict() method on the X that was used to fit the model, but it is not a good indicator of the model's ability to generalize to new, unseen data.
+
+In the next video, Hugo will discuss a solution to this problem. For now, a random unlabeled data point has been generated and is available to you as X_new (__X_new is a numpy array__). You will use your classifier to predict the label for this new data point, as well as on the training data X that the model has already seen. Using .predict() on X_new will generate 1 prediction, while using it on X will generate 435 predictions: 1 for each sample.
+
+The DataFrame has been pre-loaded as df. This time, you will create the feature array X and target variable array y yourself.
+
+### Instructions:
+* Create arrays for the features and the target variable from df. As a reminder, the target variable is 'party'.
+* Instantiate a KNeighborsClassifier with 6 neighbors.
+* Fit the classifier to the data.
+* Predict the labels of the training data, X.
+* Predict the label of the new data point X_new.
+
+
+#### Script:
+```
+# Import KNeighborsClassifier from sklearn.neighbors
+from sklearn.neighbors import KNeighborsClassifier 
+
+# Create arrays for the features and the response variable
+y = df['party'].values
+X = df.drop('party', axis = 1).values
+
+# Create a k-NN classifier with 6 neighbors: knn
+knn = KNeighborsClassifier(6)
+
+# Fit the classifier to the data
+knn.fit(X, y)
+
+# Predict the labels for the training data X
+y_pred = knn.predict(X)
+
+# Predict and print the label for the new data point X_new
+new_prediction = knn.predict(X_new)
+print("Prediction: {}".format(new_prediction))
+
+```
+
+#### Output:
+```
+In [1]: X_new
+Out[1]: 
+         0         1         2         3         4         5         6   \
+0  0.334679  0.438609  0.074391  0.121746  0.640655  0.947909  0.202118   
+
+         7        8         9         10        11        12        13  \
+0  0.845946  0.67587  0.391028  0.049598  0.990629  0.173054  0.660467   
+
+         14        15  
+0  0.322205  0.944186
+```
+```
+In [5]: X_new.columns
+Out[5]: RangeIndex(start=0, stop=16, step=1)
+```
+```
+In [11]: X_new.values
+Out[11]: 
+array([[ 0.33467875,  0.43860907,  0.07439147,  0.12174592,  0.64065524,
+         0.94790857,  0.20211804,  0.84594625,  0.67587021,  0.39102782,
+         0.0495982 ,  0.99062862,  0.17305422,  0.66046676,  0.32220512,
+         0.94418573]])
+```
+```
+<script.py> output:
+    Prediction: ['democrat']
+```
+#### Comment:
+Great work! Did your model predict 'democrat' or 'republican'? How sure can you be of its predictions? In other words, how can you measure its performance? This is what you will learn in the next video.
