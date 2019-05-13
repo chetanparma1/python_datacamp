@@ -684,3 +684,77 @@ print(knn.score(X_test, y_test))
 ```
 #### Comment:
 Excellent work! Incredibly, this out of the box k-NN classifier with 7 neighbors has learned from the training data and predicted the labels of the images in the test set with 98% accuracy, and it did so in less than a second! This is one illustration of how incredibly useful machine learning techniques can be.
+
+## 08. Overfitting and underfitting
+Remember the model complexity curve that Hugo showed in the video? You will now construct such a curve for the digits dataset! In this exercise, you will compute and plot the training and testing accuracy scores for a variety of different neighbor values. By observing how the accuracy scores differ for the training and testing sets with different values of k, you will develop your intuition for overfitting and underfitting.
+
+The training and testing sets are available to you in the workspace as X_train, X_test, y_train, y_test. In addition, KNeighborsClassifier has been imported from sklearn.neighbors.
+
+### Instructions:
+* Inside the for loop:
+** Setup a k-NN classifier with the number of neighbors equal to k.
+** Fit the classifier with k neighbors to the training data.
+** Compute accuracy scores the training set and test set separately using the .score() method and assign the results to the train_accuracy and test_accuracy arrays respectively.
+
+#### Script:
+```
+# Setup arrays to store train and test accuracies
+neighbors = np.arange(1, 9)
+train_accuracy = np.empty(len(neighbors))
+test_accuracy = np.empty(len(neighbors))
+
+# Loop over different values of k
+for i, k in enumerate(neighbors):
+    # print(i, k)
+    # Setup a k-NN Classifier with k neighbors: knn
+    knn = KNeighborsClassifier(k)
+
+    # Fit the classifier to the training data
+    knn.fit(X_train, y_train)
+    
+    #Compute accuracy on the training set
+    train_accuracy[i] = knn.score(X_train, y_train)
+
+    #Compute accuracy on the testing set
+    test_accuracy[i] = knn.score(X_test, y_test)
+
+# Generate plot
+plt.title('k-NN: Varying Number of Neighbors')
+plt.plot(neighbors, test_accuracy, label = 'Testing Accuracy')
+plt.plot(neighbors, train_accuracy, label = 'Training Accuracy')
+plt.legend()
+plt.xlabel('Number of Neighbors')
+plt.ylabel('Accuracy')
+plt.show()
+
+```
+
+#### Output:
+```
+In [2]: neighbors
+Out[2]: array([1, 2, 3, 4, 5, 6, 7, 8])
+```
+```
+In [4]: train_accuracy
+Out[4]: array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+```
+```
+In [5]: test_accuracy
+Out[5]: array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+```
+```
+In [7]: for i, k in enumerate(neighbors):
+            print(i, k)
+0 1
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 8
+```
+![Alt text](./neighbors.svg)
+
+#### Output:
+Great work! It looks like the test accuracy is highest when using 3 and 5 neighbors. Using 8 neighbors or more seems to result in a simple model that underfits the data. Now that you've grasped the fundamentals of classification, you will learn about regression in the next chapter!
