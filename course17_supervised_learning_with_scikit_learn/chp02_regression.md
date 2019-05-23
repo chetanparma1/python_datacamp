@@ -81,3 +81,17 @@ In case you are curious, the heatmap was generated using <a href="http://seaborn
 sns.heatmap(df.corr(), square=True, cmap='RdYlGn')
 
 Once you have a feel for the data, consider the statements below and select the one that is not true. After this, Hugo will explain the mechanics of linear regression in the next video and you will be on your way building regression models!
+![Alt text](./heatmap_gapminder.svg)
+
+### Possible Answer:
+* The DataFrame has 139 samples (or rows) and 9 columns.
+* life and fertility are negatively correlated.
+* The mean of life is 69.602878.
+* fertility is of type int64.
+* GDP and life are positively correlated.
+
+#### Answer:
+4
+
+#### Comment:
+Good job! As seen by using df.info(), fertility, along with all the other columns, is of type float64, not int64.
