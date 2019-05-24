@@ -133,7 +133,6 @@ print(reg.score(X_fertility, y))
 # Plot regression line
 plt.plot(prediction_space, y_pred, color='black', linewidth=3)
 plt.show()
-
 ```
 
 #### Output:
@@ -257,3 +256,12 @@ array([[ 77.26904851],
        [ 49.80043487],
        [ 49.22817208]])
 ```
+##### Output of the R^2
+```
+<script.py> output:
+    0.619244216774
+```
+![Alt text](./regline.svg)
+
+#### Comment:
+Fantastic! Notice how the line captures the underlying trend in the data. And the performance is quite decent for this basic regression model with only one feature!
