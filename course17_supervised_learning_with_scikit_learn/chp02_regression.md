@@ -349,3 +349,5 @@ print("Average 5-Fold CV Score: {}".format(np.mean(cv_scores)))
 In [3]: reg
 Out[3]: LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
 ```
+#### Comment:
+Great work! Now that you have cross-validated your model, you can more confidently evaluate its predictions.
