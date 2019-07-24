@@ -384,3 +384,14 @@ cvscores_10 = cross_val_score(reg, X, y, cv = 10)
 print(np.mean(cvscores_10))
 
 ```
+#### Output:
+```
+
+<script.py> output:
+    0.871871278262
+    0.843612862013
+
+In [1]: 
+```
+#### Comment:
+Excellent! Did you use `%timeit` in the IPython Shell to see how much longer it takes 10-fold cross-validation to run compared to 3-fold cross-validation?
